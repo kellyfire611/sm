@@ -16,8 +16,8 @@ class CreateStoreSanphamNhomTable extends Migration
         Schema::create('store_sanpham_nhom', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('ma_nhom_sanpham', 191)->unique();
-            $table->string('ten_nhom_sanpham', 191);
+            $table->string('ma_nhom_sanpham', 191)->unique()->comment('Mã nhóm sản phẩm');
+            $table->string('ten_nhom_sanpham', 191)->comment('Tên nhóm sản phẩm');
             $table->softDeletes();
             $table->timestamps();
         });

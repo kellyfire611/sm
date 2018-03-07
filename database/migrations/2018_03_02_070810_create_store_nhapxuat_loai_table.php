@@ -16,11 +16,11 @@ class CreateStoreNhapxuatLoaiTable extends Migration
         Schema::create('store_nhapxuat_loai', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('ma_loai_nhapxuat', 191)->unique();
-            $table->string('ten_loai_nhapxuat', 191);
-            $table->boolean('la_nhap');
-            $table->boolean('la_noibo');
-            $table->boolean('la_hoantra');
+            $table->string('ma_loai_nhapxuat', 191)->unique()->comment('Mã loại nhập xuất');;
+            $table->string('ten_loai_nhapxuat', 191)->comment('Tên loại nhập xuất');
+            $table->boolean('la_nhap')->comment('Là nhập');
+            $table->boolean('la_noibo')->comment('Là nội bộ');
+            $table->boolean('la_hoantra')->comment('Là hoàn trả');
             
             $table->smallInteger('company_id')->nullable();
             

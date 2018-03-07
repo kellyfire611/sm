@@ -17,8 +17,8 @@ class CreateStoreKhoLoaiRelTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             
-            $table->unsignedInteger('kho_id');
-            $table->unsignedInteger('kho_loai_id');
+            $table->unsignedInteger('kho_id')->comment('Kho');
+            $table->unsignedInteger('kho_loai_id')->comment('Loại kho');
             $table->smallInteger('company_id')->nullable();
             $table->foreign('kho_id')->references('id')->on('store_kho');
             $table->foreign('kho_loai_id')->references('id')->on('store_kho_loai');

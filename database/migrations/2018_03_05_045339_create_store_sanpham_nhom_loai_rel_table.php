@@ -17,9 +17,9 @@ class CreateStoreSanphamNhomLoaiRelTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             
-            $table->unsignedInteger('sanpham_id');
-            $table->unsignedInteger('sanpham_nhom_id');
-            $table->unsignedInteger('sanpham_loai_id');
+            $table->unsignedInteger('sanpham_id')->comment('Sản phẩm');
+            $table->unsignedInteger('sanpham_nhom_id')->comment('Nhóm sản phẩm');
+            $table->unsignedInteger('sanpham_loai_id')->comment('Loại sản phẩm');
             $table->foreign('sanpham_id')->references('id')->on('store_sanpham');
             $table->foreign('sanpham_nhom_id')->references('id')->on('store_sanpham_nhom');
             $table->foreign('sanpham_loai_id')->references('id')->on('store_sanpham_loai');

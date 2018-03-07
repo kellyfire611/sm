@@ -16,8 +16,8 @@ class CreateStoreSanphamLoaiTable extends Migration
         Schema::create('store_sanpham_loai', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('ma_loai_sanpham', 191)->unique();
-            $table->string('ten_loai_sanpham', 191);
+            $table->string('ma_loai_sanpham', 191)->unique()->comment('Mã loại sản phẩm');
+            $table->string('ten_loai_sanpham', 191)->comment('Tên loại sản phẩm');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -16,20 +16,19 @@ class CreateStorePhieuxuatTable extends Migration
         Schema::create('store_phieuxuat', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('so_phieuxuat', 191)->unique();
-            $table->unsignedInteger('soketoan_id');
-            $table->unsignedInteger('xuat_tu_kho_id')->nullable();
-            $table->unsignedInteger('xuat_den_kho_id');
-            $table->unsignedInteger('nguoi_lapphieu_id');
-            $table->dateTime('ngay_xuatkho');
-            $table->dateTime('ngay_xacnhan')->nullable();
-            $table->text('lydo_xuat')->nullable();
-            $table->unsignedInteger('nhacungcap_id')->nullable();
-            $table->unsignedInteger('chuongtrinh_id')->nullable();
-            $table->text('nguoi_nhanhang')->nullable();
-            $table->text('so_chungtu')->nullable();
+            $table->string('so_phieuxuat', 191)->unique()->comment('Số phiếu xuất');
+            $table->unsignedInteger('soketoan_id')->comment('Sổ kế toán');
+            $table->unsignedInteger('xuat_tu_kho_id')->nullable()->comment('Xuất từ kho');
+            $table->unsignedInteger('xuat_den_kho_id')->comment('Xuất đến kho');
+            $table->unsignedInteger('nguoi_lapphieu_id')->comment('Người lập phiếu');
+            $table->dateTime('ngay_xuatkho')->comment('Ngày xuất kho');
+            $table->dateTime('ngay_xacnhan')->nullable()->comment('Ngày xác nhận');
+            $table->text('lydo_xuat')->nullable()->comment('Lý do xuất');
+            $table->unsignedInteger('nhacungcap_id')->nullable()->comment('Nhà cung cấp');
+            $table->unsignedInteger('chuongtrinh_id')->nullable()->comment('Chương trình');
+            $table->text('nguoi_nhanhang')->nullable()->comment('Người nhận hàng');
+            $table->text('so_chungtu')->nullable()->comment('Số chứng từ');
 
-            
             $table->foreign('xuat_tu_kho_id')->references('id')->on('store_kho');
             $table->foreign('xuat_den_kho_id')->references('id')->on('store_kho');
             

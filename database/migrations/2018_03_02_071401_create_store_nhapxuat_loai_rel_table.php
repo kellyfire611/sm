@@ -17,8 +17,8 @@ class CreateStoreNhapxuatLoaiRelTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             
-            $table->unsignedInteger('nhapxuat_id');
-            $table->unsignedInteger('nhapxuat_loai_id');
+            $table->unsignedInteger('nhapxuat_id')->comment('Nhập xuất');
+            $table->unsignedInteger('nhapxuat_loai_id')->comment('Loại nhập xuất');
             $table->foreign('nhapxuat_id')->references('id')->on('store_nhapxuat');
             $table->foreign('nhapxuat_loai_id')->references('id')->on('store_nhapxuat_loai');
             $table->unique(['nhapxuat_id', 'nhapxuat_loai_id'], 'store_nhapxuat_loai_rel_unique');

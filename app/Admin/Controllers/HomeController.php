@@ -15,25 +15,10 @@ class HomeController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Dashboard');
-            $content->description('Description...');
+            $content->header('Bảng điều khiển');
+            $content->description('Tóm tắt tình hình Kho dược trong Hệ thống...');
 
-            $content->row(Dashboard::title());
-
-            $content->row(function (Row $row) {
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::dependencies());
-                });
-            });
+            $content->body('<h1>Quản lý Kho dược</h1>');
         });
     }
 }

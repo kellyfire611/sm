@@ -17,9 +17,9 @@ class CreateStoreKhoNhapxuatRelTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             
-            $table->unsignedInteger('tu_kho_id');
-            $table->unsignedInteger('den_kho_id')->nullable();
-            $table->unsignedInteger('nhapxuat_id')->nullable();
+            $table->unsignedInteger('tu_kho_id')->comment('Từ kho');
+            $table->unsignedInteger('den_kho_id')->nullable()->comment('Đến kho');
+            $table->unsignedInteger('nhapxuat_id')->nullable()->comment('Nhập xuất');
             $table->foreign('tu_kho_id')->references('id')->on('store_kho');
             $table->foreign('den_kho_id')->references('id')->on('store_kho');
             $table->foreign('nhapxuat_id')->references('id')->on('store_nhapxuat');

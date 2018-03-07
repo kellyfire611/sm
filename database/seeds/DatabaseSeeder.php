@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Xóa data
-        DB::delete('delete from admin_menu');
+        //DB::delete('delete from admin_menu');
         DB::delete('delete from users');
 
         DB::delete('delete from hrm_quocgia');
