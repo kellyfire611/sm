@@ -5,7 +5,9 @@ return [
     'common' => [
         'created_at' => 'Ngày khởi tạo',
         'updated_at' => 'Ngày cập nhật',
-        'deleted_at' => 'Ngày xóa'
+        'deleted_at' => 'Ngày xóa',
+        'enable'     => 'Đồng ý',
+        'disable'    => 'Không'
     ],
 
     'admin_config' => ['id' => 'id','name' => 'name','value' => 'value','description' => 'description','created_at' => 'created_at','updated_at' => 'updated_at',],

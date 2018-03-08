@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\StoreKhoLoai;
+use App\Models\StoreSanphamLoai;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -10,8 +10,9 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Http\Request;
 
-class StoreKhoLoaiController extends Controller
+class StoreSanphamLoaiController extends Controller
 {
     use ModelForm;
 
@@ -71,12 +72,12 @@ class StoreKhoLoaiController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(StoreKhoLoai::class, function (Grid $grid) {
+        return Admin::grid(StoreSanphamLoai::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->column('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $grid->column('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
+            $grid->column('ma_loai_sanpham', __('models.store_sanpham_loai.ma_loai_sanpham'));
+            $grid->column('ten_loai_sanpham', __('models.store_sanpham_loai.ten_loai_sanpham'));
 
             $grid->created_at(__('models.common.created_at'));
             $grid->updated_at(__('models.common.updated_at'));
@@ -90,12 +91,12 @@ class StoreKhoLoaiController extends Controller
      */
     protected function form()
     {
-        return Admin::form(StoreKhoLoai::class, function (Form $form) {
+        return Admin::form(StoreSanphamLoai::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
-            $form->text('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $form->text('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
+            $form->text('ma_loai_sanpham', __('models.store_sanpham_loai.ma_loai_sanpham'));
+            $form->text('ten_loai_sanpham', __('models.store_sanpham_loai.ten_loai_sanpham'));
 
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));

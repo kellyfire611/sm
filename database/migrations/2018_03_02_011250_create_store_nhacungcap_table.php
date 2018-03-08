@@ -18,7 +18,7 @@ class CreateStoreNhacungcapTable extends Migration
             $table->increments('id');
             $table->string('ma_nhacungcap')->unique()->comment('Mã nhà cung cấp');
             $table->string('ten_nhacungcap')->comment('Tên nhà cung cấp');
-            $table->text('diachi_nhacungcap')->comment('Địa chỉ nhà cung cấp');
+            $table->string('diachi_nhacungcap')->comment('Địa chỉ nhà cung cấp');
             $table->string('sodienthoai_nhacungcap')->comment('Số điện thoại nhà cung cấp');
             
             $table->smallInteger('company_id')->nullable();

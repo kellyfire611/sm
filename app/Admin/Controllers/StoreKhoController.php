@@ -98,8 +98,8 @@ class StoreKhoController extends Controller
             $form->text('ma_kho', __('models.store_kho.ma_kho'));
             $form->text('ten_kho', __('models.store_kho.ten_kho'));
 
-            $form->display(__('models.common.created_at'));
-            $form->display(__('models.common.updated_at'));
+            $form->display('created_at', __('models.common.created_at'));
+            $form->display('updated_at', __('models.common.updated_at'));
         });
     }
 }

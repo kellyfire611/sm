@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\StoreKhoLoai;
+use App\Models\StoreSanpham;
+use App\Models\HrmQuocgia;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -10,8 +11,9 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Http\Request;
 
-class StoreKhoLoaiController extends Controller
+class StoreSanphamController extends Controller
 {
     use ModelForm;
 
@@ -71,12 +73,17 @@ class StoreKhoLoaiController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(StoreKhoLoai::class, function (Grid $grid) {
+        return Admin::grid(StoreSanpham::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->column('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $grid->column('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
+            $grid->column('ma_sanpham', __('models.store_sanpham.ma_sanpham'));
+            $grid->column('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
+            $grid->column('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
+            $grid->column('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'));
+            $grid->column('sokiemsoat', __('models.store_sanpham.sokiemsoat'));
+            $grid->column('nha_sanxuat_id', __('models.store_sanpham.nha_sanxuat_id'));
+            $grid->column('nuoc_sanxuat_id', __('models.store_sanpham.nuoc_sanxuat_id'));
 
             $grid->created_at(__('models.common.created_at'));
             $grid->updated_at(__('models.common.updated_at'));
@@ -90,12 +97,19 @@ class StoreKhoLoaiController extends Controller
      */
     protected function form()
     {
-        return Admin::form(StoreKhoLoai::class, function (Form $form) {
+        return Admin::form(StoreSanpham::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
-            $form->text('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $form->text('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
+            $form->text('ma_sanpham', __('models.store_sanpham.ma_sanpham'));
+            $form->text('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
+            $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
+            $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'));
+            $form->text('sokiemsoat', __('models.store_sanpham.sokiemsoat'));
+
+            $form->select('nuoc_sanxuat_id', __('models.store_sanpham.nuoc_sanxuat_id'))->options(
+                HrmQuocgia::NoneDelete()->pluck('ten_quocgia', 'id')
+            )->rules('required');
 
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));

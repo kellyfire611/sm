@@ -2,16 +2,17 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\StoreKhoLoai;
-
+use App\Models\StoreNhapxuatLoai;
+use App\Models\CommonModel;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Http\Request;
 
-class StoreKhoLoaiController extends Controller
+class StoreNhapxuatLoaiController extends Controller
 {
     use ModelForm;
 
@@ -71,12 +72,15 @@ class StoreKhoLoaiController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(StoreKhoLoai::class, function (Grid $grid) {
+        return Admin::grid(StoreNhapxuatLoai::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->column('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $grid->column('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
+            $grid->column('ma_loai_nhapxuat', __('models.store_nhapxuat_loai.ma_loai_nhapxuat'));
+            $grid->column('ten_loai_nhapxuat', __('models.store_nhapxuat_loai.ten_loai_nhapxuat'));
+            $grid->column('la_nhap', __('models.store_nhapxuat_loai.la_nhap'));
+            $grid->column('la_noibo', __('models.store_nhapxuat_loai.la_noibo'));
+            $grid->column('la_hoantra', __('models.store_nhapxuat_loai.la_hoantra'));
 
             $grid->created_at(__('models.common.created_at'));
             $grid->updated_at(__('models.common.updated_at'));
@@ -90,13 +94,16 @@ class StoreKhoLoaiController extends Controller
      */
     protected function form()
     {
-        return Admin::form(StoreKhoLoai::class, function (Form $form) {
+        return Admin::form(StoreNhapxuatLoai::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
-            $form->text('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $form->text('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
-
+            $form->text('ma_loai_nhapxuat', __('models.store_nhapxuat_loai.ma_loai_nhapxuat'));
+            $form->text('ten_loai_nhapxuat', __('models.store_nhapxuat_loai.ten_loai_nhapxuat'));
+            $form->switch('la_nhap', __('models.store_nhapxuat_loai.la_nhap'))->states(CommonModel::getStates());
+            $form->switch('la_noibo', __('models.store_nhapxuat_loai.la_noibo'))->states(CommonModel::getStates());
+            $form->switch('la_hoantra', __('models.store_nhapxuat_loai.la_hoantra'))->states(CommonModel::getStates());
+            
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));
         });

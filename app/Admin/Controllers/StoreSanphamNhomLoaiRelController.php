@@ -2,7 +2,10 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\StoreKhoLoai;
+use App\Models\StoreSanpham;
+use App\Models\StoreSanphamLoai;
+use App\Models\StoreSanphamNhom;
+use App\Models\StoreSanphamNhomLoaiRel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -10,8 +13,9 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Http\Request;
 
-class StoreKhoLoaiController extends Controller
+class StoreSanphamNhomLoaiRelController extends Controller
 {
     use ModelForm;
 
@@ -71,12 +75,13 @@ class StoreKhoLoaiController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(StoreKhoLoai::class, function (Grid $grid) {
+        return Admin::grid(StoreSanphamNhomLoaiRel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->column('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $grid->column('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
+            $grid->column('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'));
+            $grid->column('sanpham_nhom_id', __('models.store_sanpham_nhom_loai_rel.sanpham_nhom_id'));
+            $grid->column('sanpham_loai_id', __('models.store_sanpham_nhom_loai_rel.sanpham_loai_id'));
 
             $grid->created_at(__('models.common.created_at'));
             $grid->updated_at(__('models.common.updated_at'));
@@ -90,12 +95,21 @@ class StoreKhoLoaiController extends Controller
      */
     protected function form()
     {
-        return Admin::form(StoreKhoLoai::class, function (Form $form) {
+        return Admin::form(StoreSanphamNhomLoaiRel::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
-            $form->text('ma_loai_kho', __('models.store_kho_loai.ma_loai_kho'));
-            $form->text('ten_loai_kho', __('models.store_kho_loai.ten_loai_kho'));
+            $form->select('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'))->options(
+                StoreSanpham::NoneDelete()->pluck('ten_sanpham', 'id')
+            )->rules('required');
+            
+            $form->select('sanpham_loai_id', __('models.store_sanpham_nhom_loai_rel.sanpham_loai_id'))->options(
+                StoreSanphamLoai::NoneDelete()->pluck('ten_loai_sanpham', 'id')
+            )->rules('required');
+
+            $form->select('sanpham_nhom_id', __('models.store_sanpham_nhom_loai_rel.sanpham_nhom_id'))->options(
+                StoreSanphamNhom::NoneDelete()->pluck('ten_nhom_sanpham', 'id')
+            )->rules('required');
 
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));
