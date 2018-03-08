@@ -139,6 +139,12 @@ class StorePhieunhapController extends Controller
             )->rules('required');
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
+                $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))->default(45);
+                $form->hidden('soketoan_id', __('models.store_phieunhap_chitiet.soketoan_id'))->default(1);
+                $form->hidden('nhap_vao_kho_id', __('models.store_phieunhap_chitiet.nhap_vao_kho_id'))->default(1);
+                $form->hidden('sanpham_id', __('models.store_phieunhap_chitiet.sanpham_id'))->default(1);
+                $form->hidden('donvitinh_id', __('models.store_phieunhap_chitiet.donvitinh_id'))->default(1);
+
                 $form->datetime('ngay_sudungdautien', __('models.store_phieunhap_chitiet.ngay_sudungdautien'));
                 $form->currency('dongianhap', __('models.store_phieunhap_chitiet.dongianhap'));
                 $form->currency('soluongnhap', __('models.store_phieunhap_chitiet.soluongnhap'));
