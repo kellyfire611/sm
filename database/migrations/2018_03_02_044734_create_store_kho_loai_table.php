@@ -16,7 +16,7 @@ class CreateStoreKhoLoaiTable extends Migration
         Schema::create('store_kho_loai', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('ma_loai_kho', 191)->unique()->commnet('Mã loại kho');
+            $table->string('ma_loai_kho', 191)->unique()->comment('Mã loại kho');
             $table->string('ten_loai_kho', 191)->comment('Tên loại kho');
             
             $table->smallInteger('company_id')->nullable();

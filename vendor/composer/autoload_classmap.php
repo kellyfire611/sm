@@ -3156,6 +3156,8 @@ return array(
     'StoreNhapxuatTableSeeder' => $baseDir . '/database/seeds/StoreNhapxuatTableSeeder.php',
     'StorePhieunhapChitietTableSeeder' => $baseDir . '/database/seeds/StorePhieunhapChitietTableSeeder.php',
     'StorePhieunhapTableSeeder' => $baseDir . '/database/seeds/StorePhieunhapTableSeeder.php',
+    'StorePhieuxuatChitietTableSeeder' => $baseDir . '/database/seeds/StorePhieuxuatChitietTableSeeder.php',
+    'StorePhieuxuatTableSeeder' => $baseDir . '/database/seeds/StorePhieuxuatTableSeeder.php',
     'StoreSanphamLoaiTableSeeder' => $baseDir . '/database/seeds/StoreSanphamLoaiTableSeeder.php',
     'StoreSanphamNhomLoaiRelTableSeeder' => $baseDir . '/database/seeds/StoreSanphamNhomLoaiRelTableSeeder.php',
     'StoreSanphamNhomTableSeeder' => $baseDir . '/database/seeds/StoreSanphamNhomTableSeeder.php',
