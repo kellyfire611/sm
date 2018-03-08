@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         // Xóa data
         DB::delete('delete from admin_menu');
 
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
         DB::delete('delete from hrm_quanhuyen');
         DB::delete('delete from hrm_xaphuong');
 
+        DB::delete('delete from store_phieuxuat_chitiet');
+        DB::delete('delete from store_phieuxuat');
         DB::delete('delete from store_phieunhap_chitiet');
         DB::delete('delete from store_phieunhap');
         DB::delete('delete from store_kho_nhapxuat_rel');
@@ -38,6 +41,8 @@ class DatabaseSeeder extends Seeder
         DB::delete('delete from store_nhacungcap');
 
         DB::delete('delete from users');
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         $this->call(UsersTableSeeder::class);
         $this->call(\Encore\Admin\Auth\Database\AdminTablesSeeder::class);
@@ -81,9 +86,11 @@ class DatabaseSeeder extends Seeder
         // Đơn vị tính
         $this->call(StoreDonvitinhTableSeeder::class);
 
-        // Phiếu nhập
+        // Phiếu nhập, xuất
         $this->call(StorePhieunhapTableSeeder::class);
         $this->call(StorePhieunhapChitietTableSeeder::class);
+        $this->call(StorePhieuxuatTableSeeder::class);
+        $this->call(StorePhieuxuatChitietTableSeeder::class);
         /* ./. --- Store --- */
     }
 }
