@@ -3555,6 +3555,8 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'StoreNhapxuatTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StoreNhapxuatTableSeeder.php',
         'StorePhieunhapChitietTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StorePhieunhapChitietTableSeeder.php',
         'StorePhieunhapTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StorePhieunhapTableSeeder.php',
+        'StorePhieuxuatChitietTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StorePhieuxuatChitietTableSeeder.php',
+        'StorePhieuxuatTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StorePhieuxuatTableSeeder.php',
         'StoreSanphamLoaiTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StoreSanphamLoaiTableSeeder.php',
         'StoreSanphamNhomLoaiRelTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StoreSanphamNhomLoaiRelTableSeeder.php',
         'StoreSanphamNhomTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StoreSanphamNhomTableSeeder.php',

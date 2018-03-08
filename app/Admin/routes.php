@@ -20,4 +20,9 @@ Route::group([
 
     $router->get('api/kho', 'ApiController@kho');
     $router->get('api/loai_kho', 'ApiController@loai_kho');
+
+    /* --- Test route --- */
+    $router->get('test/bieumau_phieunhap', 'TestController@bieumau_phieunhap');
+    $router->get('test/bieumau_phieuxuat', 'TestController@bieumau_phieuxuat');
+    /* ./. --- Test route --- */
 });
