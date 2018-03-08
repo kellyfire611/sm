@@ -38,6 +38,7 @@ class CreateStorePhieuxuatChitietTable extends Migration
             $table->foreign('xuat_tu_kho_id')->references('id')->on('store_kho');
             $table->foreign('nhapxuat_id')->references('id')->on('store_nhapxuat');
             $table->foreign('phieunhap_chitiet_id')->references('id')->on('store_phieunhap_chitiet');
+            $table->foreign('soketoan_id')->references('id')->on('store_soketoan');
             
             $table->softDeletes();
             $table->timestamps();
