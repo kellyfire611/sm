@@ -24,6 +24,7 @@ class CreateStorePhieunhapTable extends Migration
             $table->text('nguoi_giaohang')->nullable()->comment('Người giao hàng');
             $table->text('so_chungtu')->nullable()->comment('Số chứng từ');
             
+            $table->unsignedInteger('nhapxuat_id')->comment('Nhập xuất');
             $table->unsignedInteger('phieuxuat_id')->nullable()->comment('Phiếu xuất');
             $table->unsignedInteger('nhacungcap_id')->nullable()->comment('Nhà cung cấp');
             $table->unsignedInteger('chuongtrinh_id')->nullable()->comment('Chương trình');
@@ -33,6 +34,11 @@ class CreateStorePhieunhapTable extends Migration
             $table->unsignedInteger('nguoi_lapphieu_id')->comment('Người lập phiếu');
             $table->foreign('nhap_tu_kho_id')->references('id')->on('store_kho');
             $table->foreign('nhap_vao_kho_id')->references('id')->on('store_kho');
+            $table->foreign('nhacungcap_id')->references('id')->on('store_nhacungcap');
+            $table->foreign('chuongtrinh_id')->references('id')->on('store_chuongtrinh');
+            $table->foreign('soketoan_id')->references('id')->on('store_soketoan');
+            $table->foreign('nguoi_lapphieu_id')->references('id')->on('users');
+            $table->foreign('nhapxuat_id')->references('id')->on('store_nhapxuat');
             
             $table->softDeletes();
             $table->timestamps();

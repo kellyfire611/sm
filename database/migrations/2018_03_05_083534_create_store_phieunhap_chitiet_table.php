@@ -16,7 +16,7 @@ class CreateStorePhieunhapChitietTable extends Migration
         Schema::create('store_phieunhap_chitiet', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->boolean('ngay_sudungdautien')->comment('Ngày sử dụng đầu tiên');
+            $table->dateTime('ngay_sudungdautien')->comment('Ngày sử dụng đầu tiên');
             $table->decimal('dongianhap', 16, 4)->comment('Đơn giá nhập');
             $table->decimal('soluongnhap', 16, 4)->comment('Số lượng nhập');
             $table->decimal('soluong_conlai', 16, 4)->comment('Số lượng còn lại');
@@ -28,13 +28,13 @@ class CreateStorePhieunhapChitietTable extends Migration
             $table->unsignedInteger('nhapxuat_id')->comment('Nhập xuất');
             $table->unsignedInteger('phieunhap_id')->comment('Phiếu nhập');
             $table->unsignedInteger('soketoan_id')->comment('Sổ kế toán');
-            $table->unsignedInteger('kho_id')->comment('Nhập vào kho');
+            $table->unsignedInteger('nhap_vao_kho_id')->comment('Nhập vào kho');
             $table->unsignedInteger('sanpham_id')->comment('Sản phẩm');
             $table->unsignedInteger('donvitinh_id')->comment('Đơn vị tính');
             $table->foreign('donvitinh_id')->references('id')->on('store_donvitinh');
             $table->foreign('phieunhap_id')->references('id')->on('store_phieunhap');
             $table->foreign('sanpham_id')->references('id')->on('store_sanpham');
-            $table->foreign('kho_id')->references('id')->on('store_kho');
+            $table->foreign('nhap_vao_kho_id')->references('id')->on('store_kho');
             $table->foreign('nhapxuat_id')->references('id')->on('store_nhapxuat');
             $table->foreign('soketoan_id')->references('id')->on('store_soketoan');
             

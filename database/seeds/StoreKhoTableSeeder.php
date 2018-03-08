@@ -14,7 +14,7 @@ class StoreKhoTableSeeder extends Seeder
         $now = Carbon\Carbon::now();
         DB::table('store_kho')->insert(
             [
-                [ 'id' => 1, 'ma_kho' => 'khochan_cantho', 'ten_kho' => 'Kho Chẵn Cần Thơ', 'created_at' => $now],
+                [ 'id' => 1, 'ma_kho' => 'khochan_mientay', 'ten_kho' => 'Kho Chẵn Miền Tây', 'created_at' => $now],
                 [ 'id' => 2, 'ma_kho' => 'khole_cantho', 'ten_kho' => 'Kho lẻ Cần Thơ', 'created_at' => $now],
             ]
         );

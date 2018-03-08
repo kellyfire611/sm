@@ -12,14 +12,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Xóa data
-        //DB::delete('delete from admin_menu');
-        DB::delete('delete from users');
+        DB::delete('delete from admin_menu');
 
         DB::delete('delete from hrm_quocgia');
         DB::delete('delete from hrm_tinhthanh');
         DB::delete('delete from hrm_quanhuyen');
         DB::delete('delete from hrm_xaphuong');
 
+        DB::delete('delete from store_phieunhap_chitiet');
+        DB::delete('delete from store_phieunhap');
         DB::delete('delete from store_kho_nhapxuat_rel');
         DB::delete('delete from store_kho_loai_rel');
         DB::delete('delete from store_kho_loai');
@@ -34,8 +35,13 @@ class DatabaseSeeder extends Seeder
         DB::delete('delete from store_donvitinh');
         DB::delete('delete from store_soketoan');
         DB::delete('delete from store_nguoncungcap');
+        DB::delete('delete from store_nhacungcap');
+
+        DB::delete('delete from users');
 
         $this->call(UsersTableSeeder::class);
+        $this->call(\Encore\Admin\Auth\Database\AdminTablesSeeder::class);
+        $this->call(AdminMenuTableSeeder::class);
 
         /* --- HRM --- */
         // Quốc gia
@@ -49,7 +55,9 @@ class DatabaseSeeder extends Seeder
         // Sổ kế toán
         $this->call(StoreSoketoanTableSeeder::class);
 
+        // Nguồn cung cấp
         $this->call(StoreNguoncungcapTableSeeder::class);
+        $this->call(StoreNhacungcapTableSeeder::class);
 
         // Loại kho
         $this->call(StoreKhoLoaiTableSeeder::class);
@@ -73,10 +81,9 @@ class DatabaseSeeder extends Seeder
         // Đơn vị tính
         $this->call(StoreDonvitinhTableSeeder::class);
 
+        // Phiếu nhập
+        $this->call(StorePhieunhapTableSeeder::class);
+        $this->call(StorePhieunhapChitietTableSeeder::class);
         /* ./. --- Store --- */
-
-        /* --- Admin Menu --- */
-        $this->call(AdminMenuTableSeeder::class);
-        /* ./. --- Admin Menu --- */
     }
 }

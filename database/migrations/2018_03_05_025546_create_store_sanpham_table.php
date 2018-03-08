@@ -22,8 +22,8 @@ class CreateStoreSanphamTable extends Migration
             $table->mediumText('nongdo_hamluong')->comment('Nồng độ hàm lượng');
             $table->string('sokiemsoat')->comment('Số kiểm soát');
             
-            $table->unsignedInteger('nha_sanxuat_id')->comment('Nhà sản xuất');
-            $table->unsignedInteger('nuoc_sanxuat_id')->comment('Nước sản xuất');
+            $table->unsignedInteger('nha_sanxuat_id')->nullable()->comment('Nhà sản xuất');
+            $table->unsignedInteger('nuoc_sanxuat_id')->nullable()->comment('Nước sản xuất');
             
             $table->softDeletes();
             $table->timestamps();
