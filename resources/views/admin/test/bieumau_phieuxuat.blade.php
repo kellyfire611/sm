@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Biểu mẫu phiếu xuất</h1>
-</body>
-</html>
+@extends('print.layout.paper')
+
+@section('title')
+Biểu mẫu Phiếu xuất kho
+@endsection
+
+@section('paper-size') A4 @endsection
+@section('paper-class') A4 @endsection
+
+@section('content')
+<section class="sheet padding-10mm">
+    <article>
+        <h1>Phiếu xuất</h1>
+    </article>
+</section>
+@endsection
