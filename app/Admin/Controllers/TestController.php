@@ -14,10 +14,10 @@ class TestController extends Controller
     public function bieumau_phieunhap()
     {
         return view('admin.test.bieumau_phieunhap');
-    }
+    }   
 
-    public function bieumau_phieuxuat()
-    {
-        return view('admin.test.bieumau_phieuxuat');
+    public function bieumau_phieuxuat()	
+    {	
+        return view('admin.test.bieumau_phieuxuat');	
     }
 }
