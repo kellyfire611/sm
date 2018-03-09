@@ -42,9 +42,11 @@ class AdminMenuTableSeeder extends Seeder
                 ["id" => 24, "parent_id" => 22, "order" => 24, "title" => "Loại Sản phẩm", "icon" => "fa-bar-chart", "uri" => "/store/loai_sanpham", "created_at" => $now, "updated_at" => NULL,],
                 ["id" => 25, "parent_id" => 22, "order" => 25, "title" => "Nhóm Sản phẩm", "icon" => "fa-bar-chart", "uri" => "/store/nhom_sanpham", "created_at" => $now, "updated_at" => NULL,],
                 ["id" => 26, "parent_id" => 22, "order" => 26, "title" => "Phân Sản phẩm, nhóm, loại", "icon" => "fa-bar-chart", "uri" => "/store/loai_nhom_sanpham_rel", "created_at" => $now, "updated_at" => NULL,],
-
-                
                 /* ./. --- Sản phẩm --- */
+                /* --- Nhập --- */
+                ["id" => 27, "parent_id" => 0, "order" => 27, "title" => "Nhập", "icon" => "fa-bar-chart", "uri" => "", "created_at" => $now, "updated_at" => NULL,],
+                ["id" => 28, "parent_id" => 27, "order" => 28, "title" => "Nhập tồn đầu kỳ", "icon" => "fa-bar-chart", "uri" => "/store/phieunhap_tondauky", "created_at" => $now, "updated_at" => NULL,],
+                /* ./. --- Đơn vị tính --- */
             ]
         );
 

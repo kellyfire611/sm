@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\StorePhieunhapChitiet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -23,5 +24,10 @@ class StorePhieunhap extends Model
             return [$obj->id => $obj->so_phieunhap];
 
         })->flatten();
+    }
+
+    public function chitiet()
+    {
+        return $this->hasMany(StorePhieunhapChitiet::class, 'phieunhap_id', 'id');
     }
 }

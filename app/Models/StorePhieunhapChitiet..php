@@ -10,6 +10,7 @@ class StorePhieunhapChitiet extends Model
     use SoftDeletes;
 
     protected $table = 'store_phieunhap_chitiet';
+    protected $fillable = ['id','ngay_sudungdautien','dongianhap','soluongnhap','soluong_conlai','thue','hansudung','so_lo','so_chungtu','nhapxuat_id','phieunhap_id','soketoan_id','nhap_vao_kho_id','sanpham_id','donvitinh_id','deleted_at','created_at','updated_at'];
 
     public function scopeNoneDelete()
     {
