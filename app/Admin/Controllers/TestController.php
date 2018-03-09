@@ -15,4 +15,9 @@ class TestController extends Controller
     {
         return view('admin.test.bieumau_phieunhap');
     }   
+
+    public function bieumau_phieuxuat()	
+    {	
+        return view('admin.test.bieumau_phieuxuat');	
+    }
 }
