@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Controllers;
+namespace App\Admin\Controllers\V1;
 
 use Illuminate\Http\Request;
 use Encore\Admin\Form;
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use App\Models\StoreKho;
 use App\Models\StoreKhoLoai;
+use App\Models\StoreSanpham;
 use DB;
 
 class ApiController extends Controller
@@ -27,5 +28,11 @@ class ApiController extends Controller
         $q = $request->get('q');
 
         return StoreKhoLoai::where('ten_loai_kho', 'like', "%$q%")->paginate(null, [DB::raw('ID as id'),DB::raw('ten_loai_kho as text')]);
+    }
+
+    public function linkageSelectData(Request $request)
+    {
+        $id = $request->get('q');
+        return StoreKho::where('id', $id)->get(['id', DB::raw('name as text')]);
     }
 }

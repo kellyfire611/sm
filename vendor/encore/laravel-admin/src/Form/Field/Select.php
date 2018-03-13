@@ -239,7 +239,7 @@ EOT;
         $configs = json_encode($configs);
 
         if (empty($this->script)) {
-            $this->script = "$(\"{$this->getElementClassSelector()}\").select2($configs);";
+            $this->script = "$(\"select{$this->getElementClassSelector()}\").select2($configs);";
         }
 
         if ($this->options instanceof \Closure) {

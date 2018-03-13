@@ -24,4 +24,9 @@ class StoreKho extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreKho::NoneDelete()->pluck('ten_kho', 'id');
+    }
 }
