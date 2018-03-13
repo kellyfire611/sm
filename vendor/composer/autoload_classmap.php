@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminMenuTableSeeder' => $baseDir . '/database/seeds/AdminMenuTableSeeder.php',
-    'App\\Admin\\Controllers\\ApiController' => $baseDir . '/app/Admin/Controllers/ApiController.php',
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
     'App\\Admin\\Controllers\\StoreChuongtrinhController' => $baseDir . '/app/Admin/Controllers/StoreChuongtrinhController.php',
@@ -26,6 +25,7 @@ return array(
     'App\\Admin\\Controllers\\StoreSanphamNhomLoaiRelController' => $baseDir . '/app/Admin/Controllers/StoreSanphamNhomLoaiRelController.php',
     'App\\Admin\\Controllers\\StoreSoketoanController' => $baseDir . '/app/Admin/Controllers/StoreSoketoanController.php',
     'App\\Admin\\Controllers\\TestController' => $baseDir . '/app/Admin/Controllers/TestController.php',
+    'App\\Admin\\Controllers\\V1\\ApiController' => $baseDir . '/app/Admin/Controllers/V1/ApiController.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Handlers\\LfmConfigHandler' => $baseDir . '/app/Handlers/LfmConfigHandler.php',

@@ -30,8 +30,8 @@ Route::group([
         '/store/phieunhap_tondauky'         => StorePhieunhapController::class,
     ]);
 
-    $router->get('api/kho', 'ApiController@kho');
-    $router->get('api/loai_kho', 'ApiController@loai_kho');
+    $router->get('api/v1/kho', 'V1\ApiController@kho');
+    $router->get('api/v1/loai_kho', 'V1\ApiController@loai_kho');
 
     /* --- Test route --- */
     $router->get('test/bieumau_phieunhap', 'TestController@bieumau_phieunhap');

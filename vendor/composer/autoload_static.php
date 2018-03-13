@@ -406,7 +406,6 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
 
     public static $classMap = array (
         'AdminMenuTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminMenuTableSeeder.php',
-        'App\\Admin\\Controllers\\ApiController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ApiController.php',
         'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
         'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
         'App\\Admin\\Controllers\\StoreChuongtrinhController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreChuongtrinhController.php',
@@ -425,6 +424,7 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'App\\Admin\\Controllers\\StoreSanphamNhomLoaiRelController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreSanphamNhomLoaiRelController.php',
         'App\\Admin\\Controllers\\StoreSoketoanController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreSoketoanController.php',
         'App\\Admin\\Controllers\\TestController' => __DIR__ . '/../..' . '/app/Admin/Controllers/TestController.php',
+        'App\\Admin\\Controllers\\V1\\ApiController' => __DIR__ . '/../..' . '/app/Admin/Controllers/V1/ApiController.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Handlers\\LfmConfigHandler' => __DIR__ . '/../..' . '/app/Handlers/LfmConfigHandler.php',
