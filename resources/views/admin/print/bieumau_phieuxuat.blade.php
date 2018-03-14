@@ -1,7 +1,7 @@
 @extends('print.layout.paper')
 
 @section('title')
-Biểu mẫu Phiếu nhập kho
+Biểu mẫu Phiếu xuất kho
 @endsection
 
 @section('paper-size') A4 @endsection
@@ -10,7 +10,7 @@ Biểu mẫu Phiếu nhập kho
 @section('content')
 <section class="sheet padding-10mm">
     <article>
-        <h1>Phiếu nhập</h1>
+        <h1>{{ $data['title'] }}</h1>
     </article>
 </section>
 @endsection

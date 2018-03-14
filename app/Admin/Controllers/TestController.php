@@ -8,16 +8,27 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
+use Encore\Admin\Controllers\ModelForm;
 
 class TestController extends Controller
 {
-    public function bieumau_phieunhap()
-    {
-        return view('admin.test.bieumau_phieunhap');
-    }   
+    use ModelForm;
 
-    public function bieumau_phieuxuat()	
-    {	
-        return view('admin.test.bieumau_phieuxuat');	
+    /**
+     * Index interface.
+     *
+     * @return Content
+     */
+    public function index()
+    {
+        return Admin::content(function (Content $content) {
+
+            $content->header('Test');
+            $content->description('Testing');
+
+            $content->body(
+                view('admin.test.index')
+            );
+        });
     }
 }
