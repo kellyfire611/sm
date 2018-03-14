@@ -16,7 +16,7 @@ class CreateStorePhieunhapChitietTable extends Migration
         Schema::create('store_phieunhap_chitiet', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->dateTime('ngay_sudungdautien')->comment('Ngày sử dụng đầu tiên');
+            $table->dateTime('ngay_sudungdautien')->nullable()->comment('Ngày sử dụng đầu tiên');
             $table->decimal('dongianhap', 16, 4)->comment('Đơn giá nhập');
             $table->decimal('soluongnhap', 16, 4)->comment('Số lượng nhập');
             $table->decimal('soluong_conlai', 16, 4)->comment('Số lượng còn lại');

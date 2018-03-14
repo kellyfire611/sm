@@ -141,7 +141,7 @@ class StorePhieunhapController extends Controller
                 StoreNhacungcap::NoneDelete()->pluck('ten_nhacungcap', 'id')
             )->rules('required');
 
-            $form->select('soketoan_id', 'aaaaaaa')->options(
+            $form->select('soketoan_id', __('models.store_phieunhap.soketoan_id'))->options(
                 StoreSoketoan::NoneDelete()->pluck('ma_soketoan', 'id')
             )->rules('required');
 
@@ -156,10 +156,10 @@ class StorePhieunhapController extends Controller
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))->default(45);
-                $form->hidden('soketoan_id', 'AAAAAAAAAAAAAAAAAAAAA')->default(1);
+                $form->hidden('soketoan_id',  __('models.store_phieunhap_chitiet.soketoan_id'))->default(1);
                 //$form->hidden('nhap_vao_kho_id', __('models.store_phieunhap_chitiet.nhap_vao_kho_id'))->default(1);
 
-                $form->select('nhap_vao_kho_id', __('models.store_phieunhap.nhap_vao_kho_id'))
+                $form->select('nhap_vao_kho_id', __('models.store_phieunhap_chitiet.nhap_vao_kho_id'))
                 ->options(StoreKho::selectboxData())
                 //->load('nhap_vao_kho', '')
                 ->rules('required');

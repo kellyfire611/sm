@@ -35,4 +35,9 @@ class ApiController extends Controller
         $id = $request->get('q');
         return StoreKho::where('id', $id)->get(['id', DB::raw('name as text')]);
     }
+
+    public function phieunhapById($id)
+    {
+        
+    }
 }
