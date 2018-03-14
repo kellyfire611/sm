@@ -135,7 +135,9 @@ class StorePhieunhapController extends Controller
             $form->datetime('ngay_xacnhan', __('models.store_phieunhap.ngay_xacnhan'));
             $form->text('lydo_nhap', __('models.store_phieunhap.lydo_nhap'));
             $form->text('nguoi_giaohang', __('models.store_phieunhap.nguoi_giaohang'));
-            $form->text('so_chungtu', __('models.store_phieunhap.so_chungtu'));
+            $form->text('so_chungtu', __('models.store_phieunhap.so_chungtu'))->attribute([
+                'bind' => 'any_name'
+            ]);
 
             $form->select('nhacungcap_id', __('models.store_phieunhap.nhacungcap_id'))->options(
                 StoreNhacungcap::NoneDelete()->pluck('ten_nhacungcap', 'id')
@@ -169,7 +171,10 @@ class StorePhieunhapController extends Controller
                 $form->hidden('donvitinh_id', __('models.store_phieunhap_chitiet.donvitinh_id'))->default(1);
 
                 $form->text('so_lo', __('models.store_phieunhap_chitiet.so_lo'));
-                $form->text('so_chungtu', __('models.store_phieunhap_chitiet.so_chungtu'));
+                $form->text('so_chungtu', __('models.store_phieunhap_chitiet.so_chungtu'))->attribute([
+                    'bind' => 'any_name'
+                ]);
+
                 $form->datetime('hansudung', __('models.store_phieunhap_chitiet.hansudung'));
                 
 
