@@ -24,4 +24,9 @@ class StoreNhapxuatLoai extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreNhapxuatLoai::NoneDelete()->pluck('ten_loai_nhapxuat', 'id');
+    }
 }

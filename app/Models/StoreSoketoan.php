@@ -24,4 +24,9 @@ class StoreSoketoan extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreSoketoan::NoneDelete()->pluck('ma_soketoan', 'id');
+    }
 }

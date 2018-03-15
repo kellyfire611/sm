@@ -24,4 +24,9 @@ class StoreNhacungcap extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreNhacungcap::NoneDelete()->pluck('ten_nhacungcap', 'id');
+    }
 }

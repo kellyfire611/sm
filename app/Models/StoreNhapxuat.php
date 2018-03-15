@@ -24,4 +24,9 @@ class StoreNhapxuat extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreNhapxuat::NoneDelete()->pluck('ten_nhapxuat', 'id');
+    }
 }

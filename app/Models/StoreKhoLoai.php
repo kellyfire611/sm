@@ -25,4 +25,9 @@ class StoreKhoLoai extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreKhoLoai::NoneDelete()->pluck('ten_loai_kho', 'id');
+    }
 }

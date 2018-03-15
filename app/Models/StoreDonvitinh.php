@@ -24,4 +24,9 @@ class StoreDonvitinh extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreDonvitinh::NoneDelete()->pluck('ten_donvitinh', 'id');
+    }
 }

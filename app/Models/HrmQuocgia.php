@@ -24,4 +24,9 @@ class HrmQuocgia extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return HrmQuocgia::NoneDelete()->pluck('ten_quoc_gia', 'id');
+    }
 }

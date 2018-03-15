@@ -24,4 +24,9 @@ class StoreSanphamLoai extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreSanphamLoai::NoneDelete()->pluck('ten_loai_sanpham', 'id');
+    }
 }
