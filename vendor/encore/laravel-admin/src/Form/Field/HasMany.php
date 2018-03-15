@@ -411,6 +411,15 @@ $('#has-many-{$this->column}').on('click', '.add', function () {
     var template = tpl.html().replace(/{$defaultKey}/g, index);
     $('.has-many-{$this->column}-forms').append(template);
     {$templateScript}
+
+    $("*[bind-type='parent']").each(function() { 
+        var parentValue = $(this).val();
+        var children = $("*[bind-type='children'][bind-key='" + $(this).attr('bind-key') + "']:last");
+        children.each(function() {
+           $(this).val(parentValue);
+        })
+     })
+
 });
 
 $('#has-many-{$this->column}').on('click', '.remove', function () {
