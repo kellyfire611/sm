@@ -33,4 +33,9 @@ class Administrator extends Model implements AuthenticatableContract
 
         parent::__construct($attributes);
     }
+
+    public static function selectboxData()
+    {
+        return Administrator::all()->pluck('username', 'id');
+    }
 }

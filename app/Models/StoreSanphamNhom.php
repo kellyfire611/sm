@@ -24,4 +24,9 @@ class StoreSanphamNhom extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreSanphamNhom::NoneDelete()->pluck('ten_nhom_sanpham', 'id');
+    }
 }

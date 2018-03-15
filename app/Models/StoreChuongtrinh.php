@@ -24,4 +24,9 @@ class StoreChuongtrinh extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreChuongtrinh::NoneDelete()->pluck('ten_chuongtrinh', 'id');
+    }
 }

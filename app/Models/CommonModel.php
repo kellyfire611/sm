@@ -6,7 +6,7 @@ class CommonModel
 {
     static $states;
     static $instance = null;
-    static $loai_nhap_xuat = null;
+    static $nhap_xuat = null;
 
     public function __construct()
     {
@@ -15,7 +15,7 @@ class CommonModel
             'off' => ['value' => 0, 'text' => __('models.common.disable'), 'color' => 'danger'],
         ];
 
-        self::$loai_nhap_xuat = [
+        self::$nhap_xuat = [
             '_NHAP_TON_KHO_DAU_KY_' => 45
         ];
     }
@@ -36,9 +36,9 @@ class CommonModel
         return self::$states;
     }
 
-    public static function getLoaiNhapXuat()
+    public static function getNhapXuat()
     {
         self::getInstance();
-        return self::$loai_nhap_xuat;
+        return self::$nhap_xuat;
     }
 }

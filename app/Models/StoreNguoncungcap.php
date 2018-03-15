@@ -24,4 +24,9 @@ class StoreNguoncungcap extends Model
 
         })->flatten();
     }
+
+    public static function selectboxData()
+    {
+        return StoreNguoncungcap::NoneDelete()->pluck('ten_nguoncungcap', 'id');
+    }
 }
