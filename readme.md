@@ -1,4 +1,8 @@
 # Cách chạy dự án
+## Môi trường
+1. PHP 7+
+2. MySQL 5.6+
+
 ## 1. Copy file .env.eample thành .env
 ```
 copy .env.example .env
@@ -13,16 +17,25 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-## 3. Chạy câu lệnh khởi tạo DB + data
+## 3. Clear cache
+```
+composer dump-autoload
+php artisan clear
+php artisan config:cache
+php artisan key:generate
+```
+
+## 4. Chạy câu lệnh khởi tạo DB + data
 ```
 php artisan migrate --seed
 ```
 
-## 4. Start server
+## 5. Start server
 ```
 php artisan serve
 ```
 
-## 5. Truy cập Web
+## 6. Truy cập Web
 http://localhost:8000/admin
-Tài khoản/password: admin/admin
+
+Tài khoản/password: `admin/admin`
