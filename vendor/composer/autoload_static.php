@@ -20,6 +20,7 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '19eeb7425619a0a76aa4a68ff9314231' => __DIR__ . '/..' . '/parsedown/laravel/src/Support/helpers.php',
+        'd21d43db5f6e840ee7b10744ec7fdf66' => __DIR__ . '/../..' . '/app/Helpers/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -408,6 +409,8 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'AdminMenuTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminMenuTableSeeder.php',
         'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
         'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
+        'App\\Admin\\Controllers\\PrintController' => __DIR__ . '/../..' . '/app/Admin/Controllers/PrintController.php',
+        'App\\Admin\\Controllers\\Reports\\StoreSoketoanController' => __DIR__ . '/../..' . '/app/Admin/Controllers/Reports/StoreBaocaoNhapxuattonChitietController.php',
         'App\\Admin\\Controllers\\StoreChuongtrinhController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreChuongtrinhController.php',
         'App\\Admin\\Controllers\\StoreDonvitinhController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreDonvitinhController.php',
         'App\\Admin\\Controllers\\StoreKhoController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreKhoController.php',
@@ -424,6 +427,7 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'App\\Admin\\Controllers\\StoreSanphamNhomLoaiRelController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreSanphamNhomLoaiRelController.php',
         'App\\Admin\\Controllers\\StoreSoketoanController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreSoketoanController.php',
         'App\\Admin\\Controllers\\TestController' => __DIR__ . '/../..' . '/app/Admin/Controllers/TestController.php',
+        'App\\Admin\\Controllers\\V1\\ApiBaocaoController' => __DIR__ . '/../..' . '/app/Admin/Controllers/V1/ApiBaocaoController.php',
         'App\\Admin\\Controllers\\V1\\ApiController' => __DIR__ . '/../..' . '/app/Admin/Controllers/V1/ApiController.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -461,6 +465,7 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
+        'App\\Providers\\DebugServiceProvider' => __DIR__ . '/../..' . '/app/Providers/DebugServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
