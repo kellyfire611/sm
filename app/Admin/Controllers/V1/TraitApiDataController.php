@@ -14,10 +14,12 @@ trait ApiDataController {
         $currentPage = 1;
         //$data = StorePhieunhap::all();
         $data = DB::select("select pn.*
-                                , pnct.dongianhap, pnct.soluongnhap
-                            from store_phieunhap pn
-                                join store_phieunhap_chitiet pnct on pnct.phieunhap_id = pn.id
-                            where pn.id = $id");
+                        , pnct.dongianhap, pnct.soluongnhap
+                    from store_phieunhap pn
+                        join store_phieunhap_chitiet pnct on pnct.phieunhap_id = pn.id
+                        join store_nhacungcap ncc on pn.nhacungcap_id = ncc.id
+                        join store_kho k on pn.nhap_vao_kho_id = k.id
+                    where pn.id = $id");
         $chitiet = DB::select("select *
                             from store_phieunhap_chitiet pnct
                                 join store_sanpham sp on pnct.sanpham_id = sp.id
