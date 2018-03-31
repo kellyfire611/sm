@@ -23,7 +23,7 @@ class PrintController extends Controller
         //dd($q);
 
         $bag = $this->getData($view, $q);
-        dd($bag);
+        //dd($bag);
         return view('admin.print.' . $view)->with('bag', $bag);
     }
 

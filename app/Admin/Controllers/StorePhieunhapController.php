@@ -101,9 +101,20 @@ class StorePhieunhapController extends Controller
             $grid->column('nhap_tu_kho_id', __('models.store_phieunhap.nhap_tu_kho_id'));
             $grid->column('nhap_vao_kho_id', __('models.store_phieunhap.nhap_vao_kho_id'));
             $grid->column('nguoi_lapphieu_id', __('models.store_phieunhap.nguoi_lapphieu_id'));
-
             $grid->created_at(__('models.common.created_at'));
             $grid->updated_at(__('models.common.updated_at'));
+
+            $grid->actions(function ($actions) {
+                $token = csrf_token();
+                $route = route('store.print', ['view' => 'bieumau_phieunhap']);
+                $id = $actions->getKey();
+                $actions->append('
+                    <form method="post" action="'.$route.'">
+                        <input type="hidden" name="_token" value="'.$token.'" />
+                        <input type="hidden" name="phieunhap_id" value="'.$id.'" />
+                        <button class="btn btn-sm btn-primary grid-refresh" type="submit"><i class="fa fa-refresh"></i> In phiếu</button>
+                    </form>');
+            });
         });
     }
 
