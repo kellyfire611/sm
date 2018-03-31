@@ -22,9 +22,9 @@ class PrintController extends Controller
         unset($q['_token']);
         //dd($q);
 
-        $data = $this->getData($view, $q);
-        //dd($data);
-        return view('admin.print.' . $view)->with('data', $data);
+        $bag = $this->getData($view, $q);
+        dd($bag);
+        return view('admin.print.' . $view)->with('bag', $bag);
     }
 
     protected function getData($view, $query)
@@ -38,12 +38,13 @@ class PrintController extends Controller
 
     protected function getDataBieumau_phieunhap($query)
     {
+        $meta = [
+            'title' => 'Biểu mẫu phiếu nhập',
+        ];
         $result = $this->phieunhapById($query['phieunhap_id']);
 
         $bag = [
-            'meta' => [
-                'title' => 'Biểu mẫu phiếu nhập',
-            ],
+            'meta' => $meta,
             'data' => json_decode($result)
         ];
 
