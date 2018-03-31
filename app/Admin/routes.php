@@ -27,7 +27,9 @@ Route::group([
         'store/loai_sanpham'               => StoreSanphamLoaiController::class,
         'store/nhom_sanpham'               => StoreSanphamNhomController::class,
         'store/loai_nhom_sanpham_rel'      => StoreSanphamNhomLoaiRelController::class,
+
         'store/phieunhap_tondauky'         => StorePhieunhapController::class,
+        'store/phieuxuat_quakhole'         => StorePhieuxuatController::class,
 
         'store/baocao/nhapxuatton_chitiet' => StorePhieunhapController::class,
     ]);

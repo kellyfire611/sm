@@ -5,6 +5,7 @@ namespace App\Models;
 class CommonModel
 {
     static $states;
+    static $yesNo;
     static $instance = null;
     static $nhap_xuat = null;
 
@@ -13,6 +14,11 @@ class CommonModel
         self::$states = [
             'on'  => ['value' => 1, 'text' => __('models.common.enable'), 'color' => 'success'],
             'off' => ['value' => 0, 'text' => __('models.common.disable'), 'color' => 'danger'],
+        ];
+
+        self::$yesNo = [
+            'yes'  => ['value' => 1, 'text' => __('models.common.yes'), 'color' => 'success'],
+            'no' => ['value' => 0, 'text' => __('models.common.no'), 'color' => 'danger'],
         ];
 
         self::$nhap_xuat = [
@@ -35,6 +41,7 @@ class CommonModel
             '_NHAP_THUOC_LAMTRON_' => 53,
             '_NHAP_KHOLE_GIABAN_COLOI_' => 55,
             '_NHAP_DOTHIENMAU_' => 56,
+
             '_XUAT_TRA_NHACUNGCAP_' => 5,
             '_XUAT_PHATTHUOC_CHO_BENHNHAN_' => 7,
             '_XUAT_HOAN_TUTRUC_' => 8,
@@ -71,6 +78,12 @@ class CommonModel
     {
         self::getInstance();
         return self::$states;
+    }
+
+    public static function getYesNo()
+    {
+        self::getInstance();
+        return self::$yesNo;
     }
 
     public static function getNhapXuat()

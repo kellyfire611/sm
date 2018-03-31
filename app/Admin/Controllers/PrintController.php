@@ -10,13 +10,17 @@ use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
+use App\Admin\Controllers\V1\ApiDataController;
 
 class PrintController extends Controller
 {
+    use ApiDataController;
+
     public function printWithView(Request $request, $view)
     {
         $q = $request->all();
         unset($q['_token']);
+        //dd($q);
 
         $data = $this->getData($view, $q);
         //dd($data);
@@ -34,21 +38,29 @@ class PrintController extends Controller
 
     protected function getDataBieumau_phieunhap($query)
     {
-        $data = [
-            'title' => 'Biểu mẫu phiếu nhập',
-            ''
+        $result = $this->phieunhapById($query['phieunhap_id']);
+
+        $bag = [
+            'meta' => [
+                'title' => 'Biểu mẫu phiếu nhập',
+            ],
+            'data' => json_decode($result)
         ];
 
-        return $data;
+        return $bag;
     }
 
     protected function getDataBieumau_phieuxuat($query)
     {
-        $data = [
-            'title' => 'Biểu mẫu phiếu xuất',
-            ''
+        $result = $this->phieuxuatById($query['phieuxuat_id']);
+
+        $bag = [
+            'meta' => [
+                'title' => 'Biểu mẫu phiếu xuất',
+            ],
+            'data' => json_decode($result)
         ];
 
-        return $data;
+        return $bag;
     }
 }

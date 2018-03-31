@@ -10,7 +10,7 @@ Biểu mẫu Phiếu xuất kho
 @section('content')
 <section class="sheet padding-10mm">
     <article>
-        <h1>{{ $data['title'] }}</h1>
+        <h1>{{ $data['meta']['title'] }}</h1>
     </article>
 </section>
 @endsection

@@ -52,7 +52,8 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(resource_path('views/theme/coreui/laravel-admin'), 'admin');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
+        //$this->loadViewsFrom(resource_path('views/theme/coreui/laravel-admin'), 'admin');
 
         if (file_exists($routes = admin_path('routes.php'))) {
             $this->loadRoutesFrom($routes);

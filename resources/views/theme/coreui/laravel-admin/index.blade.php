@@ -9,7 +9,10 @@
 
     <link rel="stylesheet" href="{{ admin_asset("/theme/coreui/css/style.min.css") }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/font-awesome/css/font-awesome.min.css") }}">
+    <link href="{{ admin_asset("/theme/coreui/vendors/css/flag-icon.min.css") }}" rel="stylesheet">
+    <link href="{{ admin_asset("/theme/coreui/vendors/css/font-awesome.min.css") }}" rel="stylesheet">
+    <link href="{{ admin_asset("/theme/coreui/vendors/css/simple-line-icons.min.css") }}" rel="stylesheet">
+    
 
     <!-- Theme style -->
     
@@ -25,8 +28,12 @@
     
 
     <!-- REQUIRED JS SCRIPTS -->
-    <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js") }}"></script>
-    <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js") }}"></script>
+    <script src="{{ admin_asset ("/theme/coreui/vendors/js/jquery.min.js") }}"></script>
+    <script src="{{ admin_asset ("/theme/coreui/vendors/js/popper.min.js") }}"></script>
+    <script src="{{ admin_asset ("/theme/coreui/vendors/js/bootstrap.min.js") }}"></script>
+    <script src="{{ admin_asset ("/theme/coreui/vendors/js/pace.min.js") }}"></script>
+    <script src="{{ admin_asset ("/theme/coreui/vendors/js/Chart.min.js") }}"></script>
+    
     <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/dist/js/app.min.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/laravel-admin/jquery-pjax/jquery.pjax.js") }}"></script>
