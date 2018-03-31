@@ -30,7 +30,10 @@ Biểu mẫu Phiếu nhập kho
             </tr>
             <tr>
                 <td class="tg-031e"></td>
-                <td class="tg-031e align-center">Ngày - tháng - năm</td>
+                <td class="tg-031e align-center"><?php
+                $ngayNhap = \Carbon\Carbon::parse($bag['data']->result[0]->ngay_nhapkho);
+
+                ?>  Ngày {{ $ngayNhap->day }} tháng {{ $ngayNhap->month }} năm {{ $ngayNhap->year }}</td>
                 <td class="tg-031e"></td>
             </tr>
             <tr>

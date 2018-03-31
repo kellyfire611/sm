@@ -45,6 +45,7 @@ Route::group([
     $router->get('api/v1/kho', 'V1\ApiController@kho');
     $router->get('api/v1/loai_kho', 'V1\ApiController@loai_kho');
     $router->get('api/v1/phieunhap/{id}', 'V1\ApiController@phieunhapById');
+    $router->get('api/v1/phieuxuat/{id}', 'V1\ApiController@phieuxuatById');
     /* ./. --- API V1 --- */
 
     /* --- Test route --- */
