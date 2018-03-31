@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
 
-class StoreSoketoanController extends Controller
+class StoreReportNhapxuattonChitietController extends Controller
 {
     use ModelForm;
 
@@ -28,7 +28,7 @@ class StoreSoketoanController extends Controller
             $content->header('header');
             $content->description('description');
 
-            $content->body($this->grid());
+            $content->body(view('admin.reports.nhapxuatton_chitiet.index'));
         });
     }
 

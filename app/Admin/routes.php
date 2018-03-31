@@ -31,10 +31,15 @@ Route::group([
         'store/phieunhap_tondauky'         => StorePhieunhapController::class,
         'store/phieuxuat_quakhole'         => StorePhieuxuatController::class,
 
-        'store/baocao/nhapxuatton_chitiet' => StorePhieunhapController::class,
     ]);
 
+    /* --- Báo cáo --- */
+    $router->get('store/baocao/nhapxuatton_chitiet', 'Reports\StoreReportNhapxuattonChitietController@index');
+    /* ./. --- Báo cáo --- */
+
+    /* --- Print --- */
     $router->post('store/print/{view}', 'PrintController@printWithView')->name('store.print');
+    /* ./. --- Print --- */
 
     /* --- API V1 --- */
     $router->get('api/v1/kho', 'V1\ApiController@kho');
