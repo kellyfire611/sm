@@ -18,9 +18,10 @@ class CreateStoreSanphamTable extends Migration
             $table->increments('id');
             $table->string('ma_sanpham', 191)->unique()->comment('Mã sản phẩm');
             $table->string('ten_sanpham', 191)->comment('Tên sản phẩm');
-            $table->mediumText('ten_hoatchat')->comment('Tên hoạt chất');
-            $table->mediumText('nongdo_hamluong')->comment('Nồng độ hàm lượng');
-            $table->string('sokiemsoat')->comment('Số kiểm soát');
+            $table->mediumText('ten_hoatchat')->nullable()->comment('Tên hoạt chất');
+            $table->mediumText('nongdo_hamluong')->nullable()->comment('Nồng độ hàm lượng');
+            $table->string('sokiemsoat')->nullable()->comment('Số kiểm soát');
+            $table->string('anh', 4000)->nullable()->comment('Ảnh');
             
             $table->unsignedInteger('nha_sanxuat_id')->nullable()->comment('Nhà sản xuất');
             $table->unsignedInteger('nuoc_sanxuat_id')->nullable()->comment('Nước sản xuất');
