@@ -21,10 +21,10 @@ class HomeController extends Controller
 
             $content->body('<h1>Quản lý Kho dược</h1>');
             $content->row(function ($row) {
-                $row->column(3, new InfoBox('New Users', 'users', 'aqua', '/demo/users', '1024'));
-                $row->column(3, new InfoBox('New Orders', 'shopping-cart', 'green', '/demo/orders', '150%'));
-                $row->column(3, new InfoBox('Articles', 'book', 'yellow', '/demo/articles', '2786'));
-                $row->column(3, new InfoBox('Documents', 'file', 'red', '/demo/files', '698726'));
+                $row->column(3, new InfoBox('Tổng số người dùng', 'users', 'aqua', '/admin/auth/users', '1'));
+                $row->column(3, new InfoBox('Tổng số Phiếu Nhập', 'store_phieunhap', 'green', '/admin/store/phieunhap_tondauky', '150%'));
+                $row->column(3, new InfoBox('Tổng số Phiếu Xuất', 'store_phieuxuat', 'yellow', '/admin/store/phieunhap_tondauky', '2'));
+                $row->column(3, new InfoBox('Tổng số Sản phẩm', 'store_sanpham', 'red', '/admin/store/sanpham', '5425'));
             });
         });
     }

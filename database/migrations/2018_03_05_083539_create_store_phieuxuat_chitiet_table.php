@@ -16,7 +16,7 @@ class CreateStorePhieuxuatChitietTable extends Migration
         Schema::create('store_phieuxuat_chitiet', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->dateTime('ngay_sudungdautien')->comment('Ngày sử dụng đầu tiên');
+            $table->dateTime('ngay_sudungdautien')->nullable()->comment('Ngày sử dụng đầu tiên');
             $table->decimal('dongiaxuat', 16, 4)->comment('Đơn giá xuất');
             $table->decimal('soluongxuat', 16, 4)->comment('Số lượng xuất');
             $table->decimal('thue', 16, 4)->comment('Thuế');

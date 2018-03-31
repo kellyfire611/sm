@@ -46,7 +46,15 @@ class AdminMenuTableSeeder extends Seeder
                 /* --- Nhập --- */
                 ["id" => 27, "parent_id" => 0, "order" => 27, "title" => "Nhập", "icon" => "fa-bar-chart", "uri" => "", "created_at" => $now, "updated_at" => NULL,],
                 ["id" => 28, "parent_id" => 27, "order" => 28, "title" => "Nhập tồn đầu kỳ", "icon" => "fa-bar-chart", "uri" => "/store/phieunhap_tondauky", "created_at" => $now, "updated_at" => NULL,],
-                /* ./. --- Đơn vị tính --- */
+                /* ./. --- Nhập --- */
+                /* --- Xuất --- */
+                ["id" => 29, "parent_id" => 0, "order" => 29, "title" => "Xuất", "icon" => "fa-bar-chart", "uri" => "", "created_at" => $now, "updated_at" => NULL,],
+                ["id" => 30, "parent_id" => 29, "order" => 30, "title" => "Xuất qua kho lẻ", "icon" => "fa-bar-chart", "uri" => "/store/phieuxuat_quakhole", "created_at" => $now, "updated_at" => NULL,],
+                /* ./. --- xuất --- */
+                /* --- Báo cáo --- */
+                ["id" => 31, "parent_id" => 0, "order" => 31, "title" => "Báo cáo", "icon" => "fa-bar-chart", "uri" => "", "created_at" => $now, "updated_at" => NULL,],
+                ["id" => 32, "parent_id" => 31, "order" => 32, "title" => "Nhập xuất tồn chi tiết", "icon" => "fa-bar-chart", "uri" => "/store/baocao/nhapxuatton_chitiet", "created_at" => $now, "updated_at" => NULL,],
+                /* ./. --- Báo cáo --- */
             ]
         );
 

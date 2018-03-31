@@ -19,4 +19,5 @@ return array(
     'e7223560d890eab89cda23685e711e2c' => $vendorDir . '/psy/psysh/src/Psy/functions.php',
     'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
     '19eeb7425619a0a76aa4a68ff9314231' => $vendorDir . '/parsedown/laravel/src/Support/helpers.php',
+    'd21d43db5f6e840ee7b10744ec7fdf66' => $baseDir . '/app/Helpers/helpers.php',
 );

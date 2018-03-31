@@ -12,10 +12,13 @@ use Encore\Admin\Controllers\ModelForm;
 use App\Models\StoreKho;
 use App\Models\StoreKhoLoai;
 use App\Models\StoreSanpham;
+use App\Models\StorePhieunhap;
 use DB;
 
 class ApiController extends Controller
 {
+    use ApiDataController;
+
     public function kho(Request $request)
     {
         $q = $request->get('q');
@@ -34,10 +37,5 @@ class ApiController extends Controller
     {
         $id = $request->get('q');
         return StoreKho::where('id', $id)->get(['id', DB::raw('name as text')]);
-    }
-
-    public function phieunhapById($id)
-    {
-        
     }
 }
