@@ -10,7 +10,7 @@ return array(
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
     'App\\Admin\\Controllers\\PrintController' => $baseDir . '/app/Admin/Controllers/PrintController.php',
-    'App\\Admin\\Controllers\\Reports\\StoreSoketoanController' => $baseDir . '/app/Admin/Controllers/Reports/StoreBaocaoNhapxuattonChitietController.php',
+    'App\\Admin\\Controllers\\Reports\\StoreReportNhapxuattonChitietController' => $baseDir . '/app/Admin/Controllers/Reports/StoreReportNhapxuattonChitietController.php',
     'App\\Admin\\Controllers\\StoreChuongtrinhController' => $baseDir . '/app/Admin/Controllers/StoreChuongtrinhController.php',
     'App\\Admin\\Controllers\\StoreDonvitinhController' => $baseDir . '/app/Admin/Controllers/StoreDonvitinhController.php',
     'App\\Admin\\Controllers\\StoreKhoController' => $baseDir . '/app/Admin/Controllers/StoreKhoController.php',

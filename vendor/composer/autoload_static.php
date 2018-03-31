@@ -410,7 +410,7 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
         'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
         'App\\Admin\\Controllers\\PrintController' => __DIR__ . '/../..' . '/app/Admin/Controllers/PrintController.php',
-        'App\\Admin\\Controllers\\Reports\\StoreSoketoanController' => __DIR__ . '/../..' . '/app/Admin/Controllers/Reports/StoreBaocaoNhapxuattonChitietController.php',
+        'App\\Admin\\Controllers\\Reports\\StoreReportNhapxuattonChitietController' => __DIR__ . '/../..' . '/app/Admin/Controllers/Reports/StoreReportNhapxuattonChitietController.php',
         'App\\Admin\\Controllers\\StoreChuongtrinhController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreChuongtrinhController.php',
         'App\\Admin\\Controllers\\StoreDonvitinhController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreDonvitinhController.php',
         'App\\Admin\\Controllers\\StoreKhoController' => __DIR__ . '/../..' . '/app/Admin/Controllers/StoreKhoController.php',
