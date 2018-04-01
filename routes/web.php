@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return redirect(config('admin.route.prefix'));
 });
+
+Route::get('/phpinfo', function() {
+    phpinfo();
+});

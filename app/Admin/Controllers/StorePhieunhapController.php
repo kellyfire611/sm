@@ -146,7 +146,7 @@ class StorePhieunhapController extends Controller
                 ->options(StoreKho::selectboxData())
                 ->rules('required');
             $form->select('nguoi_lapphieu_id', __('models.store_phieunhap.nguoi_lapphieu_id'))
-                ->options(Administrator::selectboxData())
+                ->options(CommonModel::administratorSelectboxData())
                 ->rules('required');
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {

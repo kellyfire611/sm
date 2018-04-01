@@ -1,9 +1,9 @@
 BBCode
 ================
 
-[![Latest Version](https://img.shields.io/github/release/genert/bbcode.svg?style=flat-square)](https://github.com/Genert/BBCode/releases)
+[![Latest Version](https://img.shields.io/github/release/genert/bbcode.svg?style=flat-square)](https://github.com/Genert/bbcode/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://travis-ci.org/Genert/BBCode.svg?branch=master)](https://travis-ci.org/Genert/BBCode)
+[![Build Status](https://travis-ci.org/Genert/bbcode.svg?branch=master)](https://travis-ci.org/Genert/bbcode)
 
 > BBCode parser from or to HTML.
 
@@ -14,7 +14,7 @@ BBCode
 To get the latest version of BBCode, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
-$ composer require genertorg/bbcode
+$ composer require genert/bbcode
 ```
 
 ## Usage
@@ -28,8 +28,8 @@ use Genert\BBCode\BBCode;
 
 $bbCode = new BBCode();
 
-// Output: '<strong>Hello word!</strong>'
-$bbCode->convertFromHtml('[b]Hello word![/b]');
+// Output: '[b]Hello word![/b]'
+$bbCode->convertFromHtml('<strong>Hello word!</strong>');
 ```
 
 ### `convertToHtml(string $text, [$caseSensitive])`
@@ -41,8 +41,8 @@ use Genert\BBCode\BBCode;
 
 $bbCode = new BBCode();
 
-// Output: '[b]Hello word![/b]'
-$bbCode->convertToHtml('<strong>Hello word!</strong>');
+// Output: '<strong>Hello word!</strong>'
+$bbCode->convertToHtml('[b]Hello word![/b]');
 ```
 
 This function also supports case sensitive BBCode parsing by optional parameter.
@@ -119,6 +119,9 @@ $bbCode->addParser(
 $bbCode->convertToHtml('[link target=www.yourlinkhere.com]Text to be displayed[/link].');
 ```
 
+### `addLinebreakParser()`
+
+Adds linebreak parser to BBCode parsers list to convert newlines to `<br />` in HTML.
 
 ## Laravel installation
 

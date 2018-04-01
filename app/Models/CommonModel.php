@@ -2,6 +2,12 @@
 
 namespace App\Models;
 
+use Encore\Admin\Traits\AdminBuilder;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Model;
+use Encore\Admin\Auth\Database\Administrator;
+
 class CommonModel
 {
     static $states;
@@ -90,5 +96,10 @@ class CommonModel
     {
         self::getInstance();
         return self::$nhap_xuat;
+    }
+
+    public static function administratorSelectboxData()
+    {
+        return Administrator::all()->pluck('username', 'id');
     }
 }
