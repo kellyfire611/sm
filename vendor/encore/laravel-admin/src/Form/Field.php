@@ -43,6 +43,7 @@ class Field implements Renderable
      * @var mixed
      */
     protected $default;
+    protected $renderStyle;
 
     /**
      * Element label.
@@ -505,6 +506,13 @@ class Field implements Renderable
         return $this;
     }
 
+    public function renderStyle($renderStyle)
+    {
+        $this->renderStyle = $renderStyle;
+
+        return $this;
+    }
+
     /**
      * Get default value.
      *
@@ -517,6 +525,15 @@ class Field implements Renderable
         }
 
         return $this->default;
+    }
+
+    public function getRenderStyle()
+    {
+        if ($this->renderStyle instanceof \Closure) {
+            return call_user_func($this->renderStyle, $this->form);
+        }
+
+        return $this->renderStyle;
     }
 
     /**
@@ -868,6 +885,7 @@ class Field implements Renderable
             'errorKey'    => $this->getErrorKey(),
             'attributes'  => $this->formatAttributes(),
             'placeholder' => $this->getPlaceholder(),
+            'renderStyle' => $this->renderStyle,
         ]);
     }
 

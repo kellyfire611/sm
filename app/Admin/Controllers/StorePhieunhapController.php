@@ -160,7 +160,12 @@ class StorePhieunhapController extends Controller
                     ->options(StoreSanpham::selectboxData());
                 $form->select('donvitinh_id', __('models.store_phieunhap_chitiet.donvitinh_id'))
                     ->options(StoreDonvitinh::selectboxData());
-                $form->text('so_lo', __('models.store_phieunhap_chitiet.so_lo'));
+                $form->text('so_lo', __('models.store_phieunhap_chitiet.so_lo'))
+                    ->renderStyle('only_control');
+                    // onlyControl, onlyLabel, LabelAndControl
+                    // bootstrap_div_group_only_control
+                    // bootstrap_div_group_only_label
+                    // bootstrap_div_group_only_label_and_control
                 $form->text('so_chungtu', __('models.store_phieunhap_chitiet.so_chungtu'));
                 $form->datetime('hansudung', __('models.store_phieunhap_chitiet.hansudung'));
                 $form->currency('dongianhap', __('models.store_phieunhap_chitiet.dongianhap'));
