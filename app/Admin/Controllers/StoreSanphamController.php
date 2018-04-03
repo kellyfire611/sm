@@ -77,6 +77,7 @@ class StoreSanphamController extends Controller
 
             $grid->id('ID')->sortable();
 
+            $grid->column('anh')->image();
             $grid->column('ma_sanpham', __('models.store_sanpham.ma_sanpham'));
             $grid->column('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
             $grid->column('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
@@ -106,6 +107,7 @@ class StoreSanphamController extends Controller
             $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
             $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'));
             $form->text('sokiemsoat', __('models.store_sanpham.sokiemsoat'));
+            $form->image('anh');
 
             $form->select('nuoc_sanxuat_id', __('models.store_sanpham.nuoc_sanxuat_id'))->options(
                 HrmQuocgia::NoneDelete()->pluck('ten_quocgia', 'id')

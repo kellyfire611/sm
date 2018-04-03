@@ -1,6 +1,6 @@
 # Cách chạy dự án
 ## Môi trường
-1. PHP 7+
+1. PHP 7+ (7.0.23)
 2. MySQL 5.6+
 
 ## 1. Copy file .env.eample thành .env
