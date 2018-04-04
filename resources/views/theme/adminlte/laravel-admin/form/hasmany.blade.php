@@ -7,7 +7,7 @@
 <hr style="margin-top: 0px;">
 
 <div id="has-many-{{$column}}" class="has-many-{{$column}}">
-    <table>
+    <table border="1" class="table table-responsive table-bordered">
         <tr>
         @foreach($forms as $pk => $form)
             @foreach($form->fields() as $field)

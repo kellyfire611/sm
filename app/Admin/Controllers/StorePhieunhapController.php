@@ -157,21 +157,29 @@ class StorePhieunhapController extends Controller
                 $form->hidden('nhap_vao_kho_id', __('models.store_phieunhap_chitiet.nhap_vao_kho_id'))
                     ->default(1);
                 $form->select('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'))
-                    ->options(StoreSanpham::selectboxData());
+                    ->options(StoreSanpham::selectboxData())
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->select('donvitinh_id', __('models.store_phieunhap_chitiet.donvitinh_id'))
-                    ->options(StoreDonvitinh::selectboxData());
+                    ->options(StoreDonvitinh::selectboxData())
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->text('so_lo', __('models.store_phieunhap_chitiet.so_lo'))
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                     // onlyControl, onlyLabel, LabelAndControl
                     // bootstrap_div_group_only_control
                     // bootstrap_div_group_only_label
                     // bootstrap_div_group_only_label_and_control
-                $form->text('so_chungtu', __('models.store_phieunhap_chitiet.so_chungtu'));
-                $form->datetime('hansudung', __('models.store_phieunhap_chitiet.hansudung'));
-                $form->currency('dongianhap', __('models.store_phieunhap_chitiet.dongianhap'));
-                $form->currency('soluongnhap', __('models.store_phieunhap_chitiet.soluongnhap'));
-                $form->currency('soluong_conlai', __('models.store_phieunhap_chitiet.soluong_conlai'));
-                $form->currency('thue', __('models.store_phieunhap_chitiet.thue'));                
+                $form->text('so_chungtu', __('models.store_phieunhap_chitiet.so_chungtu'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
+                $form->datetime('hansudung', __('models.store_phieunhap_chitiet.hansudung'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
+                $form->currency('dongianhap', __('models.store_phieunhap_chitiet.dongianhap'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
+                $form->currency('soluongnhap', __('models.store_phieunhap_chitiet.soluongnhap'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
+                $form->currency('soluong_conlai', __('models.store_phieunhap_chitiet.soluong_conlai'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
+                $form->currency('thue', __('models.store_phieunhap_chitiet.thue'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 //$form->datetime('ngay_sudungdautien', __('models.store_phieunhap_chitiet.ngay_sudungdautien'));
             });
 

@@ -1,4 +1,4 @@
-@if($renderStyle == CommonModel::RENDER_STYLE_ONLY_CONTROL)
+@if($renderStyle == \App\Models\CommonModel::RENDER_STYLE_ONLY_CONTROL)
 <span class="{{$viewClass['form-group']}} {!! !$errors->has($errorKey) ? '' : 'has-error' !!}">
 
     <span class="{{$viewClass['field']}}">
