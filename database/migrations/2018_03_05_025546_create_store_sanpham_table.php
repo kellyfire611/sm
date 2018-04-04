@@ -23,6 +23,7 @@ class CreateStoreSanphamTable extends Migration
             $table->string('sokiemsoat')->nullable()->comment('Số kiểm soát');
             $table->string('anh', 4000)->nullable()->comment('Ảnh');
             
+            $table->unsignedInteger('donvitinh_id')->nullable()->comment('Đơn vị tính');
             $table->unsignedInteger('nha_sanxuat_id')->nullable()->comment('Nhà sản xuất');
             $table->unsignedInteger('nuoc_sanxuat_id')->nullable()->comment('Nước sản xuất');
             

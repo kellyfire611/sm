@@ -161,7 +161,7 @@ class StorePhieunhapController extends Controller
                 $form->select('donvitinh_id', __('models.store_phieunhap_chitiet.donvitinh_id'))
                     ->options(StoreDonvitinh::selectboxData());
                 $form->text('so_lo', __('models.store_phieunhap_chitiet.so_lo'))
-                    ->renderStyle('only_control');
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                     // onlyControl, onlyLabel, LabelAndControl
                     // bootstrap_div_group_only_control
                     // bootstrap_div_group_only_label

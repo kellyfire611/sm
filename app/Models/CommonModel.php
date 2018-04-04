@@ -10,6 +10,14 @@ use Encore\Admin\Auth\Database\Administrator;
 
 class CommonModel
 {
+    /**
+     * Render style
+     */
+    const RENDER_STYLE_ONLY_CONTROL = 1;
+    const RENDER_STYLE_ONLY_LABEL = 2;
+    const RENDER_STYLE_LABEL_AND_CONTROL = 3;
+
+
     static $states;
     static $yesNo;
     static $instance = null;
