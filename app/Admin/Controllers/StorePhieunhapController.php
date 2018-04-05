@@ -173,6 +173,7 @@ class StorePhieunhapController extends Controller
                 $form->datetime('hansudung', __('models.store_phieunhap_chitiet.hansudung'))
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->currency('dongianhap', __('models.store_phieunhap_chitiet.dongianhap'))
+                    ->attribute('class', 'dongia')
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->currency('soluongnhap', __('models.store_phieunhap_chitiet.soluongnhap'))
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);

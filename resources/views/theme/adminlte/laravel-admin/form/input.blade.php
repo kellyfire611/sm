@@ -1,11 +1,11 @@
 @if($renderStyle == \App\Models\CommonModel::RENDER_STYLE_ONLY_CONTROL)
-<span class="{{$viewClass['form-group']}} {!! !$errors->has($errorKey) ? '' : 'has-error' !!}">
+<div class="{{$viewClass['form-group']}} {!! !$errors->has($errorKey) ? '' : 'has-error' !!}">
 
-    <span class="{{$viewClass['field']}}">
+    <div class="{{$viewClass['field']}}">
 
         @include('admin::form.error')
 
-        <span class="input-group">
+        <div class="input-group">
 
             @if ($prepend)
             <span class="input-group-addon">{!! $prepend !!}</span>
@@ -17,12 +17,12 @@
                 <span class="input-group-addon clearfix">{!! $append !!}</span>
             @endif
 
-        </span>
+        </div>
 
         @include('admin::form.help-block')
 
-    </span>
-</span>
+    </div>
+</div>
 @else
 <div class="{{$viewClass['form-group']}} {!! !$errors->has($errorKey) ? '' : 'has-error' !!}">
 

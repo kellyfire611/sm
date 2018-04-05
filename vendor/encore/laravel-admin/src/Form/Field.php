@@ -4,6 +4,7 @@ namespace Encore\Admin\Form;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Form;
+use App\Models\CommonModel;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Arr;
@@ -176,7 +177,7 @@ class Field implements Renderable
      */
     protected $width = [
         'label' => 2,
-        'field' => 8,
+        'field' => 10,
     ];
 
     /**
@@ -509,6 +510,29 @@ class Field implements Renderable
     public function renderStyle($renderStyle)
     {
         $this->renderStyle = $renderStyle;
+        switch($this->renderStyle)
+        {
+            case CommonModel::RENDER_STYLE_ONLY_CONTROL:
+                $this->width = [
+                    'label' => 0,
+                    'field' => 12,
+                ];
+                break;
+            case CommonModel::RENDER_STYLE_ONLY_LABEL:
+                $this->width = [
+                    'label' => 12,
+                    'field' => 0,
+                ];
+                break;
+            case CommonModel::RENDER_STYLE_LABEL_AND_CONTROL:
+                $this->width = [
+                    'label' => 2,
+                    'field' => 10,
+                ];
+                break;
+            default:
+                break;
+        }
 
         return $this;
     }
