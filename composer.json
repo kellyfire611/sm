@@ -21,7 +21,9 @@
         "league/commonmark": "^0.17.0",
         "parsedown/laravel": "^1.1",
         "pusher/pusher-php-server": "~3.0",
-        "unisharp/laravel-filemanager": "~1.8"
+        "unisharp/laravel-filemanager": "~1.8",
+        "maatwebsite/excel": "~2.1.0",
+        "intervention/image": "^2.4"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -934,4 +934,9 @@ class Field implements Renderable
     {
         return $this->render()->render();
     }
+
+    public function isHidden()
+    {
+        return is_a($this, \Encore\Admin\Form\Field\Hidden::class);
+    }
 }

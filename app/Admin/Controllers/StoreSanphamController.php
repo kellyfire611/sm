@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Models\StoreSanpham;
 use App\Models\HrmQuocgia;
+use App\Admin\Extensions\Exporters\StoreSanPhamExcelExporter;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -88,6 +89,8 @@ class StoreSanphamController extends Controller
 
             $grid->created_at(__('models.common.created_at'));
             $grid->updated_at(__('models.common.updated_at'));
+
+            $grid->exporter(new StoreSanPhamExcelExporter());
         });
     }
 
@@ -98,7 +101,7 @@ class StoreSanphamController extends Controller
      */
     protected function form()
     {
-        return Admin::form(StoreSanpham::class, function (Form $form) {
+        return Admin::form(StoreSanpham::class, function (Form $form) {                   
 
             $form->display('id', 'ID');
 
