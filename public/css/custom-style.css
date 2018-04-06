@@ -1,0 +1,27 @@
+.display-none {
+    display: none;
+}
+
+.box-body {
+    font-size: 0.9em;
+}
+
+.box-body .form-group {
+    margin-bottom: 2px;
+}
+
+.box-body .form-control:focus {
+    background: #faffbd;
+}
+
+.dongia {
+    color: blue;
+}
+
+.soluong {
+    color: green;
+}
+
+.thanhtien {
+    color: red;
+}

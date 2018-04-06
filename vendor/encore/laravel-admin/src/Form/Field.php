@@ -44,7 +44,16 @@ class Field implements Renderable
      * @var mixed
      */
     protected $default;
+
+    /**
+     * Render style
+     */
     protected $renderStyle;
+    
+    /**
+     * Display or not?
+     */
+    protected $display = true;
 
     /**
      * Element label.
@@ -535,6 +544,26 @@ class Field implements Renderable
         }
 
         return $this;
+    }
+
+    public function displayNone()
+    {
+        $this->display = false;
+        $this->addElementClass(['display-none']);
+
+        return $this;
+    }
+
+    public function display()
+    {
+        $this->display = true;
+
+        return $this;
+    }
+
+    public function isDisplay()
+    {
+        return $this->display;
     }
 
     /**

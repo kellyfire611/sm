@@ -14,3 +14,11 @@ $('input[type="checkbox"][group]').on('change', function() {
         }
     });
 });
+
+$("*[bind-type='parent']").each(function() { 
+    var parentValue = $(this).val();
+    var children = $("*[bind-type='children'][bind-key='" + $(this).attr('bind-key') + "']:last");
+    children.each(function() {
+       $(this).val(parentValue);
+    })
+});

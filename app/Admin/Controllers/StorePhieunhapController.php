@@ -129,6 +129,7 @@ class StorePhieunhapController extends Controller
             $form->display('id', 'ID');
             $form->hidden('nhapxuat_id', __('models.store_phieunhap.nhapxuat_id'))
                 ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_']);
+                
             $form->text('so_phieunhap', __('models.store_phieunhap.so_phieunhap'));
             $form->datetime('ngay_nhapkho', __('models.store_phieunhap.ngay_nhapkho'));
             $form->datetime('ngay_laphoadon', __('models.store_phieunhap.ngay_laphoadon'));
@@ -151,11 +152,14 @@ class StorePhieunhapController extends Controller
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))
-                    ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_']);
+                    ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_'])
+                    ->displayNone();
                 $form->hidden('soketoan_id',  __('models.store_phieunhap_chitiet.soketoan_id'))
-                    ->default(1);
+                    ->default(1)
+                    ->displayNone();
                 $form->hidden('nhap_vao_kho_id', __('models.store_phieunhap_chitiet.nhap_vao_kho_id'))
-                    ->default(1);
+                    ->default(1)
+                    ->displayNone();
                 $form->select('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'))
                     ->options(StoreSanpham::selectboxData())
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
@@ -173,16 +177,17 @@ class StorePhieunhapController extends Controller
                 $form->datetime('hansudung', __('models.store_phieunhap_chitiet.hansudung'))
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->currency('dongianhap', __('models.store_phieunhap_chitiet.dongianhap'))
-                    ->attribute('class', 'dongia')
+                    ->addElementClass(['dongia'])
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->currency('soluongnhap', __('models.store_phieunhap_chitiet.soluongnhap'))
+                    ->addElementClass(['soluong'])
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->currency('soluong_conlai', __('models.store_phieunhap_chitiet.soluong_conlai'))
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 $form->currency('thue', __('models.store_phieunhap_chitiet.thue'))
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL);
                 //$form->datetime('ngay_sudungdautien', __('models.store_phieunhap_chitiet.ngay_sudungdautien'));
-            });
+            })->useTable();
 
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));

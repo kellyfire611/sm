@@ -6,7 +6,7 @@
 </div>
 
 <hr style="margin-top: 0px;">
-
+<h1>TABLE MODE</h1>
 <form class="form-horizontal">
         <div class="row">
            <div class="form-group">
@@ -57,11 +57,7 @@
         $form = reset($forms);
         ?>
         @foreach($form->fields() as $field)
-            @if(!$field->isHidden())
-                <th>{!! $field->label() !!}
-                {!! $field->getRenderStyle() !!}
-            </td>
-            @endif
+            <th>{!! $field->label() !!}</th>
         @endforeach
         <th>Xóa</th>
         </tr>
@@ -70,9 +66,7 @@
         @foreach($forms as $pk => $form)
         <tr class="has-many-{{$column}}-form fields-group">
             @foreach($form->fields() as $field)
-                @if(!$field->isHidden())
                     <td>{!! $field->render() !!}</td>
-                @endif
             @endforeach
 
             <td>
