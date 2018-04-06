@@ -52,9 +52,10 @@ class HasMany extends Field
      * @var array
      */
     protected $views = [
-        'default' => 'admin::form.hasmany',
-        'tab'     => 'admin::form.hasmanytab',
-        'table'   => 'admin::form.hasmanytable',
+        'default'       => 'admin::form.hasmany',
+        'tab'           => 'admin::form.hasmanytab',
+        'table'         => 'admin::form.hasmanytable',
+        'tablediv'      => 'admin::form.hasmanytablediv',
     ];
 
     /**
@@ -322,6 +323,11 @@ class HasMany extends Field
         return $this->mode('table');
     }
 
+    public function useTableDiv()
+    {
+        return $this->mode('tablediv');
+    }
+
     /**
      * Build Nested form for related data.
      *
@@ -488,6 +494,44 @@ EOT;
     }
 
     protected function setupScriptForTableView($templateScript)
+    {
+        $removeClass = NestedForm::REMOVE_FLAG_CLASS;
+        $defaultKey = NestedForm::DEFAULT_KEY_NAME;
+
+        /**
+         * When add a new sub form, replace all element key in new sub form.
+         *
+         * @example comments[new___key__][title]  => comments[new_{index}][title]
+         *
+         * {count} is increment number of current sub form count.
+         */
+        $script = <<<EOT
+var index = 0;
+$('#has-many-{$this->column}').on('click', '.add', function () {
+
+    var tpl = $('template.{$this->column}-tpl');
+
+    index++;
+
+    var template = tpl.html().replace(/{$defaultKey}/g, index);
+    $('.has-many-{$this->column}-forms').append(template);
+    {$templateScript}
+
+    
+
+});
+
+$('#has-many-{$this->column}').on('click', '.remove', function () {
+    $(this).closest('.has-many-{$this->column}-form').hide();
+    $(this).closest('.has-many-{$this->column}-form').find('.$removeClass').val(1);
+});
+
+EOT;
+
+        Admin::script($script);
+    }
+
+    protected function setupScriptForTabledivView($templateScript)
     {
         $removeClass = NestedForm::REMOVE_FLAG_CLASS;
         $defaultKey = NestedForm::DEFAULT_KEY_NAME;

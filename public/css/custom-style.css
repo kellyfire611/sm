@@ -10,6 +10,10 @@
     margin-bottom: 2px;
 }
 
+.box-body .input-group {
+    width: 100%;
+}
+
 .box-body .form-control:focus {
     background: #faffbd;
 }
@@ -24,4 +28,53 @@
 
 .thanhtien {
     color: red;
+}
+
+/* --- Hiệu chỉnh form chi tiết --- */
+/* Dạng Table */
+.has-many-table {
+    background: #007735a3;
+}
+
+.has-many-table-forms {
+    margin: 0;
+    padding: 0;
+}
+
+.has-many-table-forms > th, .has-many-table-forms > td {
+    margin: 0;
+    padding: 0;
+}
+/* ./. Dạng Table */
+
+/* Dạng Table div */
+.has-many-tablediv {
+    background: #007735a3;
+}
+
+.has-many-tablediv-forms {
+    margin: 0;
+    padding: 0;
+}
+
+.has-many-tablediv-forms > th, .has-many-tablediv-forms > td {
+    margin: 0;
+    padding: 0;
+}
+
+.has-many-tablediv > .has-many-tablediv-forms > .fields-group:nth-child(even) {
+    background: #e08181;
+}
+/* ./. Dạng Table div */
+
+/* --- ./. Hiệu chỉnh form chi tiết --- */
+
+.form-group-viewmode-table {
+    padding: 0;
+
+}
+
+.form-group-viewmode-table > div {
+    padding: 0;
+    margin: 0;
 }

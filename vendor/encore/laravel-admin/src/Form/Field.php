@@ -70,6 +70,15 @@ class Field implements Renderable
     protected $column = '';
 
     /**
+     * View Mode.
+     *
+     * Supports `default` and `tab` currently.
+     *
+     * @var string
+     */
+    protected $viewMode = 'default';
+
+    /**
      * Form element name.
      *
      * @var string
@@ -187,6 +196,7 @@ class Field implements Renderable
     protected $width = [
         'label' => 2,
         'field' => 10,
+        'view' => 12,
     ];
 
     /**
@@ -367,12 +377,20 @@ class Field implements Renderable
      *
      * @return $this
      */
-    public function setWidth($field = 8, $label = 2)
+    public function setWidth($field = 8, $label = 2, $view = 12)
     {
         $this->width = [
             'label' => $label,
             'field' => $field,
+            'view'  => $view,
         ];
+
+        return $this;
+    }
+    
+    public function setViewWidth($view = 12)
+    {
+        $this->width['view'] = $view;
 
         return $this;
     }
@@ -525,18 +543,21 @@ class Field implements Renderable
                 $this->width = [
                     'label' => 0,
                     'field' => 12,
+                    'view' => 12,
                 ];
                 break;
             case CommonModel::RENDER_STYLE_ONLY_LABEL:
                 $this->width = [
                     'label' => 12,
                     'field' => 0,
+                    'view' => 12,
                 ];
                 break;
             case CommonModel::RENDER_STYLE_LABEL_AND_CONTROL:
                 $this->width = [
                     'label' => 2,
                     'field' => 10,
+                    'view' => 12,
                 ];
                 break;
             default:
@@ -792,15 +813,28 @@ class Field implements Renderable
      */
     public function getViewElementClasses()
     {
-        if ($this->horizontal) {
-            return [
-                'label'      => "col-sm-{$this->width['label']}",
-                'field'      => "col-sm-{$this->width['field']}",
-                'form-group' => 'form-group ',
-            ];
-        }
+        if($this->viewMode == 'default') {
+            if ($this->horizontal) {
+                return [
+                    'label'      => "col-sm-{$this->width['label']}",
+                    'field'      => "col-sm-{$this->width['field']}",
+                    'form-group' => 'form-group ',
+                ];
+            }
 
-        return ['label' => '', 'field' => '', 'form-group' => ''];
+            return ['label' => '', 'field' => '', 'form-group' => ''];
+        }
+        else {
+            if ($this->horizontal) {
+                return [
+                    'label'      => "col-sm-{$this->width['label']}",
+                    'field'      => "col-sm-{$this->width['field']}",
+                    'form-group' => 'form-group form-group-viewmode-'.$this->viewMode." col-sm-{$this->width['view']} ",
+                ];
+            }
+
+            return ['label' => '', 'field' => '', 'form-group' => ''];
+        }
     }
 
     /**
@@ -939,6 +973,7 @@ class Field implements Renderable
             'attributes'  => $this->formatAttributes(),
             'placeholder' => $this->getPlaceholder(),
             'renderStyle' => $this->renderStyle,
+            'viewMode'    => $this->viewMode,
         ]);
     }
 
@@ -955,7 +990,12 @@ class Field implements Renderable
 
         $class = explode('\\', get_called_class());
 
-        return 'admin::form.'.strtolower(end($class));
+        if($this->viewMode == 'default') {
+            return 'admin::form.'.strtolower(end($class));
+        }
+        else {
+            return 'admin::form.'.strtolower(end($class)).$this->viewMode;
+        }
     }
 
     /**
@@ -991,5 +1031,31 @@ class Field implements Renderable
     public function isHidden()
     {
         return is_a($this, \Encore\Admin\Form\Field\Hidden::class);
+    }
+
+    /**
+     * Set view mode.
+     *
+     * @param string $mode currently support `tab` mode.
+     *
+     * @return $this
+     *
+     * @author Edwin Hui
+     */
+    public function mode($mode)
+    {
+        $this->viewMode = $mode;
+
+        return $this;
+    }
+
+    public function useTable()
+    {
+        return $this->mode('table');
+    }
+
+    public function useTableDiv()
+    {
+        return $this->mode('tablediv');
     }
 }

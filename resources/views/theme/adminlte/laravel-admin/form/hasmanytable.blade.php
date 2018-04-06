@@ -1,72 +1,29 @@
 
 <div class="row">
-    aaaaaaa
     <div class="{{$viewClass['label']}}"><h4 class="pull-right">{{ $label }}</h4></div>
     <div class="{{$viewClass['field']}}"></div>
 </div>
-
 <hr style="margin-top: 0px;">
-<h1>TABLE MODE</h1>
-<form class="form-horizontal">
-        <div class="row">
-           <div class="form-group">
-            <label class="col-sm-2">Quarter</label>
-            <div class="col-sm-10"><input type="text" class="form-control" /></div>
-            </div>
-       </div>
-        <div class="row">
-            <div class="form-group">
-            <label class="col-sm-2">Address</label>
-            <div class="col-sm-5"><input type="text" class="form-control" /></div>
-            </div>
-            <div class="form-group">
-            <label class="col-sm-2">Addr. №</label>
-            <div class="col-sm-3"><input type="text" class="form-control" /></div>
-            </div>
-        </div>
-        <div class="row">
-             <div class="form-group">
-            <label class="col-sm-2">Block name/Number</label>
-            <div class="col-sm-1"><input type="text" class="form-control" /></div>
-            </div>
-            <div class="form-group">
-            <label class="col-sm-1">Entrance</label>
-            <div class="col-sm-1"><input type="text" class="form-control" /></div>
-             </div>
-             <div class="form-group">
-            <label class="col-sm-1">Floor</label>
-            <div class="col-sm-1"><input type="text" class="form-control" /></div>
-             </div>
-             <div class="form-group">
-            <label class="col-sm-2">Apartament</label>
-            <div class="col-sm-3"><input type="text" class="form-control" /></div>
-            </div>
-        </div>
-    </form>
-
-<div id="has-many-{{$column}}" class="has-many-{{$column}}">
-
-    <div class="form-horizontal">
-        
-    </div>
-    
-
-    <table border="1" class="table table-responsive table-bordered">
+<div id="has-many-{{$column}}" class="has-many-{{$column}} has-many-{{ $viewMode }}">
+    <table border="1" class="has-many-{{$column}}-forms has-many-{{ $viewMode }}-forms table table-responsive table-bordered">
+        @if(!empty($form))
         <tr>
-        <?php
-        $form = reset($forms);
-        ?>
-        @foreach($form->fields() as $field)
-            <th>{!! $field->label() !!}</th>
-        @endforeach
-        <th>Xóa</th>
+            <?php
+            $form = reset($forms);
+            ?>
+            @foreach($form->fields() as $field)
+                @if(!$field->isHidden()) 
+                <th width="">{!! $field->label() !!}</th>
+                @endif
+            @endforeach
+            <th>Xóa</th>
         </tr>
-
+        @endif
 
         @foreach($forms as $pk => $form)
         <tr class="has-many-{{$column}}-form fields-group">
             @foreach($form->fields() as $field)
-                    <td>{!! $field->render() !!}</td>
+                {!! $field->render() !!}
             @endforeach
 
             <td>
@@ -79,47 +36,27 @@
         </tr>
         @endforeach
         
-
+        <tr>
+            <td>Tổng thành tiền:</td>
+            <td>
+                1500000000
+            </td>
+        </tr>
     </table>
 
+    <template class="{{$column}}-tpl">
+        <tr class="has-many-{{$column}}-form fields-group">
+            {!! $template !!}
 
-
-    <div class="has-many-{{$column}}-forms">
-
-        @foreach($forms as $pk => $form)
-
-            <div class="has-many-{{$column}}-form fields-group">
-
-                @foreach($form->fields() as $field)
-                    {!! $field->render() !!}
-                @endforeach
-
+            <td>
                 <div class="form-group">
                     <label class="{{$viewClass['label']}} control-label"></label>
                     <div class="{{$viewClass['field']}}">
-                        <div class="remove btn btn-warning btn-sm pull-right"><i class="fa fa-trash">&nbsp;</i>{{ trans('admin.remove') }}</div>
+                        <div class="remove btn btn-warning btn-sm pull-right"><i class="fa fa-trash"></i>&nbsp;</div>
                     </div>
                 </div>
-
-                <hr>
-            </div>
-
-        @endforeach
-    </div>
-
-    <template class="{{$column}}-tpl">
-        <div class="has-many-{{$column}}-form fields-group">
-
-            {!! $template !!}
-
-            <div class="form-group">
-                <label class="{{$viewClass['label']}} control-label"></label>
-                <div class="{{$viewClass['field']}}">
-                    <div class="remove btn btn-warning btn-sm pull-right"><i class="fa fa-trash"></i>&nbsp;{{ trans('admin.remove') }}</div>
-                </div>
-            </div>
-            <hr>
-        </div>
+            </td>
+        </tr>
     </template>
 
     <div class="form-group">
