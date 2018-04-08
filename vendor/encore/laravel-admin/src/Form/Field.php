@@ -827,9 +827,9 @@ class Field implements Renderable
         else {
             if ($this->horizontal) {
                 return [
-                    'label'      => "col-sm-{$this->width['label']}",
-                    'field'      => "col-sm-{$this->width['field']}",
-                    'form-group' => 'form-group form-group-viewmode-'.$this->viewMode." col-sm-{$this->width['view']} ",
+                    'label'      => "no-padding no-margin col-sm-{$this->width['label']}",
+                    'field'      => "no-padding no-margin col-sm-{$this->width['field']}",
+                    'form-group' => 'form-group no-padding no-margin form-group-viewmode-'.$this->viewMode." col-sm-{$this->width['view']} ",
                 ];
             }
 

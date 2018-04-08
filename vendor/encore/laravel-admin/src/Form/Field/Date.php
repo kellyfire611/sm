@@ -35,11 +35,13 @@ class Date extends Text
     {
         $this->options['format'] = $this->format;
         $this->options['locale'] = config('app.locale');
+        $this->options['sideBySide'] = true;
+        $this->options['keepOpen'] = true;
 
         $this->script = "$('{$this->getElementClassSelector()}').datetimepicker(".json_encode($this->options).');';
 
-        $this->prepend('<i class="fa fa-calendar"></i>')
-            ->defaultAttribute('style', 'width: 110px');
+        $this->prepend('<i class="fa fa-calendar"></i>');
+            //->defaultAttribute('style', 'width: 110px');
 
         return parent::render();
     }

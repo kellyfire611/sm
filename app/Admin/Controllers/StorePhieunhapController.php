@@ -178,6 +178,7 @@ EOT;
 
                 $form->select('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'))
                     ->options(StoreSanpham::selectboxData())
+                    ->rules('required')
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->useTableDiv()
                     ->setViewWidth(3);
@@ -205,11 +206,13 @@ EOT;
                     ->setViewWidth(1);
                 $form->currency('dongianhap', __('models.store_phieunhap_chitiet.dongianhap'))
                     ->addElementClass(['dongia'])
+                    ->rules('required')
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->useTableDiv()
                     ->setViewWidth(1);
                 $form->currency('soluongnhap', __('models.store_phieunhap_chitiet.soluongnhap'))
                     ->addElementClass(['soluong'])
+                    ->rules('required')
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->useTableDiv()
                     ->setViewWidth(1);

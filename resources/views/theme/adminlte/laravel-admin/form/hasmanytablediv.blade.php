@@ -21,26 +21,18 @@
         @endif
 
         @foreach($forms as $pk => $form)
-        <div class="has-many-{{$column}}-form fields-group row">
-            <div class="col-sm-11">
-                <div class="row">
-                @foreach($form->fields() as $field)
-                    {!! $field->render() !!}
-                @endforeach
-                </div>
-            </div>
+        <div class="has-many-{{$column}}-form fields-group clearfix">
+            @foreach($form->fields() as $field)
+                {!! $field->render() !!}
+            @endforeach
 
-            <div class="col-sm-1">
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <div class="remove btn btn-warning btn-sm"><i class="fa fa-trash">&nbsp;</i></div>
-                    </div>
-                </div>
+            <div class="form-group col-sm-1 no-padding no-margin">
+                <div class="remove btn btn-warning btn-sm"><i class="fa fa-trash">&nbsp;</i></div>
             </div>
         </div>
         @endforeach
         
-        <div>
+        <div class="col-sm-12">
             <p>Tổng thành tiền:</p>
             <p>
                 1500000000
@@ -49,18 +41,16 @@
     </div>
 
     <template class="{{$column}}-tpl">
-        <tr class="has-many-{{$column}}-form fields-group">
+        <div class="has-many-{{$column}}-form fields-group">
             {!! $template !!}
 
-            <td>
-                <div class="form-group">
-                    <label class="{{$viewClass['label']}} control-label"></label>
-                    <div class="{{$viewClass['field']}}">
-                        <div class="remove btn btn-warning btn-sm pull-right"><i class="fa fa-trash"></i>&nbsp;</div>
-                    </div>
+            <div class="form-group col-sm-1">
+                <label class="{{$viewClass['label']}} control-label"></label>
+                <div class="{{$viewClass['field']}}">
+                    <div class="remove btn btn-warning btn-sm pull-right"><i class="fa fa-trash"></i>&nbsp;</div>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </div>
     </template>
 
     <div class="form-group">
