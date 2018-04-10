@@ -21,6 +21,7 @@ class StoreSanphamLoaiTableSeeder extends Seeder
                 [ 'id' => '5', 'ma_loai_sanpham' => 'VC', 'ten_loai_sanpham' => 'Vắc xin, sinh phẩm', 'created_at' => $now],
                 [ 'id' => '6', 'ma_loai_sanpham' => 'M', 'ten_loai_sanpham' => 'Máu', 'created_at' => $now],
                 [ 'id' => '7', 'ma_loai_sanpham' => 'O', 'ten_loai_sanpham' => 'Oxy thở', 'created_at' => $now],
+                [ 'id' => '8', 'ma_loai_sanpham' => 'AP', 'ten_loai_sanpham' => 'Ấn phẩm', 'created_at' => $now],
             ]
         );
 

@@ -44,8 +44,8 @@ $('{$this->getElementClassSelector()}').inputmask($options);
 
 EOT;
 
-        $this->prepend($this->symbol)
-            ->defaultAttribute('style', 'width: 120px');
+        $this->prepend($this->symbol);
+            //->defaultAttribute('style', 'width: 120px');
 
         return parent::render();
     }

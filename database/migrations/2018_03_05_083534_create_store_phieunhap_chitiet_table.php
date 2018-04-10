@@ -17,10 +17,10 @@ class CreateStorePhieunhapChitietTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->dateTime('ngay_sudungdautien')->nullable()->comment('Ngày sử dụng đầu tiên');
-            $table->decimal('dongianhap', 16, 4)->comment('Đơn giá nhập');
-            $table->decimal('soluongnhap', 16, 4)->comment('Số lượng nhập');
-            $table->decimal('soluong_conlai', 16, 4)->comment('Số lượng còn lại');
-            $table->decimal('thue', 16, 4)->comment('Thuế');
+            $table->decimal('dongianhap', 16, 6)->comment('Đơn giá nhập');
+            $table->decimal('soluongnhap', 16, 6)->comment('Số lượng nhập');
+            $table->decimal('soluong_conlai', 16, 6)->comment('Số lượng còn lại');
+            $table->decimal('thue', 16, 6)->comment('Thuế');
             $table->dateTime('hansudung')->nullable()->comment('Hạn sử dụng');
             $table->text('so_lo')->nullable()->comment('Số lô');
             $table->text('so_chungtu')->nullable()->comment('Số chứng từ');

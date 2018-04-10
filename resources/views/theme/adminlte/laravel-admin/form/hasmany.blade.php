@@ -7,40 +7,6 @@
 <hr style="margin-top: 0px;">
 
 <div id="has-many-{{$column}}" class="has-many-{{$column}}">
-    <table>
-        <tr>
-        @foreach($forms as $pk => $form)
-            @foreach($form->fields() as $field)
-            <th>{!! $field->label() !!}
-            {!! $field->getRenderStyle() !!}
-            </td>
-            @endforeach
-            <th>Xóa</th>
-        @endforeach
-        </tr>
-
-
-        @foreach($forms as $pk => $form)
-        <tr class="has-many-{{$column}}-form fields-group">
-            @foreach($form->fields() as $field)
-                <td>{!! $field->render() !!}</td>
-            @endforeach
-
-            <td>
-                <div class="form-group">
-                    <label class="{{$viewClass['label']}} control-label"></label>
-                    <div class="{{$viewClass['field']}}">
-                        <div class="remove btn btn-warning btn-sm pull-right"><i class="fa fa-trash">&nbsp;</i>{{ trans('admin.remove') }}</div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        @endforeach
-        
-
-    </table>
-
-
 
     <div class="has-many-{{$column}}-forms">
 

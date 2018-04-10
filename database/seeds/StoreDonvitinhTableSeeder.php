@@ -59,6 +59,8 @@ class StoreDonvitinhTableSeeder extends Seeder
                 [ 'id' => '43', 'ma_donvitinh' => 'DAY', 'ten_donvitinh' => 'dây', 'created_at' => $now],
                 [ 'id' => '44', 'ma_donvitinh' => 'BAO', 'ten_donvitinh' => 'bao', 'created_at' => $now],
                 [ 'id' => '45', 'ma_donvitinh' => 'LOO', 'ten_donvitinh' => 'lỗ', 'created_at' => $now],
+                [ 'id' => '46', 'ma_donvitinh' => 'QUYEN', 'ten_donvitinh' => 'Quyển', 'created_at' => $now],
+                [ 'id' => '47', 'ma_donvitinh' => 'TO', 'ten_donvitinh' => 'Tờ', 'created_at' => $now],
             ]
         );
 
