@@ -45,7 +45,7 @@ Biểu mẫu Phiếu nhập kho
                 <td class="tg-031e"></td>
             </tr>
             <tr>
-                <?php ?>
+            	<?php ?>
                 <td class="tg-031e align-left" colspan="3">Số : {{ $bag['data']->result[0]->so_phieunhap }}  </td>
 
             </tr>
@@ -80,9 +80,9 @@ Biểu mẫu Phiếu nhập kho
                 <th class="main-s6z2" >Ghi<br> chú</th>
             </tr>
             <?php
-                foreach ($bag['data']->detail as $detail) {
-                    # code...
-                
+            	foreach ($bag['data']->detail as $detail) {
+            		# code...
+            	
             ?>
             
             <tr class="page-break-inside-avoid">
@@ -99,7 +99,7 @@ Biểu mẫu Phiếu nhập kho
                 
             </tr>
             <?php 
-                }
+            	}
             ?>
             <tr class="bold">
                 <td></td>
@@ -144,6 +144,38 @@ Biểu mẫu Phiếu nhập kho
             </tr>
 
         </table>
+
+
+
+        <table class="report-container">
+                <thead class="report-header">
+                  <tr>
+                     <th class="report-header-cell">
+                        <div class="header-info">
+                         ...
+                        </div>
+                      </th>
+                   </tr>
+                 </thead>
+                 <tfoot class="report-footer">
+                   <tr>
+                      <td class="report-footer-cell">
+                        <div class="footer-info">
+                        ...
+                        </div>
+                       </td>
+                   </tr>
+                 </tfoot>
+                 <tbody class="report-content">
+                   <tr>
+                      <td class="report-content-cell">
+                         <div class="main">
+                         ...
+                         </div>
+                       </td>
+                    </tr>
+                  </tbody>
+             </table>
     </article>
 </section>
 @endsection

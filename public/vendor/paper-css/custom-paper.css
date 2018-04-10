@@ -1,3 +1,9 @@
+/* --- Hacking multi pages sheet --- */
+.sheet {
+    overflow: visible;
+    height: auto !important;
+}
+
 .paper-toolbar {
     margin: auto;
     background: #0d8a05;
@@ -69,4 +75,42 @@
     {
         display: none !important;
     }
+
+    h2 { 
+        page-break-before: always;
+    }
+
+    h3, h4 {
+        page-break-after: avoid;
+    }
+
+    pre, blockquote {
+        page-break-inside: avoid;
+    }
+
+    .page-break-inside-avoid {
+        page-break-inside: avoid;
+    }
+
+    tbody {
+        page-break-inside: avoid;
+    }
+    
+    thead {
+        display: table-header-group;
+        margin-top: 100px;
+    }
+
+    table.report-container {
+        page-break-after:always;
+    }
+
+    thead.report-header {
+        display:table-header-group;
+    }
+
+    tfoot.report-footer {
+        display:table-footer-group;
+    } 
 }
+
