@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AdminMenuTableSeeder' => $baseDir . '/database/seeds/AdminMenuTableSeeder.php',
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
+    'App\\Admin\\Controllers\\ExcelController' => $baseDir . '/app/Admin/Controllers/ExcelController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',
     'App\\Admin\\Controllers\\PrintController' => $baseDir . '/app/Admin/Controllers/PrintController.php',
     'App\\Admin\\Controllers\\Reports\\StoreReportNhapxuattonChitietController' => $baseDir . '/app/Admin/Controllers/Reports/StoreReportNhapxuattonChitietController.php',
@@ -37,7 +38,7 @@ return array(
     'App\\Admin\\Extensions\\Column\\Qrcode' => $baseDir . '/app/Admin/Extensions/Column/Qrcode.php',
     'App\\Admin\\Extensions\\Column\\UrlWrapper' => $baseDir . '/app/Admin/Extensions/Column/UrlWrapper.php',
     'App\\Admin\\Extensions\\ExpandRow' => $baseDir . '/app/Admin/Extensions/ExpandRow.php',
-    'App\\Admin\\Extensions\\Exporters\\StoreSanPhamExcelExporter' => $baseDir . '/app/Admin/Extensions/Exporters/ExcelExporter.php',
+    'App\\Admin\\Extensions\\Exporters\\StoreSanPhamExcelExporter' => $baseDir . '/app/Admin/Extensions/Exporters/StoreSanPhamExcelExporter.php',
     'App\\Admin\\Extensions\\FloatBar' => $baseDir . '/app/Admin/Extensions/FloatBar.php',
     'App\\Admin\\Extensions\\Form\\CKEditor' => $baseDir . '/app/Admin/Extensions/Form/CKEditor.php',
     'App\\Admin\\Extensions\\Form\\MarkdownEditor' => $baseDir . '/app/Admin/Extensions/Form/MarkdownEditor.php',

@@ -21,7 +21,7 @@ Biểu mẫu Phiếu xuất kho
                 <th class="tg-baqh">Mẫu số: C20-HD </th>
             </tr>
             <tr>
-                <td class="tg-baqh align-center valign-top">BỆNH VIỆN LAO & BỆNH PHÔI</td>
+                <td class="tg-baqh align-center valign-top">BỆNH VIỆN LAO &amp; BỆNH PHÔI</td>
                 <td class="bold name">PHIẾU XUẤT KHO </td>
                 <td class="tg-s6z2 align-center">Ban hành theo quy định số:
                     <br>19/2006/QĐ-BTC

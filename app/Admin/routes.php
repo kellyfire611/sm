@@ -40,6 +40,10 @@ Route::group([
     /* --- Print --- */
     $router->post('store/print/{view}', 'PrintController@printWithView')->name('store.print');
     /* ./. --- Print --- */
+    
+    /* --- Excel --- */
+    $router->post('store/export/excel/phieuNhap', 'ExcelController@exportExcelPhieuNhap')->name('store.export.excel.phieuNhap');
+    /* ./. --- Excel --- */
 
     /* --- API V1 --- */
     $router->get('api/v1/kho', 'V1\ApiController@kho');

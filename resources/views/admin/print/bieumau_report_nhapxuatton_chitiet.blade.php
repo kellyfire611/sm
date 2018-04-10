@@ -11,10 +11,18 @@ Biểu mẫu Phiếu xuất kho
 <link rel="stylesheet" href="{{ asset('css/bieumau.css') }}">
 @endsection
 
+@section('paper-toolbar-top')
+<form method="post" action="{{ route('store.print', ['view' => 'bieumau_report_nhapxuatton_chitiet']) }}">
+  {{ csrf_field() }}
+  <input type="hidden" name="phieuxuat_id" value="1" />
+  <button class="btn btn-sm btn-primary grid-refresh" type="submit"><i class="fa fa-refresh"></i> Xuất Excel</button>
+</form>
+@endsection
+
 @section('content')
 <section class="sheet padding-10mm">
     <article>
-        <table class="main" >
+        <table class="main">
             <tr>
               <th colspan="16" class="bold name no-border" >BẢNG TÔNG HỢP CHI TIẾT THUỐC - HÓA CHẤT KHO MIỀN THÁNG 03/2018</th>
             </tr>

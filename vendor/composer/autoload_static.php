@@ -432,6 +432,7 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
     public static $classMap = array (
         'AdminMenuTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminMenuTableSeeder.php',
         'App\\Admin\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExampleController.php',
+        'App\\Admin\\Controllers\\ExcelController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ExcelController.php',
         'App\\Admin\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Admin/Controllers/HomeController.php',
         'App\\Admin\\Controllers\\PrintController' => __DIR__ . '/../..' . '/app/Admin/Controllers/PrintController.php',
         'App\\Admin\\Controllers\\Reports\\StoreReportNhapxuattonChitietController' => __DIR__ . '/../..' . '/app/Admin/Controllers/Reports/StoreReportNhapxuattonChitietController.php',
@@ -461,7 +462,7 @@ class ComposerStaticInit350e1cdd75989d4718e7af487eecd4f1
         'App\\Admin\\Extensions\\Column\\Qrcode' => __DIR__ . '/../..' . '/app/Admin/Extensions/Column/Qrcode.php',
         'App\\Admin\\Extensions\\Column\\UrlWrapper' => __DIR__ . '/../..' . '/app/Admin/Extensions/Column/UrlWrapper.php',
         'App\\Admin\\Extensions\\ExpandRow' => __DIR__ . '/../..' . '/app/Admin/Extensions/ExpandRow.php',
-        'App\\Admin\\Extensions\\Exporters\\StoreSanPhamExcelExporter' => __DIR__ . '/../..' . '/app/Admin/Extensions/Exporters/ExcelExporter.php',
+        'App\\Admin\\Extensions\\Exporters\\StoreSanPhamExcelExporter' => __DIR__ . '/../..' . '/app/Admin/Extensions/Exporters/StoreSanPhamExcelExporter.php',
         'App\\Admin\\Extensions\\FloatBar' => __DIR__ . '/../..' . '/app/Admin/Extensions/FloatBar.php',
         'App\\Admin\\Extensions\\Form\\CKEditor' => __DIR__ . '/../..' . '/app/Admin/Extensions/Form/CKEditor.php',
         'App\\Admin\\Extensions\\Form\\MarkdownEditor' => __DIR__ . '/../..' . '/app/Admin/Extensions/Form/MarkdownEditor.php',

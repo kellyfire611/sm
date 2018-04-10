@@ -11,6 +11,14 @@ Biểu mẫu Phiếu nhập kho
 <link rel="stylesheet" href="{{ asset('css/bieumau.css') }}">
 @endsection
 
+@section('paper-toolbar-top')
+<form method="post" action="{{ route('store.export.excel.phieuNhap') }}">
+  {{ csrf_field() }}
+  <input type="hidden" name="phieunhap_id" value="1" />
+  <button class="btn btn-sm btn-primary grid-refresh" type="submit"><i class="fa fa-refresh"></i> Xuất Excel</button>
+</form>
+@endsection
+
 @section('content')
 <section class="sheet padding-10mm">
     <article>
@@ -21,8 +29,8 @@ Biểu mẫu Phiếu nhập kho
                 <th class="tg-baqh">Mẫu số: C20-HD </th>
             </tr>
             <tr>
-                <td class="tg-baqh align-center valign-top">BỆNH VIỆN LAO & BỆNH PHÔI</td>
-                <td class="bold name">PHIẾU NHẬP KHO </td>
+                <td class="tg-baqh align-center valign-top">BỆNH VIỆN LAO &amp; BỆNH PHÔI</td>
+                <td class="bold name">{{ $bag['meta']['title'] }}</td>
                 <td class="tg-s6z2 align-center">Ban hành theo quy định số:
                     <br>19/2006/QĐ-BTC
                     <br>ngày 30/03/2006
@@ -42,7 +50,7 @@ Biểu mẫu Phiếu nhập kho
 
             </tr>
             <tr>
-                <td class="tg-031e align-left" colspan="3">Đơn vị giao :</td>s
+                <td class="tg-031e align-left" colspan="3">Đơn vị giao :</td>
             </tr>
             <tr>
                 <td class="tg-031e align-left" colspan="3">Lý do nhập : {{ $bag['data']->result[0]->lydo_nhap }}</td>
