@@ -144,38 +144,6 @@ Biểu mẫu Phiếu nhập kho
             </tr>
 
         </table>
-
-
-
-        <table class="report-container">
-                <thead class="report-header">
-                  <tr>
-                     <th class="report-header-cell">
-                        <div class="header-info">
-                         ...
-                        </div>
-                      </th>
-                   </tr>
-                 </thead>
-                 <tfoot class="report-footer">
-                   <tr>
-                      <td class="report-footer-cell">
-                        <div class="footer-info">
-                        ...
-                        </div>
-                       </td>
-                   </tr>
-                 </tfoot>
-                 <tbody class="report-content">
-                   <tr>
-                      <td class="report-content-cell">
-                         <div class="main">
-                         ...
-                         </div>
-                       </td>
-                    </tr>
-                  </tbody>
-             </table>
     </article>
 </section>
 @endsection

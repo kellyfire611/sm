@@ -26,6 +26,8 @@ class HomeController extends Controller
                 $row->column(3, new InfoBox('Tổng số Phiếu Xuất', 'store_phieuxuat', 'yellow', '/admin/store/phieunhap_tondauky', '2'));
                 $row->column(3, new InfoBox('Tổng số Sản phẩm', 'store_sanpham', 'red', '/admin/store/sanpham', '5425'));
             });
+
+            $content->body(view('admin.dashboard'));
         });
     }
 }
