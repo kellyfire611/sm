@@ -15,10 +15,14 @@
 </div>
 @else
 <div class="{{$viewClass['form-group']}} {!! !$errors->has($errorKey) ? '' : 'has-error' !!}">
-
+    @if($labelPosition == \App\Models\CommonModel::LABEL_POSITION_LEFT)
     <label for="{{$id}}" class="{{$viewClass['label']}} control-label">{{$label}}</label>
+    @endif
 
     <div class="{{$viewClass['field']}}">
+        @if($labelPosition == \App\Models\CommonModel::LABEL_POSITION_TOP)
+        <label for="{{$id}}" class="{{$viewClass['label']}} control-label">{{$label}}</label>
+        @endif
 
         @include('admin::form.error')
 

@@ -131,27 +131,62 @@ class StorePhieuxuatController extends Controller
             
             // Show field
             $form->display('id', 'ID');
-            $form->text('so_phieuxuat', __('models.store_phieuxuat.so_phieuxuat'));
-            $form->datetime('ngay_xuatkho', __('models.store_phieuxuat.ngay_xuatkho'));
-            $form->datetime('ngay_xacnhan', __('models.store_phieuxuat.ngay_xacnhan'));
-            $form->text('lydo_xuat', __('models.store_phieuxuat.lydo_xuat'));
-            $form->text('nguoi_nhanhang', __('models.store_phieuxuat.nguoi_nhanhang'));
-            $form->text('so_chungtu', __('models.store_phieuxuat.so_chungtu'));
+            $form->text('so_phieuxuat', __('models.store_phieuxuat.so_phieuxuat'))
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+            $form->datetime('ngay_xuatkho', __('models.store_phieuxuat.ngay_xuatkho'))
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+            $form->datetime('ngay_xacnhan', __('models.store_phieuxuat.ngay_xacnhan'))
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+            $form->text('lydo_xuat', __('models.store_phieuxuat.lydo_xuat'))
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+
+            $form->text('nguoi_nhanhang', __('models.store_phieuxuat.nguoi_nhanhang'))
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+            $form->text('so_chungtu', __('models.store_phieuxuat.so_chungtu'))
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
             $form->select('nhacungcap_id', __('models.store_phieuxuat.nhacungcap_id'))
                 ->options(StoreNhacungcap::selectboxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
             $form->select('soketoan_id', __('models.store_phieuxuat.soketoan_id'))
                 ->options(StoreSoketoan::selectBoxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+
             $form->select('xuat_tu_kho_id', __('models.store_phieuxuat.xuat_tu_kho_id'))
                 ->options(StoreKho::selectboxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
             $form->select('xuat_den_kho_id', __('models.store_phieuxuat.xuat_den_kho_id'))
                 ->options(StoreKho::selectboxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
             $form->select('nguoi_lapphieu_id', __('models.store_phieuxuat.nguoi_lapphieu_id'))
-                ->options(Administrator::selectboxData())
-                ->rules('required');
+                ->options(CommonModel::administratorSelectboxData())
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 6);
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 // Hidden field
@@ -177,7 +212,7 @@ class StorePhieuxuatController extends Controller
                 $form->currency('thue', __('models.store_phieuxuat_chitiet.thue'));          
                 $form->switch('cotinhphi', __('models.store_phieuxuat_chitiet.cotinhphi'))->states(CommonModel::getYesNo());
                 //$form->datetime('ngay_sudungdautien', __('models.store_phieuxuat_chitiet.ngay_sudungdautien'));
-            });
+            })->useTableDiv();
 
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));

@@ -61,6 +61,7 @@ class Field implements Renderable
      * @var string
      */
     protected $label = '';
+    protected $labelPosition = 4; // Left
 
     /**
      * Column name.
@@ -974,6 +975,7 @@ class Field implements Renderable
             'placeholder' => $this->getPlaceholder(),
             'renderStyle' => $this->renderStyle,
             'viewMode'    => $this->viewMode,
+            'labelPosition' => $this->labelPosition,
         ]);
     }
 
@@ -1057,5 +1059,11 @@ class Field implements Renderable
     public function useTableDiv()
     {
         return $this->mode('tablediv');
+    }
+
+    public function labelPosition($postion) {
+        $this->labelPosition = $postion;
+
+        return $this;
     }
 }

@@ -230,7 +230,7 @@ EOT;
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));
 
-            $form->saving(function() {
+            $form->saving(function(Form $form) {
                 
             });
         });
