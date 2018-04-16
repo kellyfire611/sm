@@ -162,6 +162,7 @@
 }
 </style>
 
+<!--
 <div id="quytrinh-container">
     <h1>A simple family tree using 32 divs</h1>
   <div id="no1"><a href="">Managing Director</a></div>
@@ -197,10 +198,10 @@
   <div class="clear"></div>
 
 </div>
-
+-->
 <script src="{{ asset('vendor/jsplumb/jsplumb.min.js') }}"></script>
 <script>
-    jsPlumb.bind("ready", function() {
+    // jsPlumb.bind("ready", function() {
         
-    });
+    // });
 </script>

@@ -11,7 +11,10 @@ Biểu mẫu Phiếu xuất kho
 <link rel="stylesheet" href="{{ asset('css/bieumau.css') }}">
 @endsection
 
+
+
 @section('content')
+
 <section class="sheet padding-10mm">
     <article>
         <table class="tg">
@@ -22,7 +25,7 @@ Biểu mẫu Phiếu xuất kho
             </tr>
             <tr>
                 <td class="tg-baqh align-center valign-top">BỆNH VIỆN LAO &amp; BỆNH PHÔI</td>
-                <td class="bold name">PHIẾU XUẤT KHO </td>
+                <td class="bold name">{{ $bag['meta']['title'] }}</td>
                 <td class="tg-s6z2 align-center">Ban hành theo quy định số:
                     <br>19/2006/QĐ-BTC
                     <br>ngày 30/03/2006
@@ -30,18 +33,21 @@ Biểu mẫu Phiếu xuất kho
             </tr>
             <tr>
                 <td class="tg-031e"></td>
-                <td class="tg-031e align-center">Ngày - tháng - năm</td>
+                <td class="tg-031e align-center"><?php
+                $ngayXuat = \Carbon\Carbon::parse($bag['data']->result[0]->ngay_xuatkho);
+
+                ?>  Ngày {{ $ngayXuat->day }} tháng {{ $ngayXuat->month }} năm {{ $ngayXuat->year }}</td>
                 <td class="tg-031e"></td>
             </tr>
             <tr>
-                <td class="tg-031e align-left" colspan="3">Số :</td>
+                <td class="tg-031e align-left" colspan="3">Số : {{ $bag['data']->result[0]->so_phieuxuat }}</td>
 
             </tr>
             <tr>
-                <td class="tg-031e align-left" colspan="3">Họ tên người nhận hàng :</td>s
+                <td class="tg-031e align-left" colspan="3">Họ tên người nhận hàng : {{ $bag['data']->result[0]->nguoi_nhanhang }}</td>
             </tr>
             <tr>
-                <td class="tg-031e align-left" colspan="3">Lý do xuất kho :</td>
+                <td class="tg-031e align-left" colspan="3">Lý do xuất kho : {{ $bag['data']->result[0]->lydo_xuat }}</td>
             </tr>
         </table>
         <table class="main">
@@ -66,19 +72,31 @@ Biểu mẫu Phiếu xuất kho
                 <th style="text-align:  center;" class="main-yw4l">Yêu cầu</td>
                     <th style="text-align:  center;" class="main-yw4l">Thực xuất</td>
             </tr>
-            <tr>
+            <?php
+                $stt = 1;
+                $sum = 0;
+                foreach ($bag['data']->detail as $detail) {
+                    # code...
+                
+            ?>
+            
+            <tr class="page-break-inside-avoid">
+                <td>{{ $stt }}</td>
+                <td class="align-left" >{{ $detail->ten_sanpham }}</td>
                 <td></td>
+                <td>{{ $detail->hansudung }}</td>
                 <td></td>
+                <td>{{ $detail->ten_donvitinh }}</td>
+                <td class="align-right">{{ number_format($detail->soluongxuat, 0) }}</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="align-right">{{ number_format($detail->dongiaxuat, 0) }}</td>
+                <td class="align-right"><?php $tt = $detail->soluongxuat * $detail->dongiaxuat; $sum += $tt; ?>{{ number_format($tt, 0) }}</td>
                 <td></td>
             </tr>
+            <?php 
+                $stt++;
+                }
+            ?>
             <tr>
                 <td></td>
                 <td class="bold">Tổng</td>
@@ -89,21 +107,21 @@ Biểu mẫu Phiếu xuất kho
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td class="align-right">{{ number_format($sum, 0) }}</td>
                 <td></td>
             </tr>
             <tr>
                 <td class="main-yw4l no-border"></td>
 
                 <td class="main-yw4l no-border">Tổng số tiền (bằng chữ): </td>
-                <td class="main-yw4l align-left no-border bold" colspan="9">Hai chục trăm ngàn tỷ</td>
+                <td class="main-yw4l align-left no-border bold" colspan="9"><?php echo decimalToTextVietnamese($sum); ?></td>
 
             </tr>
             <tr>
                 <td class="main-yw4l no-border"></td>
 
                 <td class="main-yw4l no-border">Chứng từ kèm theo: </td>
-                <td class="main-yw4l align-left no-border" colspan="9">Chứng từ nè</td>
+                <td class="main-yw4l align-left no-border" colspan="9"></td>
 
             </tr>
             <tr>
@@ -115,11 +133,11 @@ Biểu mẫu Phiếu xuất kho
             </tr>
             <tr style="height: 80px;"></tr>
             <tr>
-                <td class="no-border" colspan="2">Tên nè</td>
-                <td class="no-border" colspan="2">Tên nè</td>
-                <td class="no-border" colspan="2">Tên nè</td>
-                <td class="no-border" colspan="2">Tên nè</td>
-                <td class="no-border" colspan="2">Tên nè</td>
+                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2"></td>
             </tr>
 
         </table>

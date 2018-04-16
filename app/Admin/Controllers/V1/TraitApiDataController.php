@@ -21,6 +21,7 @@ trait ApiDataController {
         $chitiet = DB::select("select *
                             from store_phieunhap_chitiet pnct
                                 join store_sanpham sp on pnct.sanpham_id = sp.id
+                                join store_donvitinh dvt on pnct.donvitinh_id = dvt.id
                             where pnct.phieunhap_id = $id");
 
         // return response()->json(
@@ -46,11 +47,13 @@ trait ApiDataController {
                                 , pxct.dongiaxuat, pxct.soluongxuat
                             from store_phieuxuat px
                                 join store_phieuxuat_chitiet pxct on pxct.phieuxuat_id = px.id
-                                join store_sanpham sp on pxct.sanpham_id = sp.id
+                                join store_kho kxt on px.xuat_tu_kho_id = kxt.id
+                                join store_kho kxd on px.xuat_den_kho_id = kxd.id
                             where px.id = $id");
         $chitiet = DB::select("select *
                             from store_phieuxuat_chitiet pxct
                                 join store_sanpham sp on pxct.sanpham_id = sp.id
+                                join store_donvitinh dvt on pxct.donvitinh_id = dvt.id
                             where pxct.phieuxuat_id = $id");
 
         // return response()->json(

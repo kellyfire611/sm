@@ -126,29 +126,65 @@ class StorePhieunhapController extends Controller
     protected function form()
     {
         return Admin::form(StorePhieunhap::class, function (Form $form) {
-            $form->display('id', 'ID');
+            //$form->display('id', 'ID');
             $form->hidden('nhapxuat_id', __('models.store_phieunhap.nhapxuat_id'))
                 ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_']);
                 
-            $form->text('so_phieunhap', __('models.store_phieunhap.so_phieunhap'));
-            $form->datetime('ngay_nhapkho', __('models.store_phieunhap.ngay_nhapkho'));
-            $form->datetime('ngay_laphoadon', __('models.store_phieunhap.ngay_laphoadon'));
-            $form->datetime('ngay_xacnhan', __('models.store_phieunhap.ngay_xacnhan'));
-            $form->text('lydo_nhap', __('models.store_phieunhap.lydo_nhap'));
-            $form->text('nguoi_giaohang', __('models.store_phieunhap.nguoi_giaohang'));
-            $form->text('so_chungtu', __('models.store_phieunhap.so_chungtu'));
+            $form->text('so_phieunhap', __('models.store_phieunhap.so_phieunhap'))
+            ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+            $form->datetime('ngay_nhapkho', __('models.store_phieunhap.ngay_nhapkho'))
+            ->useTableDiv()
+            ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            ->setWidth(12, 12, 3);
+            $form->datetime('ngay_laphoadon', __('models.store_phieunhap.ngay_laphoadon'))
+            ->useTableDiv()
+            ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            ->setWidth(12, 12, 3);
+            $form->datetime('ngay_xacnhan', __('models.store_phieunhap.ngay_xacnhan'))
+            ->useTableDiv()
+            ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            ->setWidth(12, 12, 3);
+
+
+            $form->text('lydo_nhap', __('models.store_phieunhap.lydo_nhap'))
+            ->useTableDiv()
+            ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            ->setWidth(12, 12, 3);
+            $form->text('nguoi_giaohang', __('models.store_phieunhap.nguoi_giaohang'))
+            ->useTableDiv()
+            ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            ->setWidth(12, 12, 3);
+            $form->text('so_chungtu', __('models.store_phieunhap.so_chungtu'))
+            ->useTableDiv()
+            ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            ->setWidth(12, 12, 3);
             $form->select('nhacungcap_id', __('models.store_phieunhap.nhacungcap_id'))
                 ->options(StoreNhacungcap::selectboxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
+
             $form->select('soketoan_id', __('models.store_phieunhap.soketoan_id'))
                 ->options(StoreSoketoan::selectBoxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
             $form->select('nhap_vao_kho_id', __('models.store_phieunhap.nhap_vao_kho_id'))
                 ->options(StoreKho::selectboxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 3);
             $form->select('nguoi_lapphieu_id', __('models.store_phieunhap.nguoi_lapphieu_id'))
                 ->options(CommonModel::administratorSelectboxData())
-                ->rules('required');
+                ->rules('required')
+                ->useTableDiv()
+                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->setWidth(12, 12, 6);
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))
@@ -216,10 +252,10 @@ EOT;
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->useTableDiv()
                     ->setViewWidth(1);
-                $form->currency('soluong_conlai', __('models.store_phieunhap_chitiet.soluong_conlai'))
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
-                    ->useTableDiv()
-                    ->setViewWidth(1);
+                // $form->currency('soluong_conlai', __('models.store_phieunhap_chitiet.soluong_conlai'))
+                //     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                //     ->useTableDiv()
+                //     ->setViewWidth(1);
                 $form->currency('thue', __('models.store_phieunhap_chitiet.thue'))
                     ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->useTableDiv()

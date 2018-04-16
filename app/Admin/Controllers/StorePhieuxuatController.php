@@ -35,8 +35,8 @@ class StorePhieuxuatController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Danh sách phiếu xuất');
+            $content->description('');
 
             $content->body($this->grid());
         });
@@ -52,8 +52,8 @@ class StorePhieuxuatController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Sửa phiếu xuất');
+            $content->description('');
 
             $content->body($this->form()->edit($id));
         });
@@ -68,8 +68,8 @@ class StorePhieuxuatController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Tạo phiếu xuất');
+            $content->description('');
 
             $content->body($this->form());
         });
@@ -130,12 +130,14 @@ class StorePhieuxuatController extends Controller
                 ->default(CommonModel::getNhapXuat()['_XUAT_QUA_KHO_LE_']);
             
             // Show field
-            $form->display('id', 'ID');
+            //$form->display('id', 'ID');
             $form->text('so_phieuxuat', __('models.store_phieuxuat.so_phieuxuat'))
+                ->rules('required')
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
             $form->datetime('ngay_xuatkho', __('models.store_phieuxuat.ngay_xuatkho'))
+                ->rules('required')
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
@@ -144,6 +146,7 @@ class StorePhieuxuatController extends Controller
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
             $form->text('lydo_xuat', __('models.store_phieuxuat.lydo_xuat'))
+                ->rules('required')
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
@@ -163,6 +166,7 @@ class StorePhieuxuatController extends Controller
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
             $form->select('soketoan_id', __('models.store_phieuxuat.soketoan_id'))
+                ->rules('required')
                 ->options(StoreSoketoan::selectBoxData())
                 ->rules('required')
                 ->useTableDiv()
@@ -170,12 +174,14 @@ class StorePhieuxuatController extends Controller
                 ->setWidth(12, 12, 3);
 
             $form->select('xuat_tu_kho_id', __('models.store_phieuxuat.xuat_tu_kho_id'))
+                ->rules('required')
                 ->options(StoreKho::selectboxData())
                 ->rules('required')
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
             $form->select('xuat_den_kho_id', __('models.store_phieuxuat.xuat_den_kho_id'))
+                ->rules('required')
                 ->options(StoreKho::selectboxData())
                 ->rules('required')
                 ->useTableDiv()
@@ -201,16 +207,49 @@ class StorePhieuxuatController extends Controller
 
                 // Show field
                 $form->select('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'))
-                    ->options(StoreSanpham::selectboxData());
+                    ->rules('required')
+                    ->options(StoreSanpham::selectboxData())
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(3);
                 $form->select('donvitinh_id', __('models.store_phieuxuat_chitiet.donvitinh_id'))
-                    ->options(StoreDonvitinh::selectboxData());
-                $form->text('so_lo', __('models.store_phieuxuat_chitiet.so_lo'));
-                $form->text('so_chungtu', __('models.store_phieuxuat_chitiet.so_chungtu'));
-                $form->datetime('hansudung', __('models.store_phieuxuat_chitiet.hansudung'));
-                $form->currency('dongiaxuat', __('models.store_phieuxuat_chitiet.dongiaxuat'));
-                $form->currency('soluongxuat', __('models.store_phieuxuat_chitiet.soluongxuat'));
-                $form->currency('thue', __('models.store_phieuxuat_chitiet.thue'));          
-                $form->switch('cotinhphi', __('models.store_phieuxuat_chitiet.cotinhphi'))->states(CommonModel::getYesNo());
+                    ->rules('required')
+                    ->options(StoreDonvitinh::selectboxData())
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);
+                $form->text('so_lo', __('models.store_phieuxuat_chitiet.so_lo'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);
+                $form->text('so_chungtu', __('models.store_phieuxuat_chitiet.so_chungtu'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);
+                $form->datetime('hansudung', __('models.store_phieuxuat_chitiet.hansudung'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);
+                $form->currency('dongiaxuat', __('models.store_phieuxuat_chitiet.dongiaxuat'))
+                    ->addElementClass(['dongia'])
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);
+                $form->currency('soluongxuat', __('models.store_phieuxuat_chitiet.soluongxuat'))
+                    ->rules('required')
+                    ->addElementClass(['soluong'])
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);
+                $form->currency('thue', __('models.store_phieuxuat_chitiet.thue'))
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);       
+                $form->switch('cotinhphi', __('models.store_phieuxuat_chitiet.cotinhphi'))->states(CommonModel::getYesNo())
+                    ->default(1)
+                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->useTableDiv()
+                    ->setViewWidth(1);
                 //$form->datetime('ngay_sudungdautien', __('models.store_phieuxuat_chitiet.ngay_sudungdautien'));
             })->useTableDiv();
 

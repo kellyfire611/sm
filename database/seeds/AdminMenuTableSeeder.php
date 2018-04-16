@@ -14,6 +14,9 @@ class AdminMenuTableSeeder extends Seeder
         $now = Carbon\Carbon::now();
         DB::table('admin_menu')->insert(
             [
+                /* --- Cấu hình hệ thống --- */
+                ["id" => 33, "parent_id" => 0, "order" => 33, "title" => "Cấu hình hệ thống", "icon" => "fa-toggle-on", "uri" => "config", "created_at" => $now, "updated_at" => NULL,],
+                /* ./. --- Cấu hình hệ thống --- */
                 /* --- Cấu hình kho --- */
                 ["id" => 8, "parent_id" => 0, "order" => 8, "title" => "Cấu hình kho", "icon" => "fa-bar-chart", "uri" => "", "created_at" => $now, "updated_at" => NULL,],
                 ["id" => 9, "parent_id" => 8, "order" => 9, "title" => "Danh mục Loại kho", "icon" => "fa-bar-chart", "uri" => "/store/loai_kho", "created_at" => $now, "updated_at" => NULL,],

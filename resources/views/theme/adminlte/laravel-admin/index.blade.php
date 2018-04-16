@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ admin_asset("/css/custom-style.css") }}">
 
     <!-- REQUIRED JS SCRIPTS -->
-    <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery.min.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/plugins/jQuery/jquery.min.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/bootstrap/js/transition.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/bootstrap/js/collapse.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js") }}"></script>

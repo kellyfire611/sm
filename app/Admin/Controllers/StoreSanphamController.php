@@ -105,7 +105,11 @@ class StoreSanphamController extends Controller
 
             $form->display('id', 'ID');
 
-            $form->text('ma_sanpham', __('models.store_sanpham.ma_sanpham'));
+            $form->text('ma_sanpham', __('models.store_sanpham.ma_sanpham'))
+                ->append('<i class="fa fa-pencil"></i>');
+            $form->button('aaaaaaaaaaa')->on('click', 
+'alert("hello");'
+            );
             $form->text('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
             $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
             $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'));

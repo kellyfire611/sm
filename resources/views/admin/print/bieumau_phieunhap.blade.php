@@ -74,31 +74,34 @@ Biểu mẫu Phiếu nhập kho
                 <th class="main-s6z2" >ĐVT</th>
 
                 <th class="main-s6z2" >Số lượng</th>
-                <th class="main-s6z2" >Đơn giá
+                <th class="main-s6z2" >Đơn giá</th>
 
                 <th class="main-s6z2" >Thành<br> tiền</th>
                 <th class="main-s6z2" >Ghi<br> chú</th>
             </tr>
             <?php
+                $stt = 1;
+                $sum = 0;
                 foreach ($bag['data']->detail as $detail) {
                     # code...
                 
             ?>
             
             <tr class="page-break-inside-avoid">
-                <td></td>
+                <td>{{ $stt }}</td>
                 <td class="align-left" >{{ $detail->ten_sanpham }}</td>
-                <td></td>
+                <td>{{ $detail->so_lo }}</td>
                 <td>{{ $detail->hansudung }}</td>
                 <td></td>
-                <td></td>
-                <td>{{ $detail->soluongnhap }}</td>
-                <td>{{ $detail->dongianhap }}</td>
-                <td></td>
+                <td>{{ $detail->ten_donvitinh }}</td>
+                <td class="align-right">{{ number_format($detail->soluongnhap, 0) }}</td>
+                <td class="align-right">{{ number_format($detail->dongianhap, 2) }}</td>
+                <td class="align-right"><?php $tt = $detail->soluongnhap * $detail->dongianhap; $sum += $tt; ?>{{ number_format($tt, 0) }}</td>
                 <td></td>
                 
             </tr>
             <?php 
+                $stt++;
                 }
             ?>
             <tr class="bold">
@@ -110,21 +113,21 @@ Biểu mẫu Phiếu nhập kho
                 <td></td>                
                 <td></td>
                 <td></td>
-                <td></td>
+                <td class="align-right">{{ number_format($sum, 0) }}</td>
                 <td></td>
             </tr>
             <tr>
                 <td class="main-yw4l no-border"></td>
 
                 <td class="main-yw4l no-border">Tổng số tiền (bằng chữ): </td>
-                <td class="main-yw4l align-left no-border bold" colspan="9">Hai chục trăm ngàn tỷ</td>
+                <td class="main-yw4l align-left no-border bold" colspan="9"><?php echo decimalToTextVietnamese($sum); ?></td>
 
             </tr>
             <tr>
                 <td class="main-yw4l no-border"></td>
 
                 <td class="main-yw4l no-border">Chứng từ kèm theo: </td>
-                <td class="main-yw4l align-left no-border" colspan="9">Chứng từ nè</td>
+                <td class="main-yw4l align-left no-border" colspan="9"></td>
 
             </tr>
             <tr>
@@ -136,11 +139,11 @@ Biểu mẫu Phiếu nhập kho
             </tr>
             <tr style="height: 80px;"></tr>
             <tr>
-                <td class="no-border" colspan="2">Tên nè</td>
+                <td class="no-border" colspan="2"></td>
                 <td class="no-border" colspan="2">{{ $bag['data']->result[0]->nguoi_giaohang }}</td>
-                <td class="no-border" colspan="2">Tên nè</td>
-                <td class="no-border" colspan="2">Tên nè</td>
-                <td class="no-border" colspan="2">Tên nè</td>
+                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2"></td>
             </tr>
 
         </table>

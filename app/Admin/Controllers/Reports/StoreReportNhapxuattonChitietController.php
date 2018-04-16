@@ -11,6 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
+use DB;
 
 class StoreReportNhapxuattonChitietController extends Controller
 {
@@ -28,7 +29,14 @@ class StoreReportNhapxuattonChitietController extends Controller
             $content->header('header');
             $content->description('description');
 
-            $content->body(view('admin.reports.nhapxuatton_chitiet.index'));
+            $parameter = [
+                '2018-04-04',
+                '2020-04-01',
+                1
+            ];
+            $bag = DB::select('call usp_store_baocao_nhapxuatton_chitiet(?,?,?)', $parameter);
+            // dd($bag);
+            $content->body(view('admin.reports.nhapxuatton_chitiet.index')->with('bag', $bag));
         });
     }
 

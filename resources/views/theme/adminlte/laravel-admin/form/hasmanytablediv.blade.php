@@ -32,12 +32,7 @@
         </div>
         @endforeach
         
-        <div class="col-sm-12">
-            <p>Tổng thành tiền:</p>
-            <p>
-                1500000000
-            </p>
-        </div>
+       
     </div>
 
     <template class="{{$column}}-tpl">
