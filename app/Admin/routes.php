@@ -45,6 +45,10 @@ Route::group([
     $router->post('store/export/excel/phieuNhap', 'ExcelController@exportExcelPhieuNhap')->name('store.export.excel.phieuNhap');
     /* ./. --- Excel --- */
 
+    /* --- Ajax Controller --- */
+    $router->post('store/ajax/generateMaSanPham', 'AjaxController@generateMaSanPham')->name('store.ajax.generateMaSanPham');
+    /* ./. --- Ajax Controller --- */
+
     /* --- API V1 --- */
     $router->get('api/v1/kho', 'V1\ApiController@kho');
     $router->get('api/v1/loai_kho', 'V1\ApiController@loai_kho');

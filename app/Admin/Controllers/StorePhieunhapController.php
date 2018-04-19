@@ -37,6 +37,7 @@ class StorePhieunhapController extends Controller
 
             $content->header('header');
             $content->description('description');
+            $content->controller(StorePhieunhapController::class);
 
             $content->body($this->grid());
         });
@@ -54,6 +55,7 @@ class StorePhieunhapController extends Controller
 
             $content->header('header');
             $content->description('description');
+            $content->controller('StorePhieunhapController');
 
             $content->body($this->form()->edit($id));
         });
@@ -131,18 +133,22 @@ class StorePhieunhapController extends Controller
                 ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_']);
                 
             $form->text('so_phieunhap', __('models.store_phieunhap.so_phieunhap'))
-            ->useTableDiv()
+                ->attribute('tabindex', 1)
+                ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
             $form->datetime('ngay_nhapkho', __('models.store_phieunhap.ngay_nhapkho'))
+            ->attribute('tabindex', 3)
             ->useTableDiv()
             ->labelPosition(CommonModel::LABEL_POSITION_TOP)
             ->setWidth(12, 12, 3);
             $form->datetime('ngay_laphoadon', __('models.store_phieunhap.ngay_laphoadon'))
+            ->attribute('tabindex', 4)
             ->useTableDiv()
             ->labelPosition(CommonModel::LABEL_POSITION_TOP)
             ->setWidth(12, 12, 3);
             $form->datetime('ngay_xacnhan', __('models.store_phieunhap.ngay_xacnhan'))
+            ->attribute('tabindex', 2)
             ->useTableDiv()
             ->labelPosition(CommonModel::LABEL_POSITION_TOP)
             ->setWidth(12, 12, 3);

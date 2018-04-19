@@ -105,11 +105,33 @@ class StoreSanphamController extends Controller
 
             $form->display('id', 'ID');
 
-            $form->text('ma_sanpham', __('models.store_sanpham.ma_sanpham'))
+            $ma_sanpham = $form->text('ma_sanpham', __('models.store_sanpham.ma_sanpham'))
+                ->readOnly()
                 ->append('<i class="fa fa-pencil"></i>');
-            $form->button('aaaaaaaaaaa')->on('click', 
-'alert("hello");'
-            );
+            //dd($ma_sanpham->getElementClassSelector());
+
+            $ajaxGenerateMaSanPhamUrl = route('store.ajax.generateMaSanPham');
+            $callbackSinhMaSanPham = <<<EOT
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+    }
+});
+
+$.ajax({
+    type: 'post',
+    url: '$ajaxGenerateMaSanPhamUrl',
+    dataType: 'json',
+    success: function(data) {
+        console.log(data);
+        $("{$ma_sanpham->getElementClassSelector()}").val(data.msg);
+    },
+    error: function(data) {
+        console.log(data);
+    }
+});
+EOT;
+            $form->button('aaaaaaaaaaa')->on('click', $callbackSinhMaSanPham);
             $form->text('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
             $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
             $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'));

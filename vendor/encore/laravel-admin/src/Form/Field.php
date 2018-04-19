@@ -873,7 +873,7 @@ class Field implements Renderable
      *
      * @return mixed
      */
-    protected function getElementClassString()
+    public function getElementClassString()
     {
         $elementClass = $this->getElementClass();
 
@@ -895,7 +895,7 @@ class Field implements Renderable
      *
      * @return string
      */
-    protected function getElementClassSelector()
+    public function getElementClassSelector()
     {
         $elementClass = $this->getElementClass();
 
