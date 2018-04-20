@@ -107,8 +107,13 @@ class StoreSanphamController extends Controller
 
             $ma_sanpham = $form->text('ma_sanpham', __('models.store_sanpham.ma_sanpham'))
                 ->readOnly()
-                ->append('<i class="fa fa-pencil"></i>');
-            //dd($ma_sanpham->getElementClassSelector());
+                //->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                ->useTableDiv();
+                //->setViewWidth(3);
+            $ma_sanpham->append("<i class=\"fa fa-code clickable {$ma_sanpham->getElementClassString()}-btn-generateMaSanPham\" aria-hidden=\"true\"></i>")
+                ->addAjaxCssLoader();
+
+            $ten_sanpham = $form->text('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
 
             $ajaxGenerateMaSanPhamUrl = route('store.ajax.generateMaSanPham');
             $callbackSinhMaSanPham = <<<EOT
@@ -122,6 +127,12 @@ $.ajax({
     type: 'post',
     url: '$ajaxGenerateMaSanPhamUrl',
     dataType: 'json',
+    data: {
+        tenSanPham: $("{$ten_sanpham->getElementClassSelector()}").val()
+    },
+    beforeSend: function(){
+        $("#{$ma_sanpham->getIdString()}-cssloader").fadeIn(100);
+    },
     success: function(data) {
         console.log(data);
         $("{$ma_sanpham->getElementClassSelector()}").val(data.msg);
@@ -129,10 +140,35 @@ $.ajax({
     error: function(data) {
         console.log(data);
     }
+}).done(function(data) {
+    $("#{$ma_sanpham->getIdString()}-cssloader").fadeOut(100);
 });
 EOT;
-            $form->button('aaaaaaaaaaa')->on('click', $callbackSinhMaSanPham);
-            $form->text('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
+            $ma_sanphamScript = <<<EOT
+$('.{$ma_sanpham->getElementClassString()}-btn-generateMaSanPham').click(function() {
+    alert('aaaa');
+});
+
+EOT;
+            $ma_sanpham->script($ma_sanphamScript);
+
+            $ten_sanpham->on('click', $callbackSinhMaSanPham);
+
+
+/*
+$.ajax({
+    url: "info.php?info_id="+id,
+    type: 'get',
+    beforeSend: function(){
+       $("#loading").fadeIn(100);
+    },
+}).done(function(data) {
+   $("#loading").fadeOut(100);
+   $(".sidebar").fadeIn().find(".sidebar-content").animate({"right":0}, 200).html(data);
+   imgResize(jQuery,'smartresize');   
+});
+*/
+
             $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
             $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'));
             $form->text('sokiemsoat', __('models.store_sanpham.sokiemsoat'));

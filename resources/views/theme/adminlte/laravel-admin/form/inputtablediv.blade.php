@@ -38,6 +38,9 @@
                 <span class="input-group-addon clearfix">{!! $append !!}</span>
             @endif
 
+            @if ($ajaxHtmlCssLoader)
+                {!! $ajaxHtmlCssLoader !!}
+            @endif
         </div>
 
         @include('admin::form.help-block')

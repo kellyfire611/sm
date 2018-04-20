@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/google-fonts/fonts.css") }}">
     <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css") }}">
     <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/AdminLTE/dist/css/skins/_all-skins.min.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/cssloader/cssloader.css") }}">
     <link rel="stylesheet" href="{{ admin_asset("/css/custom-style.css") }}">
 
     <!-- REQUIRED JS SCRIPTS -->
@@ -55,7 +56,6 @@
     </div>
 
     @include('admin::partials.footer')
-
 </div>
 
 <!-- ./wrapper -->

@@ -16,11 +16,16 @@ class AjaxController extends Controller
 {
     use ApiDataController;
 
-    public function generateMaSanPham($tenSanPham = '')
+    public function generateMaSanPham(Request $request)
     {
-        $maSanPhamGenerated = '';
-
-        $msg = "This is a simple message.";
-        return response()->json(array('msg'=> $msg), 200);
+        // if(empty($tenSanPham))
+        // {
+        //     return null;
+        // }
+        $inputs = $request->all();
+        $prefix = substr($inputs['tenSanPham'], 0, 3);
+        $num = 1;
+        $maSanPhamGenerated = $prefix . $num;
+        return response()->json(array('msg'=> $maSanPhamGenerated), 200);
     }
 }
