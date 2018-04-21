@@ -108,12 +108,13 @@ class StoreSanphamController extends Controller
             $ma_sanpham = $form->text('ma_sanpham', __('models.store_sanpham.ma_sanpham'))
                 ->readOnly()
                 //->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
-                ->useTableDiv();
+                ->useTableDiv()
+                ->attribute('tabindex', 1);
                 //->setViewWidth(3);
             $ma_sanpham->append("<i class=\"fa fa-code clickable {$ma_sanpham->getElementClassString()}-btn-generateMaSanPham\" aria-hidden=\"true\"></i>")
                 ->addAjaxCssLoader();
 
-            $ten_sanpham = $form->text('ten_sanpham', __('models.store_sanpham.ten_sanpham'));
+            $ten_sanpham = $form->text('ten_sanpham', __('models.store_sanpham.ten_sanpham'))->attribute(['tabindex' => 2, 'autofocus' => 'autofocus']);
 
             $ajaxGenerateMaSanPhamUrl = route('store.ajax.generateMaSanPham');
             $callbackSinhMaSanPham = <<<EOT
@@ -169,14 +170,14 @@ $.ajax({
 });
 */
 
-            $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'));
-            $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'));
-            $form->text('sokiemsoat', __('models.store_sanpham.sokiemsoat'));
-            $form->image('anh');
+            $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'))->attribute('tabindex', 3);
+            $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'))->attribute('tabindex', 4);
+            $form->text('sokiemsoat', __('models.store_sanpham.sokiemsoat'))->attribute('tabindex', 5);
+            $form->image('anh', __('models.store_sanpham.anh'));
 
             $form->select('nuoc_sanxuat_id', __('models.store_sanpham.nuoc_sanxuat_id'))->options(
                 HrmQuocgia::NoneDelete()->pluck('ten_quocgia', 'id')
-            )->rules('required');
+            )->rules('required')->attribute('tabindex', 6);
 
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));

@@ -103,3 +103,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: red;
     font-weight: bold;
 }
+
+.select2-container *:focus {
+    border-color: #3c8dbc;
+    background: #faffbd;
+}

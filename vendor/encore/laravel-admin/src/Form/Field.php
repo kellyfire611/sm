@@ -745,6 +745,10 @@ class Field implements Renderable
      */
     public function readOnly()
     {
+        return $this->attribute('readonly', true);
+    }
+    public function disable()
+    {
         return $this->attribute('disabled', true);
     }
 
