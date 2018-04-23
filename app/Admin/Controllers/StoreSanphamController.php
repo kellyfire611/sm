@@ -132,11 +132,12 @@ $.ajax({
         tenSanPham: $("{$ten_sanpham->getElementClassSelector()}").val()
     },
     beforeSend: function(){
-        $("#{$ma_sanpham->getIdString()}-cssloader").fadeIn(100);
+        $('<div />').attr('class', 'loading').appendTo('body');
     },
     success: function(data) {
         console.log(data);
         $("{$ma_sanpham->getElementClassSelector()}").val(data.msg);
+        $('.loading').remove();
     },
     error: function(data) {
         console.log(data);

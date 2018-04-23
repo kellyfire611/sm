@@ -34,6 +34,7 @@
     <script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/dist/js/app.min.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/laravel-admin/jquery-pjax/jquery.pjax.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/laravel-admin/nprogress/nprogress.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/keypress/keypress-2.1.5.min.js") }}"></script>
     <script src="{{ admin_asset ("/vendor/angularjs/angular.min.js") }}"></script>
 
     <!--[if lt IE 9]>
@@ -63,6 +64,8 @@
 <script>
     function LA() {}
     LA.token = "{{ csrf_token() }}";
+
+    var listener = new window.keypress.Listener();
 
     var agmkStore = angular.module("agmk_store", []);
     agmkStore.controller('StorePhieunhapController', function($scope) {
