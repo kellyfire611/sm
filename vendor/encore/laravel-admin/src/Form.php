@@ -342,6 +342,10 @@ class Form
             $this->model->save();
 
             $this->updateRelation($this->relations);
+
+            if (($response = $this->callSavingInTransaction()) instanceof Response) {
+                return $response;
+            }
         });
 
         if (($response = $this->complete($this->saved)) instanceof Response) {
@@ -1397,5 +1401,36 @@ class Form
     public function __toString()
     {
         return $this->render();
+    }
+
+    /**
+     * Saving in transaction callback.
+     *
+     * @var Closure
+     */
+    protected $savingInTransaction;
+
+    /**
+     * Call savingInTransaction callback.
+     *
+     * @return mixed
+     */
+    protected function callSavingInTransaction()
+    {
+        if ($this->savingInTransaction instanceof Closure) {
+            return call_user_func($this->savingInTransaction, $this);
+        }
+    }
+
+    /**
+     * Set savingInTransaction callback.
+     *
+     * @param Closure $callback
+     *
+     * @return void
+     */
+    public function savingInTransaction(Closure $callback)
+    {
+        $this->savingInTransaction = $callback;
     }
 }

@@ -11,6 +11,7 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
 use App\Admin\Controllers\V1\ApiDataController;
+use App\Models\StoreSystemConfig;
 
 class AjaxController extends Controller
 {
@@ -22,9 +23,25 @@ class AjaxController extends Controller
         // {
         //     return null;
         // }
+
+        $systemConfigMaSanPham = StoreSystemConfig::where('name', '=', 'store.masanpham')->first();
+        $arrSystemConfigMaSanPham = json_decode($systemConfigMaSanPham->value, true);
+        //dd($jsonSystemConfigMaSanPham);
+
         $inputs = $request->all();
         $prefix = substr($inputs['tenSanPham'], 0, 3);
+        
         $num = 1;
+        if(array_key_exists($prefix, $arrSystemConfigMaSanPham)) {
+            $arrSystemConfigMaSanPham[$prefix] += 1;
+            $num = $arrSystemConfigMaSanPham[$prefix];
+        } else {
+            $arrSystemConfigMaSanPham[$prefix] = $num;
+        }
+
+        $newValueSystemConfigMaSanPham = json_encode($arrSystemConfigMaSanPham);
+        //dd($newValueSystemConfigMaSanPham);
+
         $maSanPhamGenerated = $prefix . $num;
         return response()->json(array('msg'=> $maSanPhamGenerated), 200);
     }
