@@ -47,6 +47,7 @@ Route::group([
 
     /* --- Ajax Controller --- */
     $router->post('store/ajax/generateMaSanPham', 'AjaxController@generateMaSanPham')->name('store.ajax.generateMaSanPham');
+    $router->post('store/ajax/generateSoPhieuNhap', 'AjaxController@generateSoPhieuNhap')->name('store.ajax.generateSoPhieuNhap');
     /* ./. --- Ajax Controller --- */
 
     /* --- API V1 --- */

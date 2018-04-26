@@ -133,7 +133,7 @@ $.ajax({
         tenSanPham: $("{$ten_sanpham->getElementClassSelector()}").val()
     },
     beforeSend: function(){
-        //$('<div />').attr('class', 'loading').appendTo('body');
+        $('<div />').attr('class', 'loading').appendTo('body');
     },
     success: function(data) {
         console.log(data);

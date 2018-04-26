@@ -60,9 +60,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /* ./. Dạng Table */
 
 /* Dạng Table div */
-.has-many-tablediv {
+/* .has-many-tablediv {
     background: #007735a3;
-}
+} */
 
 .has-many-tablediv-forms {
     margin: 0;
@@ -74,9 +74,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     padding: 0;
 }
 
-.has-many-tablediv > .has-many-tablediv-forms > .fields-group:nth-child(even) {
+/* .has-many-tablediv > .has-many-tablediv-forms > .fields-group:nth-child(even) {
     background: #e08181;
-}
+} */
 /* ./. Dạng Table div */
 
 /* --- ./. Hiệu chỉnh form chi tiết --- */

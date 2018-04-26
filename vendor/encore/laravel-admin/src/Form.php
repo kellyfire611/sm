@@ -340,12 +340,11 @@ class Form
             }
 
             $this->model->save();
-
-            $this->updateRelation($this->relations);
-
+            
             if (($response = $this->callSavingInTransaction()) instanceof Response) {
                 return $response;
             }
+            $this->updateRelation($this->relations);
         });
 
         if (($response = $this->complete($this->saved)) instanceof Response) {
@@ -725,6 +724,9 @@ class Form
 
                         $instance->fill($related);
 
+                        if (($response = $this->callsavingInTransactionDetailHasMany($instance)) instanceof Response) {
+                            return $response;
+                        }
                         $instance->save();
                     }
 
@@ -1432,5 +1434,41 @@ class Form
     public function savingInTransaction(Closure $callback)
     {
         $this->savingInTransaction = $callback;
+    }
+
+    /**
+     * Saving in transaction callback.
+     *
+     * @var Closure
+     */
+    protected $savingInTransactionDetailHasMany;
+
+    /**
+     * Call savingInTransaction callback.
+     *
+     * @return mixed
+     */
+    protected function callsavingInTransactionDetailHasMany($instance)
+    {
+        if ($this->savingInTransactionDetailHasMany instanceof Closure) {
+            return call_user_func($this->savingInTransactionDetailHasMany, $this, $instance);
+        }
+    }
+
+    /**
+     * Set savingInTransaction callback.
+     *
+     * @param Closure $callback
+     *
+     * @return void
+     */
+    public function savingInTransactionDetailHasMany(Closure $callback)
+    {
+        $this->savingInTransactionDetailHasMany = $callback;
+    }
+
+    public function script($script)
+    {
+        Admin::script($script);
     }
 }
