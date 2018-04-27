@@ -250,6 +250,7 @@ EOT;
                 ->options(CommonModel::administratorSelectboxData())
                 ->rules('required')
                 ->useTableDiv()
+                ->default(Admin::user()->id)
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 6);
 

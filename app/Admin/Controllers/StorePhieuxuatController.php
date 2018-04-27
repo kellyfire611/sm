@@ -21,6 +21,7 @@ use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Encore\Admin\Form\Field\Hidden;
+use Auth;
 
 class StorePhieuxuatController extends Controller
 {
@@ -187,11 +188,13 @@ class StorePhieuxuatController extends Controller
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
+                //dd(Admin::user());
             $form->select('nguoi_lapphieu_id', __('models.store_phieuxuat.nguoi_lapphieu_id'))
                 ->options(CommonModel::administratorSelectboxData())
                 ->rules('required')
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                ->default(Admin::user()->id)
                 ->setWidth(12, 12, 6);
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
@@ -204,52 +207,63 @@ class StorePhieuxuatController extends Controller
                     ->default(1);
                 $form->hidden('phieunhap_chitiet_id', __('models.store_phieuxuat_chitiet.phieunhap_chitiet_id'))
                     ->default(1);
+                $form->hidden('cotinhphi', __('models.store_phieuxuat_chitiet.cotinhphi'))
+                    ->default(1);
 
                 // Show field
                 $form->select('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'))
                     ->rules('required')
                     ->options(StoreSanpham::selectboxData())
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setViewWidth(3);
+                    ->setWidth(12, 12, 3);
                 $form->select('donvitinh_id', __('models.store_phieuxuat_chitiet.donvitinh_id'))
                     ->rules('required')
                     ->options(StoreDonvitinh::selectboxData())
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setViewWidth(1);
+                    ->setWidth(12, 12, 1);
                 $form->text('so_lo', __('models.store_phieuxuat_chitiet.so_lo'))
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setViewWidth(1);
+                    ->setWidth(12, 12, 1);
                 $form->text('so_chungtu', __('models.store_phieuxuat_chitiet.so_chungtu'))
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setViewWidth(1);
+                    ->setWidth(12, 12, 1);
                 $form->datetime('hansudung', __('models.store_phieuxuat_chitiet.hansudung'))
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setViewWidth(1);
+                    ->setWidth(12, 12, 1);
                 $form->currency('dongiaxuat', __('models.store_phieuxuat_chitiet.dongiaxuat'))
                     ->addElementClass(['dongia'])
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setViewWidth(1);
+                    ->setWidth(12, 12, 1);
                 $form->currency('soluongxuat', __('models.store_phieuxuat_chitiet.soluongxuat'))
                     ->rules('required')
                     ->addElementClass(['soluong'])
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setViewWidth(1);
-                $form->currency('thue', __('models.store_phieuxuat_chitiet.thue'))
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
-                    ->useTableDiv()
-                    ->setViewWidth(1);       
-                $form->switch('cotinhphi', __('models.store_phieuxuat_chitiet.cotinhphi'))->states(CommonModel::getYesNo())
-                    ->default(1)
-                    ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
-                    ->useTableDiv()
-                    ->setViewWidth(1);
+                    ->setWidth(12, 12, 1);
+                // $form->currency('thue', __('models.store_phieuxuat_chitiet.thue'))
+                //     // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                //     ->useTableDiv()
+                //     ->setViewWidth(1);       
+                // $form->switch('cotinhphi', __('models.store_phieuxuat_chitiet.cotinhphi'))->states(CommonModel::getYesNo())
+                //     ->default(1)
+                //     // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                //     ->useTableDiv()
+                //     ->setWidth(12, 12, 1);
                 //$form->datetime('ngay_sudungdautien', __('models.store_phieuxuat_chitiet.ngay_sudungdautien'));
             })->useTableDiv();
 
