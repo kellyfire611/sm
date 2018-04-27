@@ -23,7 +23,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Encore\Admin\Form\Field\Hidden;
 
-class StorePhieunhapController extends Controller
+class StorePhieunhapVaoKhoLeController extends Controller
 {
     use ModelForm;
 
@@ -38,7 +38,7 @@ class StorePhieunhapController extends Controller
 
             $content->header('header');
             $content->description('description');
-            $content->controller(StorePhieunhapController::class);
+            $content->controller(StorePhieunhapVaoKhoLeController::class);
 
             $content->body($this->grid());
         });
@@ -56,7 +56,7 @@ class StorePhieunhapController extends Controller
 
             $content->header('header');
             $content->description('description');
-            $content->controller('StorePhieunhapController');
+            $content->controller('StorePhieunhapVaoKhoLeController');
 
             $content->body($this->form()->edit($id));
         });
@@ -131,7 +131,7 @@ class StorePhieunhapController extends Controller
         return Admin::form(StorePhieunhap::class, function (Form $form) {
             //$form->display('id', 'ID');
             $form->hidden('nhapxuat_id', __('models.store_phieunhap.nhapxuat_id'))
-                ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_']);
+                ->default(CommonModel::getNhapXuat()['_NHAP_VAO_KHO_LE_']);
                 
             $sophieunhap = $form->text('so_phieunhap', __('models.store_phieunhap.so_phieunhap'))
                 ->attribute('tabindex', 1)
@@ -207,7 +207,6 @@ EOT;
             ->useTableDiv()
             ->labelPosition(CommonModel::LABEL_POSITION_TOP)
             ->setWidth(12, 12, 3);
-
             $form->datetime('ngay_xacnhan', __('models.store_phieunhap.ngay_xacnhan'))
             ->attribute('tabindex', 2)
             ->useTableDiv()
@@ -257,7 +256,7 @@ EOT;
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 // $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))
-                //     ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_'])
+                //     ->default(CommonModel::getNhapXuat()['_NHAP_VAO_KHO_LE_'])
                 //     ->displayNone();
                 // $form->hidden('soketoan_id',  __('models.store_phieunhap_chitiet.soketoan_id'))
                 //     ->default(1)
@@ -363,7 +362,6 @@ EOT;
                 $systemConfigSoPhieuNhap->save();
             });
 
-            
             $form->savingInTransactionDetailHasMany(function (Form $form, $instance) {
                 //dd($instance);
                 $instance->soluong_conlai = $instance->soluongnhap;

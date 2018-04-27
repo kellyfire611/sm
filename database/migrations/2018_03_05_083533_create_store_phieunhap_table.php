@@ -39,6 +39,18 @@ class CreateStorePhieunhapTable extends Migration
             $table->foreign('soketoan_id')->references('id')->on('store_soketoan');
             $table->foreign('nguoi_lapphieu_id')->references('id')->on('users');
             $table->foreign('nhapxuat_id')->references('id')->on('store_nhapxuat');
+
+            /*
+            Tổ kiểm nhập: nhiều người (họ tên, chức vụ)
+            Lý do kiểm nhập:
+            Địa điểm kiểm nhập:
+            Kết quả: là các dòng chi tiết
+                - Quy cách đóng gói
+                - Nguồn???? : NSNN (Ngân sách nhà nước); QTC (Quần tài trợ)
+            Ý kiến đề xuất:
+
+            Thành viên            Thư ký            Chủ tịch hội đồng kiểm nhập
+            */
             
             $table->softDeletes();
             $table->timestamps();

@@ -24,7 +24,7 @@ class ExcelController extends Controller
         Excel::create('SanPham', function($excel) {
 
             $excel->sheet('Sản phẩm', function(LaravelExcelWorksheet $sheet) {
-
+                //$sheet->loadView('');
                 $sheet->rows(['id' => 1, 'ma_sanpham' => 2]);
 
                 // $this->chunk(function ($records) use ($sheet) {

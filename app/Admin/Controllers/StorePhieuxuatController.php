@@ -395,6 +395,7 @@ EOT;
                 //     ->useTableDiv()
                 //     ->setWidth(12, 12, 3);
                 $form->currency('dongiaxuat', __('models.store_phieuxuat_chitiet.dongiaxuat'))
+                    ->rules('required')
                     ->addElementClass(['dongia'])
                     // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
