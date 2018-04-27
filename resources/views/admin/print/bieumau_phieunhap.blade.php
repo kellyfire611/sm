@@ -139,7 +139,7 @@ Biểu mẫu Phiếu nhập kho
             </tr>
             <tr style="height: 80px;"></tr>
             <tr>
-                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2">{{ Admin::user()->name }}</td>
                 <td class="no-border" colspan="2">{{ $bag['data']->result[0]->nguoi_giaohang }}</td>
                 <td class="no-border" colspan="2"></td>
                 <td class="no-border" colspan="2">{{ config('company.chucvu.ketoantruong') }}</td>

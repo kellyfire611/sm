@@ -147,13 +147,6 @@ $.ajax({
     $("#{$ma_sanpham->getIdString()}-cssloader").fadeOut(100);
 });
 EOT;
-            $ma_sanphamScript = <<<EOT
-$('.{$ma_sanpham->getElementClassString()}-btn-generateMaSanPham').click(function() {
-    alert('aaaa');
-});
-
-EOT;
-            // $ma_sanpham->script($ma_sanphamScript);
 
             $ten_sanpham->on('blur', $callbackSinhMaSanPham);
 

@@ -19,12 +19,12 @@ Biểu mẫu Phiếu xuất kho
     <article>
         <table class="tg">
             <tr>
-                <th class="tg-baqh">SỞ Y TẾ THÀNH PHỐ CẦN THƠ</th>
+                <th class="tg-baqh">{{ config('company.parent.name') }}</th>
                 <th class="tg-baqh"></th>
                 <th class="tg-baqh">Mẫu số: C20-HD </th>
             </tr>
             <tr>
-                <td class="tg-baqh align-center valign-top">BỆNH VIỆN LAO &amp; BỆNH PHÔI</td>
+                <td class="tg-baqh align-center valign-top">{{ config('company.name') }}</td>
                 <td class="bold name">{{ $bag['meta']['title'] }}</td>
                 <td class="tg-s6z2 align-center">Ban hành theo quy định số:
                     <br>19/2006/QĐ-BTC
@@ -133,11 +133,11 @@ Biểu mẫu Phiếu xuất kho
             </tr>
             <tr style="height: 80px;"></tr>
             <tr>
+                <td class="no-border" colspan="2">{{ Admin::user()->name }}</td>
+                <td class="no-border" colspan="2">{{ $bag['data']->result[0]->nguoi_nhanhang }}</td>
                 <td class="no-border" colspan="2"></td>
-                <td class="no-border" colspan="2"></td>
-                <td class="no-border" colspan="2"></td>
-                <td class="no-border" colspan="2"></td>
-                <td class="no-border" colspan="2"></td>
+                <td class="no-border" colspan="2">{{ config('company.chucvu.ketoantruong') }}</td>
+                <td class="no-border" colspan="2">{{ config('company.chucvu.thutruongdonvi') }}</td>
             </tr>
 
         </table>

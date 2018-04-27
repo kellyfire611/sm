@@ -178,7 +178,7 @@ window.onfocus = function(e)
                     nhapxuat: 'tkdk'
                 },
                 beforeSend: function(){
-                // $('<div />').attr('class', 'loading').appendTo('body');
+                    $('<div />').attr('class', 'loading').appendTo('body');
                 },
                 success: function(data) {
                     console.log(data);
@@ -255,15 +255,15 @@ EOT;
                 ->setWidth(12, 12, 6);
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
-                $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))
-                    ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_'])
-                    ->displayNone();
-                $form->hidden('soketoan_id',  __('models.store_phieunhap_chitiet.soketoan_id'))
-                    ->default(1)
-                    ->displayNone();
-                $form->hidden('nhap_vao_kho_id', __('models.store_phieunhap_chitiet.nhap_vao_kho_id'))
-                    ->default(1)
-                    ->displayNone();
+                // $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))
+                //     ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_'])
+                //     ->displayNone();
+                // $form->hidden('soketoan_id',  __('models.store_phieunhap_chitiet.soketoan_id'))
+                //     ->default(1)
+                //     ->displayNone();
+                // $form->hidden('nhap_vao_kho_id', __('models.store_phieunhap_chitiet.nhap_vao_kho_id'))
+                //     ->default(1)
+                //     ->displayNone();
 
                 $templateResult = <<<EOT
 
@@ -347,13 +347,13 @@ EOT;
                 // $model->soluong_conlai = $model->soluongnhap;
                 // dd($model->soluongnhap);
 
-
                 // Cập nhật SystemConfig Số phiếu nhập
                 $systemConfigSoPhieuNhap = StoreSystemConfig::where('name', '=', 'store.sophieunhap')->first();
                 $arrSystemConfigSoPhieuNhap = json_decode($systemConfigSoPhieuNhap->value, true);
 
-                $prefix = substr($form->model()->ma_sanpham, 0, 3);
-                $num = substr($form->model()->ma_sanpham, 3);
+                $prefix = substr($model->so_phieunhap, 0, 3);
+                $num = substr($model->so_phieunhap, 3);
+                
                 $arrSystemConfigSoPhieuNhap[$prefix] = $num;
 
                 $newValueSystemConfigSoPhieuNhap = json_encode($arrSystemConfigSoPhieuNhap);
@@ -365,6 +365,9 @@ EOT;
             $form->savingInTransactionDetailHasMany(function (Form $form, $instance) {
                 //dd($instance);
                 $instance->soluong_conlai = $instance->soluongnhap;
+                $instance->nhapxuat_id = $form->model()->nhapxuat_id;
+                $instance->soketoan_id = $form->model()->soketoan_id;
+                $instance->nhap_vao_kho_id = $form->model()->nhap_vao_kho_id;
             });
         });
     }

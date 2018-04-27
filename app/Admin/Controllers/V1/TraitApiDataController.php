@@ -70,4 +70,22 @@ trait ApiDataController {
                 'detail' => $chitiet));
     }
 
+    public function getDanhSachSanPhamConSoLuong($kho_id, $ngay_xuat_kho)
+    {
+        $parameter = [
+            $kho_id,
+            $ngay_xuat_kho
+        ];
+        $result = DB::select('call usp_store_danhsach_sanpham_consoluong(?,?)', $parameter);
+        $data = [];
+        foreach($result as $key => $value) {
+            //dd($value->ma_sanpham);
+            $data[$value->id] = '['.$value->ma_sanpham.'] '.$value->ten_sanpham.' ('.$value->ten_hoatchat.') '.$value->nongdo_hamluong.' '.$value->ten_donvitinh.' '.number_format($value->dongianhap,2).' ('.number_format($value->soluong_conlai, 0).')';
+        }
+
+        //dd($data);
+
+        //dd($result);//->pluck('ten_sanpham', 'id'));
+        return $data;
+    }
 }

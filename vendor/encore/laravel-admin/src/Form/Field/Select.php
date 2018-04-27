@@ -32,6 +32,7 @@ class Select extends Field
      * @var array
      */
     protected $config = [];
+    protected $templateResult = '';
 
     /**
      * Set options.
@@ -234,12 +235,15 @@ EOT;
         $configs = array_merge([
             'allowClear'  => true,
             'placeholder' => $this->label,
+            // 'templateResult' => $this->templateResult,
         ], $this->config);
 
-        $configs = json_encode($configs);
+        //$configs = json_encode($configs);
 
         if (empty($this->script)) {
-            $this->script = "$(\"select{$this->getElementClassSelector()}\").select2($configs);";
+            //$this->script = "$(\"select{$this->getElementClassSelector()}\").select2($configs);";
+            $this->script = "$(\"select{$this->getElementClassSelector()}\").select2({'allowClear': 'true', 'placeholder': '$this->label'". (empty($this->templateResult) ? ""  : ", 'templateResult': $this->templateResult") . "});";
+            // dd($this->script);
         }
 
         if ($this->options instanceof \Closure) {
@@ -256,5 +260,10 @@ EOT;
             'options' => $this->options,
             'groups'  => $this->groups,
         ]);
+    }
+
+    public function templateResult($templateResult) {
+        $this->templateResult = $templateResult;
+        return $this;
     }
 }
