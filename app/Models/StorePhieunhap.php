@@ -17,6 +17,16 @@ class StorePhieunhap extends Model
         return $this->where('deleted_at', null);
     }
 
+    public function scopeBienbanKiemNhap()
+    {
+        return $this->whereNotNull('bienban_kiemnhap_sophieu');
+    }
+
+    public function scopePhieuNhap()
+    {
+        return $this->whereNotNull('so_phieunhap');
+    }
+
     public static function options($id)
     {
         return static::where('id', $id)->get()->map(function ($obj) {

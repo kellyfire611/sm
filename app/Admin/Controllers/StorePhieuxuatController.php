@@ -150,22 +150,9 @@ class StorePhieuxuatController extends Controller
 
             $ajaxGenerateSoPhieuXuatUrl = route('store.ajax.generateSoPhieuXuat');
             $script = <<<EOT
-/* variable to track what kind of blur event is fired */
-var _isWindowBlurEvent = false;
 
-window.onblur = function(e)
-{
-    _isWindowBlurEvent = true;
-}
-
-window.onfocus = function(e)
-{
-    _isWindowBlurEvent = false;
-}
 
     $("{$ngayXuatKho->getElementClassSelector()}").blur(function() {
-        if(! _isWindowBlurEvent ) //if the event is Element.onBlur 
-		{
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -193,7 +180,6 @@ window.onfocus = function(e)
             }).done(function(data) {
                 $("#{$sophieuxuat->getIdString()}-cssloader").fadeOut(100);
             });
-        }
     });
 
 function format(item, state) {
@@ -237,42 +223,42 @@ EOT;
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
-            $form->select('nhacungcap_id', __('models.store_phieuxuat.nhacungcap_id'))
-                ->options(StoreNhacungcap::selectboxData())
-                ->rules('required')
-                ->useTableDiv()
-                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
-                ->setWidth(12, 12, 3);
-            $form->select('soketoan_id', __('models.store_phieuxuat.soketoan_id'))
-                ->rules('required')
-                ->options(StoreSoketoan::selectBoxData())
-                ->rules('required')
-                ->useTableDiv()
-                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
-                ->setWidth(12, 12, 3);
+            // $form->select('nhacungcap_id', __('models.store_phieuxuat.nhacungcap_id'))
+            //     ->options(StoreNhacungcap::selectboxData())
+            //     ->rules('required')
+            //     ->useTableDiv()
+            //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            //     ->setWidth(12, 12, 3);
+            // $form->select('soketoan_id', __('models.store_phieuxuat.soketoan_id'))
+            //     ->rules('required')
+            //     ->options(StoreSoketoan::selectBoxData())
+            //     ->rules('required')
+            //     ->useTableDiv()
+            //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            //     ->setWidth(12, 12, 3);
 
-            $form->select('xuat_tu_kho_id', __('models.store_phieuxuat.xuat_tu_kho_id'))
-                ->rules('required')
-                ->options(StoreKho::selectboxData())
-                ->rules('required')
-                ->useTableDiv()
-                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
-                ->setWidth(12, 12, 3);
-            $form->select('xuat_den_kho_id', __('models.store_phieuxuat.xuat_den_kho_id'))
-                ->rules('required')
-                ->options(StoreKho::selectboxData())
-                ->rules('required')
-                ->useTableDiv()
-                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
-                ->setWidth(12, 12, 3);
-                //dd(Admin::user());
-            $form->select('nguoi_lapphieu_id', __('models.store_phieuxuat.nguoi_lapphieu_id'))
-                ->options(CommonModel::administratorSelectboxData())
-                ->rules('required')
-                ->useTableDiv()
-                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
-                ->default(Admin::user()->id)
-                ->setWidth(12, 12, 6);
+            // $form->select('xuat_tu_kho_id', __('models.store_phieuxuat.xuat_tu_kho_id'))
+            //     ->rules('required')
+            //     ->options(StoreKho::selectboxData())
+            //     ->rules('required')
+            //     ->useTableDiv()
+            //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            //     ->setWidth(12, 12, 3);
+            // $form->select('xuat_den_kho_id', __('models.store_phieuxuat.xuat_den_kho_id'))
+            //     ->rules('required')
+            //     ->options(StoreKho::selectboxData())
+            //     ->rules('required')
+            //     ->useTableDiv()
+            //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            //     ->setWidth(12, 12, 3);
+            //     //dd(Admin::user());
+            // $form->select('nguoi_lapphieu_id', __('models.store_phieuxuat.nguoi_lapphieu_id'))
+            //     ->options(CommonModel::administratorSelectboxData())
+            //     ->rules('required')
+            //     ->useTableDiv()
+            //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            //     ->default(Admin::user()->id)
+            //     ->setWidth(12, 12, 6);
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 // Hidden field
@@ -288,10 +274,52 @@ EOT;
                     ->default(1);
 
                 // Show field
+                $escapeMarkup = <<<EOT
+                function(markup) {
+                    return markup;
+                }
+EOT;
+                
 $templateResult = <<<EOT
-function(item) {
-    return format(item, false);
-}
+function(data) {
+    if (!data.id) { return data.text; }
+
+    var arr = data.text.split('|');
+    var template = '';
+    var ma_sanpham = '<span class="bold">(' + arr[0] + ')</span> ';
+    var ten_sanpham = '<span>' + arr[1] + '</span> ';
+    var ten_hoatchat = '<span>' + arr[2] + '</span> ';
+    var nongdo_hamluong = '<span>' + arr[3] + '</span> ';
+    var ten_donvitinh = '<span>' + arr[4] + '</span> ';
+    var dongianhap = '<span class="dongia"><b>' + arr[5] + 'đ</b></span> ';
+    var soluong_conlai = '<span class="" style="color:red"><b>' + arr[6] + '</b></span> ';
+    var sokiemsoat = '<span class="">' + arr[7] + '</span> ';
+    var hansudung = '<span class="" style="color: green"><b>' + arr[8] + '</b></span> ';
+
+    template = ma_sanpham + ten_sanpham + ten_hoatchat + nongdo_hamluong + sokiemsoat + hansudung + dongianhap + soluong_conlai + ten_donvitinh;
+    return template;
+  }
+EOT;
+
+$templateSelection = <<<EOT
+function(data) {
+    if (!data.id) { return data.text; }
+
+    var arr = data.text.split('|');
+    var template = '';
+    var ma_sanpham = '<span class="bold">(' + arr[0] + ')</span> ';
+    var ten_sanpham = '<span>' + arr[1] + '</span> ';
+    var ten_hoatchat = '<span>' + arr[2] + '</span> ';
+    var nongdo_hamluong = '<span>' + arr[3] + '</span> ';
+    var ten_donvitinh = '<span>' + arr[4] + '</span> ';
+    var dongianhap = '<span class="dongia"><b>' + arr[5] + 'đ</b></span> ';
+    var soluong_conlai = '<span class="" style="color:red"><b>' + arr[6] + '</b></span> ';
+    var sokiemsoat = '<span class=""><b>' + arr[7] + '</b></span> ';
+    var hansudung = '<span class="" style="color: pink"><i>' + arr[8] + '</i></span> ';
+
+    template = ma_sanpham + ten_sanpham + ten_hoatchat + nongdo_hamluong + sokiemsoat + hansudung + dongianhap + soluong_conlai + ten_donvitinh;
+    return template;
+  }
 EOT;
 
                 $sanpham = $form->select('sanpham_id', __('models.store_sanpham_nhom_loai_rel.sanpham_id'))
@@ -301,7 +329,9 @@ EOT;
                     // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
+                    ->escapeMarkup($escapeMarkup)
                     ->templateResult($templateResult)
+                    ->templateSelection($templateSelection)
                     ->setWidth(12, 12, 9);
 
                     //dd($sanpham->getElementClassSelector());

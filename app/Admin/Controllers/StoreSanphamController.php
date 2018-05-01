@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Models\StoreSanpham;
 use App\Models\StoreSystemConfig;
+use App\Models\StoreDonvitinh;
 use App\Models\HrmQuocgia;
 use App\Admin\Extensions\Exporters\StoreSanPhamExcelExporter;
 
@@ -168,12 +169,15 @@ $.ajax({
             $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'))->attribute('tabindex', 3);
             $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'))->attribute('tabindex', 4);
             $form->text('sokiemsoat', __('models.store_sanpham.sokiemsoat'))->attribute('tabindex', 5);
-            $form->image('anh', __('models.store_sanpham.anh'));
-
+            $form->select('donvitinh_id', __('models.store_sanpham.donvitinh_id'))
+                    ->options(StoreDonvitinh::selectboxData());
+            $form->text('quycachdonggoi', __('models.store_sanpham.quycachdonggoi'))->attribute('tabindex', 6);
+            
             $form->select('nuoc_sanxuat_id', __('models.store_sanpham.nuoc_sanxuat_id'))->options(
                 HrmQuocgia::NoneDelete()->pluck('ten_quocgia', 'id')
-            )->rules('required')->attribute('tabindex', 6);
-
+                )->rules('required')->attribute('tabindex', 6);
+                
+            $form->image('anh', __('models.store_sanpham.anh'));
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));
 
@@ -222,12 +226,16 @@ $.ajax({
             $form->text('ten_hoatchat', __('models.store_sanpham.ten_hoatchat'))->attribute('tabindex', 3);
             $form->text('nongdo_hamluong', __('models.store_sanpham.nongdo_hamluong'))->attribute('tabindex', 4);
             $form->text('sokiemsoat', __('models.store_sanpham.sokiemsoat'))->attribute('tabindex', 5);
-            $form->image('anh', __('models.store_sanpham.anh'));
-
+            $form->select('donvitinh_id', __('models.store_sanpham.donvitinh_id'))
+                ->options(StoreDonvitinh::selectboxData());
+            $form->text('quycachdonggoi', __('models.store_sanpham.quycachdonggoi'))->attribute('tabindex', 6);
+            
             $form->select('nuoc_sanxuat_id', __('models.store_sanpham.nuoc_sanxuat_id'))->options(
                 HrmQuocgia::NoneDelete()->pluck('ten_quocgia', 'id')
-            )->rules('required')->attribute('tabindex', 6);
-
+                )->rules('required')->attribute('tabindex', 6);
+                
+            $form->image('anh', __('models.store_sanpham.anh'));
+            
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));
         });

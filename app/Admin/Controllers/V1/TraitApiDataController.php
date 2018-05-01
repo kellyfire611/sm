@@ -4,6 +4,7 @@ namespace App\Admin\Controllers\V1;
 use App\Models\StorePhieunhap;
 use App\Models\StorePhieuxuat;
 use DB;
+use Carbon\Carbon;
 
 trait ApiDataController {
 
@@ -77,15 +78,30 @@ trait ApiDataController {
             $ngay_xuat_kho
         ];
         $result = DB::select('call usp_store_danhsach_sanpham_consoluong(?,?)', $parameter);
-        $data = [];
+        // $data = [
+        //     'results' => []
+        // ];
+
         foreach($result as $key => $value) {
             //dd($value->ma_sanpham);
-            $data[$value->id] = '['.$value->ma_sanpham.'] '.$value->ten_sanpham.' ('.$value->ten_hoatchat.') '.$value->nongdo_hamluong.' '.$value->ten_donvitinh.' '.number_format($value->dongianhap,2).' ('.number_format($value->soluong_conlai, 0).')';
+            //$data[$value->ma_sanpham]['id'] = $value->ma_sanpham;
+            //$data[]['text'] = '['.$value->ma_sanpham.'] '.$value->ten_sanpham.' ('.$value->ten_hoatchat.') '.$value->nongdo_hamluong.' '.$value->ten_donvitinh.' '.number_format($value->dongianhap,2).' ('.number_format($value->soluong_conlai, 0).')';
+            //$data[]['html'] = '['.$value->ma_sanpham.'] '.$value->ten_sanpham.' ('.$value->ten_hoatchat.') '.$value->nongdo_hamluong.' '.$value->ten_donvitinh.' '.number_format($value->dongianhap,2).' ('.number_format($value->soluong_conlai, 0).')';
+            // $data['results'][] = [
+            //     'id' => $value->id,
+            //     'text' => $value->ma_sanpham
+            // ];
+
+            //$data[$value->id] = '['.$value->ma_sanpham.'] '.$value->ten_sanpham.' ('.$value->ten_hoatchat.') '.$value->nongdo_hamluong.' '.$value->ten_donvitinh.' '.number_format($value->dongianhap,2).' ('.number_format($value->soluong_conlai, 0).')';
+            $data[$value->id] = $value->ma_sanpham . '|' . $value->ten_sanpham . '|' . $value->ten_hoatchat . '|' . $value->nongdo_hamluong . '|' . $value->ten_donvitinh . '|' . number_format($value->dongianhap,2) . '|' . number_format($value->soluong_conlai, 0)
+                . '|' . $value->sokiemsoat . '|' . Carbon::parse($value->hansudung)->format('d-m-Y');
+
         }
 
         //dd($data);
-
+        //dd(json_encode($data));
         //dd($result);//->pluck('ten_sanpham', 'id'));
+        // return json_encode($data);
         return $data;
     }
 }

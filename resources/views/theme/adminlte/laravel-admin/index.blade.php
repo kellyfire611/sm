@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}" ng-app="agmk_store">
+<html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css") }}">
     <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/AdminLTE/dist/css/skins/_all-skins.min.css") }}">
     <link rel="stylesheet" href="{{ admin_asset("/vendor/cssloader/cssloader.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/css/bootstrap3-hacking.css") }}">
     <link rel="stylesheet" href="{{ admin_asset("/css/custom-style.css") }}">
 
     <!-- REQUIRED JS SCRIPTS -->
@@ -45,6 +46,12 @@
 </head>
 
 <body class="hold-transition {{config('admin.skin')}} {{join(' ', config('admin.layout'))}}">
+
+<div ng-app="ungdungAngularjs" ng-controller="sinhvienController">
+</div>
+
+
+
 <div class="wrapper">
 
     @include('admin::partials.header')
@@ -67,10 +74,14 @@
 
     var listener = new window.keypress.Listener();
 
-    var agmkStore = angular.module("agmk_store", []);
-    agmkStore.controller('StorePhieunhapController', function($scope) {
+    // var agmkStore = angular.module("agmkstore", []);
+    // agmkStore.controller('agmkstoreController', function($scope) {
 
-    });
+    // });
+
+    var ungdungAngularjs = angular.module("ungdungAngularjs", []);
+ungdungAngularjs.controller('sinhvienController', function($scope) {
+});
 </script>
 
 <!-- REQUIRED JS SCRIPTS -->

@@ -89,4 +89,26 @@ class AjaxController extends Controller
         $msoPhieuXuatGenerated = $prefix . $num;
         return response()->json(array('msg'=> $msoPhieuXuatGenerated), 200);
     }
+
+    public function generateSoPhieuBienBanKiemNhap(Request $request)
+    {
+        $systemConfig = StoreSystemConfig::where('name', '=', 'store.sobienbankiemnhap')->first();
+        $arrSystemConfig = json_decode($systemConfig->value, true);
+
+        $inputs = $request->all();
+        $prefix = $inputs['prefix'];
+        
+        $num = 1;
+        if(array_key_exists($prefix, $arrSystemConfig)) {
+            $arrSystemConfig[$prefix] += 1;
+            $num = $arrSystemConfig[$prefix];
+        } else {
+            $arrSystemConfig[$prefix] = $num;
+        }
+
+        $newValueSystemConfig = json_encode($arrSystemConfig);
+
+        $maGenerated = $prefix . $num;
+        return response()->json(array('msg'=> $maGenerated), 200);
+    }
 }
