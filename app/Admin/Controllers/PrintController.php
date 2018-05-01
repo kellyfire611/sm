@@ -11,6 +11,7 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
 use App\Admin\Controllers\V1\ApiDataController;
+use DB;
 
 class PrintController extends Controller
 {
@@ -39,7 +40,7 @@ class PrintController extends Controller
     protected function getDataBieumau_phieunhap($query)
     {
         $meta = [
-            'title' => 'Biểu mẫu phiếu nhập',
+            'title' => 'Phiếu nhập',
         ];
         $result = $this->phieunhapById($query['phieunhap_id']);
 
@@ -57,11 +58,47 @@ class PrintController extends Controller
 
         $bag = [
             'meta' => [
-                'title' => 'Biểu mẫu phiếu xuất',
+                'title' => 'Phiếu xuất',
             ],
             'data' => json_decode($result)
         ];
 
+        return $bag;
+    }
+
+    protected function getDataBieumau_report_bangkenhapkho_theonguonvon($query)
+    {
+        $totalResult = 1;
+        $totalPages = 1;
+        $currentPage = 1;
+        $chitiet = null;
+        // dd($query);
+        $tuNgay = $query['tuNgay'];
+        $denNgay = $query['denNgay'];
+        $nguoncungcap_id = $query['nguoncungcap_id'];
+
+        $parameter = [
+            $tuNgay,
+            $denNgay,
+            $nguoncungcap_id
+        ];
+        $data = DB::select('call usp_baocao_bangkenhapkho_theonguonvon(?,?,?)', $parameter);
+
+        $result = json_encode(
+            array('totalResult' => $totalResult, 
+                'totalPages' => $totalPages, 
+                'currentPage' => $currentPage, 
+                'result' => $data,
+                'detail' => $chitiet));
+
+        $bag = [
+            'meta' => [
+                'title' => 'Phiếu xuất',
+            ],
+            'data' => json_decode($result)
+        ];
+
+        dd($bag);   
         return $bag;
     }
 }

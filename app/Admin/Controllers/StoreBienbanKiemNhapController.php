@@ -10,6 +10,7 @@ use App\Models\StorePhieunhapChitiet;
 use App\Models\StoreSanpham;
 use App\Models\StoreDonvitinh;
 use App\Models\StoreSystemConfig;
+use App\Models\StoreNguoncungcap;
 use App\Models\CommonModel;
 use Encore\Admin\Auth\Database\Administrator;
 
@@ -22,6 +23,7 @@ use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Encore\Admin\Form\Field\Hidden;
+use Carbon\Carbon;
 
 class StoreBienbanKiemNhapController extends Controller
 {
@@ -97,15 +99,25 @@ class StoreBienbanKiemNhapController extends Controller
             $grid->column('bienban_kiemnhap_ykiendexuat', __('models.store_phieunhap.bienban_kiemnhap_ykiendexuat'));
          
             $grid->actions(function ($actions) {
-                $token = csrf_token();
-                $route = route('store.print', ['view' => 'bieumau_phieunhap']);
                 $id = $actions->getKey();
-                $actions->append('
-                    <form method="post" action="'.$route.'">
-                        <input type="hidden" name="_token" value="'.$token.'" />
-                        <input type="hidden" name="phieunhap_id" value="'.$id.'" />
-                        <button class="btn btn-sm btn-primary grid-refresh" type="submit"><i class="fa fa-refresh"></i> In phiếu</button>
-                    </form>');
+                $phieunhap = $actions->row;
+                if(!empty($phieunhap->so_phieunhap))
+                {
+                    $actions->disableDelete();
+                    $actions->disableEdit();
+                    $actions->append('<span class="label label-success">Đã chuyển thành Phiếu nhập</span>');
+                }
+                else
+                {
+                    $token = csrf_token();
+                    $route = route('store.chuyenBienBanKiemNhapThanhPhieuNhap');
+                    $actions->append('
+                        <form method="post" action="'.$route.'">
+                            <input type="hidden" name="_token" value="'.$token.'" />
+                            <input type="hidden" name="phieunhap_id" value="'.$id.'" />
+                            <button class="btn btn-sm btn-warning grid-refresh" type="submit"><i class="fa fa-refresh"></i> Chuyển thành phiếu nhập</button>
+                        </form>');
+                }
             });
         });
     }
@@ -273,6 +285,13 @@ EOT;
                 //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 //     ->useTableDiv()
                 //     ->setWidth(12, 12, 1);
+                $form->select('nguoncungcap_id', __('models.store_phieunhap_chitiet.nguoncungcap_id'))
+                    ->options(StoreNguoncungcap::selectboxData())
+                    ->rules('required')
+                    //->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                    ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                    ->useTableDiv()
+                    ->setWidth(12, 12, 3);
                 $form->datetime('hansudung', __('models.store_phieunhap_chitiet.hansudung'))
                     // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
@@ -346,5 +365,40 @@ EOT;
                 $instance->nhap_vao_kho_id = $form->model()->nhap_vao_kho_id;
             });
         });
+    }
+
+    public function ChuyenBienBanKiemNhapThanhPhieuNhap(Request $request)
+    {
+        $inputs = $request->all();
+        $phieunhap_id = $inputs['phieunhap_id'];
+        $phieunhap = StorePhieunhap::find($phieunhap_id);
+
+        // Sinh số tự động
+        $systemConfigSoPhieuNhap = StoreSystemConfig::where('name', '=', 'store.sophieunhap')->first();
+        $arrSystemConfigSoPhieuNhap = json_decode($systemConfigSoPhieuNhap->value, true);
+        $prefix = 'nkl';
+        
+        $num = 1;
+        if(array_key_exists($prefix, $arrSystemConfigSoPhieuNhap)) {
+            $arrSystemConfigSoPhieuNhap[$prefix] += 1;
+            $num = $arrSystemConfigSoPhieuNhap[$prefix];
+        } else {
+            $arrSystemConfigSoPhieuNhap[$prefix] = $num;
+        }
+
+        $newValueSystemConfigSoPhieuNhap = json_encode($arrSystemConfigSoPhieuNhap);
+
+        $msoPhieuNhapGenerated = $prefix . $num;
+        $phieunhap->so_phieunhap = $msoPhieuNhapGenerated;
+
+        $systemConfigSoPhieuNhap->value = $newValueSystemConfigSoPhieuNhap;
+        $systemConfigSoPhieuNhap->save();
+
+        $phieunhap->ngay_nhapkho = Carbon::now();
+        $phieunhap->lydo_nhap = 'Chuyển dữ liệu từ Biên bản kiểm nhập ' . $phieunhap->bienban_kiemnhap_sophieu;
+        $phieunhap->nhapxuat_id = CommonModel::getNhapXuat()['_NHAP_VAO_KHO_LE_'];
+        $phieunhap->save();
+
+        return redirect('/admin/store/bienban/kiemnhap');
     }
 }

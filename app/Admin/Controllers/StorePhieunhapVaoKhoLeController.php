@@ -10,6 +10,7 @@ use App\Models\StorePhieunhapChitiet;
 use App\Models\StoreSanpham;
 use App\Models\StoreDonvitinh;
 use App\Models\StoreSystemConfig;
+use App\Models\StoreNguoncungcap;
 use App\Models\CommonModel;
 use Encore\Admin\Auth\Database\Administrator;
 
@@ -36,7 +37,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('Nhập vào kho lẻ');
             $content->description('description');
             $content->controller(StorePhieunhapVaoKhoLeController::class);
 
@@ -54,7 +55,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
+            $content->header('Nhập vào kho lẻ');
             $content->description('description');
             $content->controller('StorePhieunhapVaoKhoLeController');
 
@@ -71,7 +72,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('Nhập vào kho lẻ');
             $content->description('description');
 
             $content->body($this->form());
@@ -86,7 +87,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
     protected function grid()
     {
         return Admin::grid(StorePhieunhap::class, function (Grid $grid) {
-
+            $grid->model()->scopePhieuNhap(CommonModel::getNhapXuat()['_NHAP_VAO_KHO_LE_']);
             $grid->id('ID')->sortable();
 
             $grid->column('so_phieunhap', __('models.store_phieunhap.so_phieunhap'));
@@ -94,6 +95,9 @@ class StorePhieunhapVaoKhoLeController extends Controller
             $grid->column('ngay_laphoadon', __('models.store_phieunhap.ngay_laphoadon'));
             $grid->column('ngay_xacnhan', __('models.store_phieunhap.ngay_xacnhan'));
             $grid->column('lydo_nhap', __('models.store_phieunhap.lydo_nhap'));
+            $grid->column('bienban_kiemnhap_sophieu', __('models.store_phieunhap.bienban_kiemnhap_sophieu'))->display(function ($bienban_kiemnhap_sophieu) {
+                return "<span class='label label-success'>$bienban_kiemnhap_sophieu</span>";
+            });
             $grid->column('nguoi_giaohang', __('models.store_phieunhap.nguoi_giaohang'));
             $grid->column('so_chungtu', __('models.store_phieunhap.so_chungtu'));
             $grid->column('nhapxuat_id', __('models.store_phieunhap.nhapxuat_id'));
@@ -131,7 +135,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
         return Admin::form(StorePhieunhap::class, function (Form $form) {
             //$form->display('id', 'ID');
             $form->hidden('nhapxuat_id', __('models.store_phieunhap.nhapxuat_id'))
-                ->default(CommonModel::getNhapXuat()['_NHAP_VAO_KHO_LE_']);
+                ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_']);
                 
             $sophieunhap = $form->text('so_phieunhap', __('models.store_phieunhap.so_phieunhap'))
                 ->attribute('tabindex', 1)
@@ -148,22 +152,9 @@ class StorePhieunhapVaoKhoLeController extends Controller
 
                 $ajaxGenerateSoPhieuNhapUrl = route('store.ajax.generateSoPhieuNhap');
                 $script = <<<EOT
-/* variable to track what kind of blur event is fired */
-var _isWindowBlurEvent = false;
 
-window.onblur = function(e)
-{
-    _isWindowBlurEvent = true;
-}
-
-window.onfocus = function(e)
-{
-    _isWindowBlurEvent = false;
-}
 
     $("{$ngayNhapKho->getElementClassSelector()}").blur(function() {
-        if(! _isWindowBlurEvent ) //if the event is Element.onBlur 
-		{
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -175,7 +166,7 @@ window.onfocus = function(e)
                 url: '$ajaxGenerateSoPhieuNhapUrl',
                 dataType: 'json',
                 data: {
-                    nhapxuat: 'tkdk'
+                    nhapxuat: 'nkl'
                 },
                 beforeSend: function(){
                     $('<div />').attr('class', 'loading').appendTo('body');
@@ -189,9 +180,8 @@ window.onfocus = function(e)
                     console.log(data);
                 }
             }).done(function(data) {
-                $("#{$sophieunhap->getIdString()}-cssloader").fadeOut(100);
+                $('.loading').remove();
             });
-        }
     });
 EOT;
          
@@ -207,6 +197,7 @@ EOT;
             ->useTableDiv()
             ->labelPosition(CommonModel::LABEL_POSITION_TOP)
             ->setWidth(12, 12, 3);
+
             $form->datetime('ngay_xacnhan', __('models.store_phieunhap.ngay_xacnhan'))
             ->attribute('tabindex', 2)
             ->useTableDiv()
@@ -229,7 +220,7 @@ EOT;
             ->setWidth(12, 12, 3);
             $form->select('nhacungcap_id', __('models.store_phieunhap.nhacungcap_id'))
                 ->options(StoreNhacungcap::selectboxData())
-                ->rules('required')
+                //->rules('required')
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
@@ -256,7 +247,7 @@ EOT;
 
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 // $form->hidden('nhapxuat_id', __('models.store_phieunhap_chitiet.nhapxuat_id'))
-                //     ->default(CommonModel::getNhapXuat()['_NHAP_VAO_KHO_LE_'])
+                //     ->default(CommonModel::getNhapXuat()['_NHAP_TON_KHO_DAU_KY_'])
                 //     ->displayNone();
                 // $form->hidden('soketoan_id',  __('models.store_phieunhap_chitiet.soketoan_id'))
                 //     ->default(1)
@@ -288,12 +279,19 @@ EOT;
                     ->useTableDiv()
                     ->setWidth(12, 12, 3);
                     //->config('templateResult', $templateResult);
-                $form->select('donvitinh_id', __('models.store_phieunhap_chitiet.donvitinh_id'))
-                    ->options(StoreDonvitinh::selectboxData())
-                    // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                $form->select('nguoncungcap_id', __('models.store_phieunhap_chitiet.nguoncungcap_id'))
+                    ->options(StoreNguoncungcap::selectboxData())
+                    ->rules('required')
+                    //->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
-                    ->setWidth(12, 12, 1);
+                    ->setWidth(12, 12, 2);
+                // $form->select('donvitinh_id', __('models.store_phieunhap_chitiet.donvitinh_id'))
+                //     ->options(StoreDonvitinh::selectboxData())
+                //     // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
+                //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+                //     ->useTableDiv()
+                //     ->setWidth(12, 12, 1);
                 $form->text('so_lo', __('models.store_phieunhap_chitiet.so_lo'))
                     //->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
                     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
@@ -362,8 +360,11 @@ EOT;
                 $systemConfigSoPhieuNhap->save();
             });
 
+            
             $form->savingInTransactionDetailHasMany(function (Form $form, $instance) {
                 //dd($instance);
+                $sanpham = StoreSanpham::find($instance->sanpham_id);
+                $instance->donvitinh_id = $sanpham->donvitinh_id;
                 $instance->soluong_conlai = $instance->soluongnhap;
                 $instance->nhapxuat_id = $form->model()->nhapxuat_id;
                 $instance->soketoan_id = $form->model()->soketoan_id;

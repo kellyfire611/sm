@@ -111,4 +111,11 @@ class AjaxController extends Controller
         $maGenerated = $prefix . $num;
         return response()->json(array('msg'=> $maGenerated), 200);
     }
+
+    public function reportBangKeNhapKhoTheoNguonVon(Request $request)
+    {
+        $inputs = $request->all();
+        //dd($inputs);
+        return response()->json(array('msg'=> $inputs), 200);
+    }
 }

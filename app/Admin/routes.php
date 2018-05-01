@@ -29,14 +29,21 @@ Route::group([
         'store/loai_nhom_sanpham_rel'      => StoreSanphamNhomLoaiRelController::class,
 
         'store/phieunhap_tondauky'         => StorePhieunhapController::class,
+        'store/phieunhap_khole'            => StorePhieunhapVaoKhoLeController::class,
         'store/phieuxuat_quakhole'         => StorePhieuxuatController::class,
+        'store/phieuxuat_hubehongmatthanhly' => StorePhieuxuatHubeHongmatThanhlyController::class,
 
         'store/bienban/kiemnhap'           => StoreBienbanKiemNhapController::class,
 
     ]);
 
+    /* --- Xử lý Nhập xuất --- */
+    $router->post('store/chuyenbienbankiemnhapthanhphieunhap', 'StoreBienbanKiemNhapController@ChuyenBienBanKiemNhapThanhPhieuNhap')->name('store.chuyenBienBanKiemNhapThanhPhieuNhap');
+    /* ./. --- Xử lý Nhập xuất --- */
+
     /* --- Báo cáo --- */
     $router->get('store/baocao/nhapxuatton_chitiet', 'Reports\StoreReportNhapxuattonChitietController@index');
+    $router->get('store/baocao/bangkenhapkho_theonguonvon', 'Reports\StoreReportBangKeNhapKhoTheoNguonVonController@index');
     /* ./. --- Báo cáo --- */
 
     /* --- Print --- */
@@ -52,6 +59,7 @@ Route::group([
     $router->post('store/ajax/generateSoPhieuNhap', 'AjaxController@generateSoPhieuNhap')->name('store.ajax.generateSoPhieuNhap');
     $router->post('store/ajax/generateSoPhieuXuat', 'AjaxController@generateSoPhieuXuat')->name('store.ajax.generateSoPhieuXuat');
     $router->post('store/ajax/generateSoPhieuBienBanKiemNhap', 'AjaxController@generateSoPhieuBienBanKiemNhap')->name('store.ajax.generateSoPhieuBienBanKiemNhap');
+    $router->post('store/ajax/reportBangKeNhapKhoTheoNguonVon', 'AjaxController@reportBangKeNhapKhoTheoNguonVon')->name('store.ajax.reportBangKeNhapKhoTheoNguonVon');
     /* ./. --- Ajax Controller --- */
 
     /* --- API V1 --- */

@@ -22,9 +22,10 @@ class StorePhieunhap extends Model
         return $this->whereNotNull('bienban_kiemnhap_sophieu');
     }
 
-    public function scopePhieuNhap()
+    public function scopePhieuNhap($nhapxuat_id)
     {
-        return $this->whereNotNull('so_phieunhap');
+        return $this->whereNotNull('so_phieunhap')
+            ->where('nhapxuat_id', $nhapxuat_id);
     }
 
     public static function options($id)

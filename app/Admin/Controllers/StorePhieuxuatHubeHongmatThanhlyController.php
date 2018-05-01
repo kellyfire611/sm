@@ -27,7 +27,7 @@ use Encore\Admin\Form\Field\Hidden;
 use Auth;
 use Carbon\Carbon;
 
-class StorePhieuxuatController extends Controller
+class StorePhieuxuatHubeHongmatThanhlyController extends Controller
 {
     use ModelForm;
     use ApiDataController;
@@ -89,7 +89,7 @@ class StorePhieuxuatController extends Controller
     protected function grid()
     {
         return Admin::grid(StorePhieuxuat::class, function (Grid $grid) {
-            $grid->model()->scopePhieuXuat(CommonModel::getNhapXuat()['_XUAT_QUA_KHO_LE_']);
+            $grid->model()->scopePhieuXuat(CommonModel::getNhapXuat()['_XUAT_HUBE_HONGMAT_THANHLY_']);
             $grid->id('ID')->sortable();
 
             $grid->column('so_phieuxuat', __('models.store_phieuxuat.so_phieuxuat'));
@@ -133,7 +133,7 @@ class StorePhieuxuatController extends Controller
         return Admin::form(StorePhieuxuat::class, function (Form $form) {
             // Hidden field
             $form->hidden('nhapxuat_id', __('models.store_phieuxuat.nhapxuat_id'))
-                ->default(CommonModel::getNhapXuat()['_XUAT_QUA_KHO_LE_']);
+                ->default(CommonModel::getNhapXuat()['_XUAT_HUBE_HONGMAT_THANHLY_']);
             
             // Show field
             //$form->display('id', 'ID');
@@ -165,7 +165,7 @@ class StorePhieuxuatController extends Controller
                 url: '$ajaxGenerateSoPhieuXuatUrl',
                 dataType: 'json',
                 data: {
-                    nhapxuat: 'xkl'
+                    nhapxuat: 'xhb'
                 },
                 beforeSend: function(){
                     $('<div />').attr('class', 'loading').appendTo('body');
@@ -212,6 +212,7 @@ EOT;
                 ->setWidth(12, 12, 3);
             $form->text('lydo_xuat', __('models.store_phieuxuat.lydo_xuat'))
                 ->rules('required')
+                ->default('Xuất hư bể / hỏng mất / thanh lý')
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
@@ -245,14 +246,14 @@ EOT;
                 ->useTableDiv()
                 ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 ->setWidth(12, 12, 3);
-            $form->select('xuat_den_kho_id', __('models.store_phieuxuat.xuat_den_kho_id'))
-                ->rules('required')
-                ->options(StoreKho::selectboxData())
-                ->rules('required')
-                ->useTableDiv()
-                ->labelPosition(CommonModel::LABEL_POSITION_TOP)
-                ->setWidth(12, 12, 3);
-                //dd(Admin::user());
+            // $form->select('xuat_den_kho_id', __('models.store_phieuxuat.xuat_den_kho_id'))
+            //     ->rules('required')
+            //     ->options(StoreKho::selectboxData())
+            //     ->rules('required')
+            //     ->useTableDiv()
+            //     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
+            //     ->setWidth(12, 12, 3);
+            //     //dd(Admin::user());
             $form->select('nguoi_lapphieu_id', __('models.store_phieuxuat.nguoi_lapphieu_id'))
                 ->options(CommonModel::administratorSelectboxData())
                 ->rules('required')
@@ -264,7 +265,7 @@ EOT;
             $form->hasMany('chitiet', 'Chi tiết', function (Form\NestedForm $form) {
                 // Hidden field
                 $form->hidden('nhapxuat_id', __('models.store_phieuxuat_chitiet.nhapxuat_id'))
-                    ->default(CommonModel::getNhapXuat()['_XUAT_QUA_KHO_LE_']);
+                    ->default(CommonModel::getNhapXuat()['_XUAT_HUBE_HONGMAT_THANHLY_']);
                 $form->hidden('soketoan_id',  __('models.store_phieuxuat_chitiet.soketoan_id'))
                     ->default(1);
                 // $form->hidden('xuat_tu_kho_id', __('models.store_phieuxuat_chitiet.xuat_tu_kho_id'))
