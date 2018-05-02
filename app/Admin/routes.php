@@ -44,6 +44,7 @@ Route::group([
     /* --- Báo cáo --- */
     $router->get('store/baocao/nhapxuatton_chitiet', 'Reports\StoreReportNhapxuattonChitietController@index');
     $router->get('store/baocao/bangkenhapkho_theonguonvon', 'Reports\StoreReportBangKeNhapKhoTheoNguonVonController@index');
+    $router->get('store/baocao/bangkexuatkho_theosanpham', 'Reports\StoreReportBangKeXuatKhoTheoSanPhamController@index');
     /* ./. --- Báo cáo --- */
 
     /* --- Print --- */

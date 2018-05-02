@@ -1,7 +1,7 @@
 @extends('print.layout.paper')
 
 @section('title')
-Biểu mẫu Phiếu xuất kho
+Biểu mẫu Báo cáo Bảng kê xuất kho theo sản phẩm
 @endsection
 
 @section('paper-size') A4 landscape @endsection
@@ -41,29 +41,29 @@ Biểu mẫu Phiếu xuất kho
               <td class="tg-031e"></td>
           </tr>
           <tr>
-              <td class="tg-031e align-left" colspan="3">Nguồn vốn : {{ $bag['data']->result[0]->ten_nguoncungcap }}  </td>
+              <td class="tg-031e align-left" colspan="3">Nguồn vốn : {{ $bag['data']->result[0]->ten_nguoncungcap or '' }}  </td>
           </tr>
       </table>
       <table class="main">
-        <tr>
-          <th class="main-s6z2" rowspan="2">STT</th>
-          <th class="main-s6z2" colspan="2">Chứng từ</th>
-          <th class="main-s6z2" rowspan="2">Tên quy cách vật tư dụng cụ, sản phẩm</th>
-          <th class="main-s6z2" rowspan="2">Số lô</th>
-          <th class="main-s6z2" rowspan="2">Kho</th>
-          <th class="main-s6z2" rowspan="2">ĐVT</th>
-          <th class="main-s6z2" rowspan="2">Hạn SD</th>
+          <tr>
+              <th class="main-s6z2" rowspan="2">STT</th>
+              <th class="main-s6z2" colspan="2">Chứng từ</th>
+              <th class="main-s6z2" rowspan="2">Tên quy cách vật tư dụng cụ, sản phẩm</th>
+              <th class="main-s6z2" rowspan="2">Số lô</th>
+              <th class="main-s6z2" rowspan="2">Kho</th>
+              <th class="main-s6z2" rowspan="2">ĐVT</th>
+              <th class="main-s6z2" rowspan="2">Hạn SD</th>
 
-          <th class="main-s6z2" rowspan="2">Đơn giá</th>
-          <th class="main-s6z2" rowspan="2">Số lượng</th>
+              <th class="main-s6z2" rowspan="2">Đơn giá</th>
+              <th class="main-s6z2" rowspan="2">Số lượng</th>
 
-          <th class="main-s6z2" rowspan="2">Thành<br> tiền</th>
-          <th class="main-s6z2" rowspan="2">Ghi<br> chú</th>
-      </tr>
-      <tr>
-        <th class="main-s6z2" >Số</th>
-        <th class="main-s6z2" >Ngày</th>
-    </tr>
+              <th class="main-s6z2" rowspan="2">Thành<br> tiền</th>
+              <th class="main-s6z2" rowspan="2">Ghi<br> chú</th>
+          </tr>
+          <tr>
+            <th class="main-s6z2" >Số</th>
+            <th class="main-s6z2" >Ngày</th>
+        </tr>
           <?php
               $stt = 1;
               $sum = 0;

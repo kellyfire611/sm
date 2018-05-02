@@ -105,4 +105,44 @@ class PrintController extends Controller
         // dd($bag);   
         return $bag;
     }
+
+    protected function getDataBieumau_report_bangkexuatkho_theosanpham($query)
+    {
+        $totalResult = 1;
+        $totalPages = 1;
+        $currentPage = 1;
+        $chitiet = null;
+        // dd($query);
+        $p_ngay_batdau = $query['p_ngay_batdau'];
+        $p_ngay_ketthuc = $query['p_ngay_ketthuc'];
+        $p_sanpham_id = $query['p_sanpham_id'];
+
+        $parameter = [
+            $p_ngay_batdau,
+            $p_ngay_ketthuc,
+            $p_sanpham_id
+        ];
+        $data = DB::select('call usp_baocao_bangkexuatkho_theosanpham(?,?,?)', $parameter);
+        $chitiet = $data;
+
+        $result = json_encode(
+            array('totalResult' => $totalResult, 
+                'totalPages' => $totalPages, 
+                'currentPage' => $currentPage, 
+                'result' => $data,
+                'detail' => $chitiet));
+
+        $bag = [
+            'meta' => [
+                'title' => 'Bảng kê xuất kho theo sản phẩm',
+                'p_ngay_batdau' => $p_ngay_batdau,
+                'p_ngay_ketthuc' => $p_ngay_ketthuc,
+                'p_sanpham_id' => $p_sanpham_id
+            ],
+            'data' => json_decode($result)
+        ];
+
+        // dd($bag);   
+        return $bag;
+    }
 }
