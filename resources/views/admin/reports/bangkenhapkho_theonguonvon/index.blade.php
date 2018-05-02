@@ -5,20 +5,20 @@
     <div class="row">
     <div class="col-sm-6">
   <div class="form-group">
-    <label for="tuNgay">Từ ngày</label>
-    <input type="date" class="form-control" id="tuNgay" name="tuNgay">
+    <label for="p_ngay_batdau">Từ ngày</label>
+    <input type="date" class="form-control" id="p_ngay_batdau" name="p_ngay_batdau">
   </div>
   </div>
   <div class="col-sm-6">
   <div class="form-group">
-    <label for="denNgay">Từ ngày</label>
-    <input type="date" class="form-control" id="denNgay" name="denNgay">
+    <label for="p_ngay_ketthuc">Từ ngày</label>
+    <input type="date" class="form-control" id="p_ngay_ketthuc" name="p_ngay_ketthuc">
   </div>
   </div>
   <div class="col-sm-12">
   <div class="form-group">
-    <label for="nguoncungcap_id">Nguồn cung cấp</label>
-    <select class="form-control" style="width: 100%;" name="nguoncungcap_id" id="nguoncungcap_id">
+    <label for="p_nguoncungcap_id">Nguồn cung cấp</label>
+    <select class="form-control" style="width: 100%;" name="p_nguoncungcap_id" id="p_nguoncungcap_id">
         <option value=""></option>
         @foreach($nguonCungCap as $select => $option)
             <option value="{{$select}}">{{$option}}</option>
@@ -29,7 +29,7 @@
   </div>
   <div class="row">
   <div class="col-sm-12">
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Lập báo cáo</button>
   </div>
   </div>
 </form>

@@ -73,16 +73,17 @@ class PrintController extends Controller
         $currentPage = 1;
         $chitiet = null;
         // dd($query);
-        $tuNgay = $query['tuNgay'];
-        $denNgay = $query['denNgay'];
-        $nguoncungcap_id = $query['nguoncungcap_id'];
+        $p_ngay_batdau = $query['p_ngay_batdau'];
+        $p_ngay_ketthuc = $query['p_ngay_ketthuc'];
+        $p_nguoncungcap_id = $query['p_nguoncungcap_id'];
 
         $parameter = [
-            $tuNgay,
-            $denNgay,
-            $nguoncungcap_id
+            $p_ngay_batdau,
+            $p_ngay_ketthuc,
+            $p_nguoncungcap_id
         ];
         $data = DB::select('call usp_baocao_bangkenhapkho_theonguonvon(?,?,?)', $parameter);
+        $chitiet = $data;
 
         $result = json_encode(
             array('totalResult' => $totalResult, 
@@ -93,12 +94,15 @@ class PrintController extends Controller
 
         $bag = [
             'meta' => [
-                'title' => 'Phiếu xuất',
+                'title' => 'Bảng kê nhập kho theo nguồn vốn',
+                'p_ngay_batdau' => $p_ngay_batdau,
+                'p_ngay_ketthuc' => $p_ngay_ketthuc,
+                'p_nguoncungcap_id' => $p_nguoncungcap_id
             ],
             'data' => json_decode($result)
         ];
 
-        dd($bag);   
+        // dd($bag);   
         return $bag;
     }
 }
