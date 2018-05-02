@@ -145,4 +145,44 @@ class PrintController extends Controller
         // dd($bag);   
         return $bag;
     }
+
+    protected function getDataBieumau_report_nhapxuatton_chitiet($query)
+    {
+        $totalResult = 1;
+        $totalPages = 1;
+        $currentPage = 1;
+        $chitiet = null;
+        // dd($query);
+        $p_ngay_batdau = $query['p_ngay_batdau'];
+        $p_ngay_ketthuc = $query['p_ngay_ketthuc'];
+        $p_kho_id = $query['p_kho_id'];
+
+        $parameter = [
+            $p_ngay_batdau,
+            $p_ngay_ketthuc,
+            $p_kho_id
+        ];
+        $data = DB::select('call usp_baocao_nhapxuatton_chitiet(?,?,?)', $parameter);
+        $chitiet = $data;
+
+        $result = json_encode(
+            array('totalResult' => $totalResult, 
+                'totalPages' => $totalPages, 
+                'currentPage' => $currentPage, 
+                'result' => $data,
+                'detail' => $chitiet));
+
+        $bag = [
+            'meta' => [
+                'title' => 'Nhập xuất tồn chi tiết',
+                'p_ngay_batdau' => $p_ngay_batdau,
+                'p_ngay_ketthuc' => $p_ngay_ketthuc,
+                'p_kho_id' => $p_kho_id
+            ],
+            'data' => json_decode($result)
+        ];
+
+        // dd($bag);   
+        return $bag;
+    }
 }
