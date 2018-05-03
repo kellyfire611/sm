@@ -191,7 +191,7 @@ EOT;
 
 
 
-            $form->text('bienban_kiemnhap_tokiemnhap', __('models.store_phieunhap.bienban_kiemnhap_tokiemnhap'));
+            $form->jsonforms('bienban_kiemnhap_tokiemnhap', __('models.store_phieunhap.bienban_kiemnhap_tokiemnhap'));
                 //->useTableDiv()
                 //->labelPosition(CommonModel::LABEL_POSITION_TOP)
                 //->setWidth(12, 12, 3);
