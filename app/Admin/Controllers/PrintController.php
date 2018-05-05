@@ -82,7 +82,7 @@ class PrintController extends Controller
             $p_ngay_ketthuc,
             $p_nguoncungcap_id
         ];
-        $data = DB::select('call usp_baocao_bangkenhapkho_theonguonvon(?,?,?)', $parameter);
+        $data = DB::select('call usp_store_baocao_bangkenhapkho_theonguonvon(?,?,?)', $parameter);
         $chitiet = $data;
 
         $result = json_encode(
@@ -122,7 +122,7 @@ class PrintController extends Controller
             $p_ngay_ketthuc,
             $p_sanpham_id
         ];
-        $data = DB::select('call usp_baocao_bangkexuatkho_theosanpham(?,?,?)', $parameter);
+        $data = DB::select('call usp_store_baocao_bangkexuatkho_theosanpham(?,?,?)', $parameter);
         $chitiet = $data;
 
         $result = json_encode(
@@ -162,7 +162,7 @@ class PrintController extends Controller
             $p_ngay_ketthuc,
             $p_kho_id
         ];
-        $data = DB::select('call usp_baocao_nhapxuatton_chitiet(?,?,?)', $parameter);
+        $data = DB::select('call usp_store_baocao_nhapxuatton_chitiet(?,?,?)', $parameter);
         $chitiet = $data;
 
         $result = json_encode(

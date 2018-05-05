@@ -38,7 +38,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('Nhập vào kho lẻ');
-            $content->description('description');
+            $content->description('Danh sách');
             $content->controller(StorePhieunhapVaoKhoLeController::class);
 
             $content->body($this->grid());
@@ -56,7 +56,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
         return Admin::content(function (Content $content) use ($id) {
 
             $content->header('Nhập vào kho lẻ');
-            $content->description('description');
+            $content->description('Hiệu chỉnh');
             $content->controller('StorePhieunhapVaoKhoLeController');
 
             $content->body($this->form()->edit($id));
@@ -73,7 +73,7 @@ class StorePhieunhapVaoKhoLeController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('Nhập vào kho lẻ');
-            $content->description('description');
+            $content->description('Thêm mới');
 
             $content->body($this->form());
         });

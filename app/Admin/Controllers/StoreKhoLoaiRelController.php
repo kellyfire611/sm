@@ -26,8 +26,8 @@ class StoreKhoLoaiRelController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Phân nhóm Kho-Loại kho');
+            $content->description('Danh sách');
 
             $content->body($this->grid());
         });
@@ -43,8 +43,8 @@ class StoreKhoLoaiRelController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Phân nhóm Kho-Loại kho');
+            $content->description('Hiệu chỉnh');
 
             $content->body($this->form()->edit($id));
         });
@@ -59,8 +59,8 @@ class StoreKhoLoaiRelController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Phân nhóm Kho-Loại kho');
+            $content->description('Thêm mới');
 
             $content->body($this->form());
         });

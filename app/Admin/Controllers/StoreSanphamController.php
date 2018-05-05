@@ -29,8 +29,8 @@ class StoreSanphamController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Sản phẩm');
+            $content->description('Danh sách');
 
             $content->body($this->grid());
         });
@@ -46,8 +46,8 @@ class StoreSanphamController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Sản phẩm');
+            $content->description('Hiệu chỉnh');
 
             $content->body($this->formEdit()->edit($id));
         });
@@ -62,8 +62,8 @@ class StoreSanphamController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Sản phẩm');
+            $content->description('Thêm mới');
 
             $content->body($this->form());
         });

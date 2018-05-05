@@ -60,7 +60,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input {!! !$errors->has('password') ?: 'has-error' !!}"  data-validate = "Password is required">
-						<input class="input100" type="password" placeholder="{{ trans('admin.password') }}" name="password" value="{{ old('password') }}>
+						<input class="input100" type="password" placeholder="" name="password" value="">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>

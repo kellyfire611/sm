@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\StoreSoketoan;
+use App\Models\HrmQuocgia;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -10,9 +10,8 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use Illuminate\Http\Request;
 
-class StoreSoketoanController extends Controller
+class HrmQuocgiaController extends Controller
 {
     use ModelForm;
 
@@ -25,7 +24,7 @@ class StoreSoketoanController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Sổ kế toán');
+            $content->header('Quốc gia');
             $content->description('Danh sách');
 
             $content->body($this->grid());
@@ -42,7 +41,7 @@ class StoreSoketoanController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('Sổ kế toán');
+            $content->header('Quốc gia');
             $content->description('Hiệu chỉnh');
 
             $content->body($this->form()->edit($id));
@@ -58,7 +57,7 @@ class StoreSoketoanController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Sổ kế toán');
+            $content->header('Quốc gia');
             $content->description('Thêm mới');
 
             $content->body($this->form());
@@ -72,14 +71,12 @@ class StoreSoketoanController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(StoreSoketoan::class, function (Grid $grid) {
+        return Admin::grid(HrmQuocgia::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->column('ma_soketoan', __('models.store_soketoan.ma_soketoan'));
-            $grid->column('ngay_batdau', __('models.store_soketoan.ngay_batdau'));
-            $grid->column('ngay_ketthuc', __('models.store_soketoan.ngay_ketthuc'));
-            $grid->column('ngay_khoaso', __('models.store_soketoan.ngay_khoaso'));
+            $grid->column('ma_quocgia', __('models.hrm_quocgia.ma_quocgia'));
+            $grid->column('ten_quocgia', __('models.hrm_quocgia.ten_quocgia'));
 
             $grid->created_at(__('models.common.created_at'));
             $grid->updated_at(__('models.common.updated_at'));
@@ -93,14 +90,12 @@ class StoreSoketoanController extends Controller
      */
     protected function form()
     {
-        return Admin::form(StoreSoketoan::class, function (Form $form) {
+        return Admin::form(HrmQuocgia::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
-            $form->text('ma_soketoan', __('models.store_soketoan.ma_soketoan'));
-            $form->datetime('ngay_batdau', __('models.store_soketoan.ngay_batdau'));
-            $form->datetime('ngay_ketthuc', __('models.store_soketoan.ngay_ketthuc'));
-            $form->datetime('ngay_khoaso', __('models.store_soketoan.ngay_khoaso'));
+            $form->text('ma_quocgia', __('models.hrm_quocgia.ma_quocgia'));
+            $form->text('ten_quocgia', __('models.hrm_quocgia.ten_quocgia'));
 
             $form->display('created_at', __('models.common.created_at'));
             $form->display('updated_at', __('models.common.updated_at'));

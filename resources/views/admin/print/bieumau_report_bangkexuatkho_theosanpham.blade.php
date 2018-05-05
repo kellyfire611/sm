@@ -16,6 +16,14 @@ Biểu mẫu Báo cáo Bảng kê xuất kho theo sản phẩm
 @endsection
 
 @section('content')
+@if(empty($bag['data']->result))
+<section class="sheet padding-10mm">
+    <article>
+        <h1>Không tìm thấy dữ liệu</h1>
+        <a href="{{ admin_base_path('/') }}"><b>Quay về Trang chủ</b></a>
+    </article>
+</section>
+@else
 <section class="sheet padding-10mm">
   <article>
       <table class="tg">
@@ -132,4 +140,5 @@ Biểu mẫu Báo cáo Bảng kê xuất kho theo sản phẩm
       </table>
   </article>
 </section>
+@endif
 @endsection

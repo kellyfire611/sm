@@ -8,6 +8,7 @@
     margin: auto;
     background: #0d8a05;
     padding: 5px;
+    z-index: 999;
 }
 
 .paper-toolbar-top {

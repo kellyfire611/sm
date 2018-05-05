@@ -28,8 +28,8 @@ class StoreSanphamNhomLoaiRelController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Phân Sản phẩm-Nhóm-Loại');
+            $content->description('Danh sách');
 
             $content->body($this->grid());
         });
@@ -45,8 +45,8 @@ class StoreSanphamNhomLoaiRelController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Phân Sản phẩm-Nhóm-Loại');
+            $content->description('Hiệu chỉnh');
 
             $content->body($this->form()->edit($id));
         });
@@ -61,8 +61,8 @@ class StoreSanphamNhomLoaiRelController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Phân Sản phẩm-Nhóm-Loại');
+            $content->description('Thêm mới');
 
             $content->body($this->form());
         });

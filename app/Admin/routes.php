@@ -13,6 +13,8 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     $router->resources([
+        'hrm/quocgia'                      => HrmQuocgiaController::class,
+
         'store/kho'                        => StoreKhoController::class,
         'store/loai_kho'                   => StoreKhoLoaiController::class,
         'store/loai_kho_rel'               => StoreKhoLoaiRelController::class,

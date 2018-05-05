@@ -42,7 +42,7 @@ class StorePhieuxuatController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('Danh sách phiếu xuất');
-            $content->description('');
+            $content->description('Danh sách');
 
             $content->body($this->grid());
         });
@@ -59,7 +59,7 @@ class StorePhieuxuatController extends Controller
         return Admin::content(function (Content $content) use ($id) {
 
             $content->header('Sửa phiếu xuất');
-            $content->description('');
+            $content->description('Hiệu chỉnh');
 
             $content->body($this->form()->edit($id));
         });
@@ -75,7 +75,7 @@ class StorePhieuxuatController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('Tạo phiếu xuất');
-            $content->description('');
+            $content->description('Thêm mới');
 
             $content->body($this->form());
         });
