@@ -29,7 +29,7 @@
         <div class="input-group">
 
             @if ($prepend)
-            <span class="input-group-addon">{!! $prepend !!}</span>
+            
             @endif
 
             <input {!! $attributes !!} />

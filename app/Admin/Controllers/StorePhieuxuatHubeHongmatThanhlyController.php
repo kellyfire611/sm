@@ -317,7 +317,7 @@ function(data) {
     var dongianhap = '<span class="dongia"><b>' + arr[5] + 'đ</b></span> ';
     var soluong_conlai = '<span class="" style="color:red"><b>' + arr[6] + '</b></span> ';
     var sokiemsoat = '<span class=""><b>' + arr[7] + '</b></span> ';
-    var hansudung = '<span class="" style="color: pink"><i>' + arr[8] + '</i></span> ';
+    var hansudung = '<span class="" style="color: green"><i>' + arr[8] + '</i></span> ';
 
     template = ma_sanpham + ten_sanpham + ten_hoatchat + nongdo_hamluong + sokiemsoat + hansudung + dongianhap + soluong_conlai + ten_donvitinh;
     return template;

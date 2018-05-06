@@ -304,7 +304,7 @@ EOT;
                     ->labelPosition(CommonModel::LABEL_POSITION_TOP)
                     ->useTableDiv()
                     ->setWidth(12, 12, 1);
-                $form->currency('soluong_theohopdong', __('models.store_phieunhap_chitiet.soluong_theohopdong'))
+                $form->currency('soluong_theohopdong', 'SL theo HĐ')
                     //->addElementClass(['soluong'])
                     ->rules('required')
                     // ->renderStyle(CommonModel::RENDER_STYLE_ONLY_CONTROL)
