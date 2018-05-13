@@ -17,9 +17,14 @@
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+use App\Admin\Extensions\Form\JsonForms;
+use Encore\Admin\Grid;
+use Encore\Admin\Form;
 use Encore\Admin\Facades\Admin;
+use Encore\Admin\Grid\Column;
 
 Encore\Admin\Form::forget(['map', 'editor']);
+Form::extend('jsonforms', JsonForms::class);
 
 Admin::js('/vendor/jquery-bindings/jquery-bindings.js');
 Admin::js('/vendor/chartjs/Chart.min.js');

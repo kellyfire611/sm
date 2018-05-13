@@ -20,108 +20,121 @@ Biểu mẫu Phiếu xuất kho
 @endsection
 
 @section('content')
+@if(empty($bag['data']->result))
 <section class="sheet padding-10mm">
     <article>
-        <table class="main">
-            <tr>
-              <th colspan="16" class="bold name no-border" >BẢNG TÔNG HỢP CHI TIẾT THUỐC - HÓA CHẤT KHO MIỀN THÁNG 03/2018</th>
-            </tr>
+        <h1>Không tìm thấy dữ liệu</h1>
+        <a href="{{ admin_base_path('/') }}"><b>Quay về Trang chủ</b></a>
+    </article>
+</section>
+@else
+<section class="sheet padding-10mm">
+    <article>
+      <table class="main">
+        <caption>{{ $bag['meta']['title'] }}</caption>
+        <thead>
             <tr class="bold" >
-              <td>STT</td>
-              <td>Tên thuốc</td>
-              <td>Mã <br>Nguồn</td>
-              <td>ĐVT</td>
-              <td>Đơn giá</td>
-              <td></td>
-              <td>HSD</td>
-              <td>Tồn<br>đầu kỳ</td>
-              <td>Thành tiền<br></td>
-              <td>Nhập</td>
-              <td>Thành tiền</td>
-              <td>Tổng xuất</td>
-              <td>Thành tiền</td>
-              <td>Tồn<br>cuối kỳ</td>
-              <td>Thành tiền</td>
-              <td>Ghi chú</td>
+                <td>STT</td>
+                <td>Tên thuốc</td>
+                <td>Mã <br>Nguồn</td>
+                <td>ĐVT</td>
+                <td>Đơn giá</td>
+                <td>HSD</td>
+                <td>Tồn<br>đầu kỳ</td>
+                <td>Thành tiền<br></td>
+                <td>Nhập</td>
+                <td>Thành tiền</td>
+                <td>Tổng xuất</td>
+                <td>Thành tiền</td>
+                <td>Tồn<br>cuối kỳ</td>
+                <td>Thành tiền</td>
+                <td>Ghi chú</td>
             </tr>
+        </thead>
+        <tbody>
+            <?php
+            $stt = 0;
+            $sumTonDauKy = 0;
+            $sumTongNhap = 0;
+            $sumTongXuat = 0;
+            $sumTonCuoiKy = 0;
+            ?>
+            @foreach($bag['data']->detail as $key => $value)
+            <?php
+            $stt++;
+            $ttTonDauKy = $value->dongianhap * $value->tong_soluongnhap;
+            $ttTongNhap = 0;
+            $ttTongXuat = 0;
+            $ttTonCuoiKy = 0;
+            ?>
             <tr>
-              <td></td>
-              <td class="bold" >Thuốc MDR</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+                <td>{{ $stt }}</td>
+                <td class="bold" >{{ $value->ten_sanpham }}</td>
+                <td></td>
+                <td></td>
+                <td class="dongia align-right">{{ number_format($value->dongianhap, 4) }}</td>
+                <td></td>
+                <td class="soluong align-right">{{ number_format($value->tong_soluongnhap, 0) }}</td>
+                <td class="thanhtien align-right">{{ number_format($ttTonDauKy, 0) }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ $value->tong_soluongxuat }}</td>
+                <td></td>
+                <td></td>
             </tr>
+            <?php
+            $sumTonDauKy += $ttTonDauKy;
+            $sumTongNhap += 0;
+            $sumTongXuat += 0;
+            $sumTonCuoiKy = $sumTonDauKy + $sumTongNhap - $sumTongXuat;
+            ?>
+            @endforeach
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+                <td></td>
+                <td>CỘNG</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td class="thanhtien align-right">{{ number_format($sumTonDauKy, 0) }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="thanhtien align-right">{{ number_format($sumTongXuat, 0) }}</td>
+                <td>0</td>
+                <td class="thanhtien align-right">{{ number_format($sumTonCuoiKy, 0) }}</td>
+                <td></td>
             </tr>
+        </tbody>
+        <tfoot>
             <tr>
-              <td></td>
-              <td>CỘNG</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>0</td>
-              <td>1.000.000</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>999.999</td>
-              <td>0</td>
-              <td>888.888</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="bold" >Tổng cộng</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="bold" >1.111.111</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="bold" >1.111.111</td>
-              <td></td>
-              <td class="bold" >1.111.111</td>
-              <td></td>
+                <td></td>
+                <td>CỘNG</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>0</td>
+                <td class="thanhtien align-right">{{ number_format($sumTonDauKy, 0) }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="thanhtien align-right">{{ number_format($sumTongXuat, 0) }}</td>
+                <td>0</td>
+                <td class="thanhtien align-right">{{ number_format($sumTonCuoiKy, 0) }}</td>
+                <td></td>
             </tr>
             <tr>
                 <td class="no-border" ></td>
                 <td class="no-border" >Tiền bằng chữ: </td>
-                <td colspan="14" class="bold align-left no-border " > <?php echo decimalToTextVietnamese(1111111); ?> </td>
+                <td colspan="14" class="bold align-left no-border"><?php echo decimalToTextVietnamese($sumTonCuoiKy); ?></td>
             </tr>
-          </table>
+        </tfoot>
+    </table> 
     </article>
 </section>
+@endif
 @endsection

@@ -17,6 +17,13 @@ class CommonModel
     const RENDER_STYLE_ONLY_LABEL = 2;
     const RENDER_STYLE_LABEL_AND_CONTROL = 3;
 
+    /**
+     * Position Label
+     */
+    const LABEL_POSITION_TOP = 1;
+    const LABEL_POSITION_RIGHT = 2;
+    const LABEL_POSITION_BOTTOM = 3;
+    const LABEL_POSITION_LEFT = 4;
 
     static $states;
     static $yesNo;

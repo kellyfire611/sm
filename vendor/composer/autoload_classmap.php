@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminMenuTableSeeder' => $baseDir . '/database/seeds/AdminMenuTableSeeder.php',
+    'App\\Admin\\Controllers\\AjaxController' => $baseDir . '/app/Admin/Controllers/AjaxController.php',
     'App\\Admin\\Controllers\\ExampleController' => $baseDir . '/app/Admin/Controllers/ExampleController.php',
     'App\\Admin\\Controllers\\ExcelController' => $baseDir . '/app/Admin/Controllers/ExcelController.php',
     'App\\Admin\\Controllers\\HomeController' => $baseDir . '/app/Admin/Controllers/HomeController.php',

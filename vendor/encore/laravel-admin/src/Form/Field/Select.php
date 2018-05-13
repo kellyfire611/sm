@@ -32,6 +32,9 @@ class Select extends Field
      * @var array
      */
     protected $config = [];
+    protected $templateResult = '';
+    protected $templateSelection = '';
+    protected $escapeMarkup = '';
 
     /**
      * Set options.
@@ -53,10 +56,14 @@ class Select extends Field
 
         if (is_callable($options)) {
             $this->options = $options;
+            
         } else {
+            
             $this->options = (array) $options;
+            // dd($this->options);
         }
 
+        //dd($this->options);
         return $this;
     }
 
@@ -234,12 +241,15 @@ EOT;
         $configs = array_merge([
             'allowClear'  => true,
             'placeholder' => $this->label,
+            // 'templateResult' => $this->templateResult,
         ], $this->config);
 
-        $configs = json_encode($configs);
+        //$configs = json_encode($configs);
 
         if (empty($this->script)) {
-            $this->script = "$(\"select{$this->getElementClassSelector()}\").select2($configs);";
+            //$this->script = "$(\"select{$this->getElementClassSelector()}\").select2($configs);";
+            $this->script = "$(\"select{$this->getElementClassSelector()}\").select2({'allowClear': 'true', 'placeholder': '" . html_entity_decode($this->label) ."'". (empty($this->templateResult) ? ""  : ", 'templateResult': $this->templateResult") . (empty($this->templateSelection) ? ""  : ", 'templateSelection': $this->templateSelection") . (empty($this->escapeMarkup) ? ""  : ", 'escapeMarkup': $this->escapeMarkup") ."});";
+            // dd($this->script);
         }
 
         if ($this->options instanceof \Closure) {
@@ -256,5 +266,20 @@ EOT;
             'options' => $this->options,
             'groups'  => $this->groups,
         ]);
+    }
+
+    public function templateResult($templateResult) {
+        $this->templateResult = $templateResult;
+        return $this;
+    }
+
+    public function templateSelection($templateSelection) {
+        $this->templateSelection = $templateSelection;
+        return $this;
+    }
+
+    public function escapeMarkup($escapeMarkup) {
+        $this->escapeMarkup = $escapeMarkup;
+        return $this;
     }
 }

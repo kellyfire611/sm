@@ -21,6 +21,7 @@ class Content implements Renderable
      * @var string
      */
     protected $description = '';
+    protected $controller = '';
 
     /**
      * Page breadcrumb.
@@ -70,6 +71,13 @@ class Content implements Renderable
     public function description($description = '')
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function controller($controller = '')
+    {
+        $this->controller = $controller;
 
         return $this;
     }
@@ -201,6 +209,7 @@ class Content implements Renderable
             'description' => $this->description,
             'breadcrumb'  => $this->breadcrumb,
             'content'     => $this->build(),
+            'controller'  => $this->controller,
         ];
 
         return view('admin::content', $items)->render();

@@ -11,6 +11,7 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
 use App\Admin\Controllers\V1\ApiDataController;
+use DB;
 
 class PrintController extends Controller
 {
@@ -39,7 +40,7 @@ class PrintController extends Controller
     protected function getDataBieumau_phieunhap($query)
     {
         $meta = [
-            'title' => 'Biểu mẫu phiếu nhập',
+            'title' => 'Phiếu nhập',
         ];
         $result = $this->phieunhapById($query['phieunhap_id']);
 
@@ -57,11 +58,131 @@ class PrintController extends Controller
 
         $bag = [
             'meta' => [
-                'title' => 'Biểu mẫu phiếu xuất',
+                'title' => 'Phiếu xuất',
             ],
             'data' => json_decode($result)
         ];
 
+        return $bag;
+    }
+
+    protected function getDataBieumau_report_bangkenhapkho_theonguonvon($query)
+    {
+        $totalResult = 1;
+        $totalPages = 1;
+        $currentPage = 1;
+        $chitiet = null;
+        // dd($query);
+        $p_ngay_batdau = $query['p_ngay_batdau'];
+        $p_ngay_ketthuc = $query['p_ngay_ketthuc'];
+        $p_nguoncungcap_id = $query['p_nguoncungcap_id'];
+
+        $parameter = [
+            $p_ngay_batdau,
+            $p_ngay_ketthuc,
+            $p_nguoncungcap_id
+        ];
+        $data = DB::select('call usp_store_baocao_bangkenhapkho_theonguonvon(?,?,?)', $parameter);
+        $chitiet = $data;
+
+        $result = json_encode(
+            array('totalResult' => $totalResult, 
+                'totalPages' => $totalPages, 
+                'currentPage' => $currentPage, 
+                'result' => $data,
+                'detail' => $chitiet));
+
+        $bag = [
+            'meta' => [
+                'title' => 'Bảng kê nhập kho theo nguồn vốn',
+                'p_ngay_batdau' => $p_ngay_batdau,
+                'p_ngay_ketthuc' => $p_ngay_ketthuc,
+                'p_nguoncungcap_id' => $p_nguoncungcap_id
+            ],
+            'data' => json_decode($result)
+        ];
+
+        // dd($bag);   
+        return $bag;
+    }
+
+    protected function getDataBieumau_report_bangkexuatkho_theosanpham($query)
+    {
+        $totalResult = 1;
+        $totalPages = 1;
+        $currentPage = 1;
+        $chitiet = null;
+        // dd($query);
+        $p_ngay_batdau = $query['p_ngay_batdau'];
+        $p_ngay_ketthuc = $query['p_ngay_ketthuc'];
+        $p_sanpham_id = $query['p_sanpham_id'];
+
+        $parameter = [
+            $p_ngay_batdau,
+            $p_ngay_ketthuc,
+            $p_sanpham_id
+        ];
+        $data = DB::select('call usp_store_baocao_bangkexuatkho_theosanpham(?,?,?)', $parameter);
+        $chitiet = $data;
+
+        $result = json_encode(
+            array('totalResult' => $totalResult, 
+                'totalPages' => $totalPages, 
+                'currentPage' => $currentPage, 
+                'result' => $data,
+                'detail' => $chitiet));
+
+        $bag = [
+            'meta' => [
+                'title' => 'Bảng kê xuất kho theo sản phẩm',
+                'p_ngay_batdau' => $p_ngay_batdau,
+                'p_ngay_ketthuc' => $p_ngay_ketthuc,
+                'p_sanpham_id' => $p_sanpham_id
+            ],
+            'data' => json_decode($result)
+        ];
+
+        // dd($bag);   
+        return $bag;
+    }
+
+    protected function getDataBieumau_report_nhapxuatton_chitiet($query)
+    {
+        $totalResult = 1;
+        $totalPages = 1;
+        $currentPage = 1;
+        $chitiet = null;
+        // dd($query);
+        $p_ngay_batdau = $query['p_ngay_batdau'];
+        $p_ngay_ketthuc = $query['p_ngay_ketthuc'];
+        $p_kho_id = $query['p_kho_id'];
+
+        $parameter = [
+            $p_ngay_batdau,
+            $p_ngay_ketthuc,
+            $p_kho_id
+        ];
+        $data = DB::select('call usp_store_baocao_nhapxuatton_chitiet(?,?,?)', $parameter);
+        $chitiet = $data;
+
+        $result = json_encode(
+            array('totalResult' => $totalResult, 
+                'totalPages' => $totalPages, 
+                'currentPage' => $currentPage, 
+                'result' => $data,
+                'detail' => $chitiet));
+
+        $bag = [
+            'meta' => [
+                'title' => 'Nhập xuất tồn chi tiết',
+                'p_ngay_batdau' => $p_ngay_batdau,
+                'p_ngay_ketthuc' => $p_ngay_ketthuc,
+                'p_kho_id' => $p_kho_id
+            ],
+            'data' => json_decode($result)
+        ];
+
+        // dd($bag);   
         return $bag;
     }
 }

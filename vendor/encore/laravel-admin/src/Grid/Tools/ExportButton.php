@@ -63,13 +63,13 @@ SCRIPT;
 
         return <<<EOT
 
-<div class="btn-group pull-right" style="margin-right: 10px">
-    <a class="btn btn-sm btn-twitter"><i class="fa fa-download"></i> {$export}</a>
-    <button type="button" class="btn btn-sm btn-twitter dropdown-toggle" data-toggle="dropdown">
+<div class="btn-group pull-right" role="group" style="margin-right: 10px">
+    <button type="button" class="btn btn-sm waves-effect btn-twitter dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        {$export}
         <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
+        <span class="sr-only"></span>
     </button>
-    <ul class="dropdown-menu" role="menu">
+    <ul class="dropdown-menu">
         <li><a href="{$this->grid->exportUrl('all')}" target="_blank">{$all}</a></li>
         <li><a href="{$this->grid->exportUrl('page', $page)}" target="_blank">{$currentPage}</a></li>
         <li><a href="{$this->grid->exportUrl('selected', '__rows__')}" target="_blank" class='export-selected'>{$selectedRows}</a></li>

@@ -1,123 +1,52 @@
-<h1>Biểu đồ</h1>
-<div class="row">
-    <div class="col-sm-3">
-        @include('admin.reports.nhapxuatton_chitiet.chart_bar')
+<form id="conditionForm" method="post" action="{{ route('store.print', ['view' => 'bieumau_report_nhapxuatton_chitiet']) }}">
+    {{ csrf_field() }}
+    <div class="row">
+    <div class="col-sm-6">
+  <div class="form-group">
+    <label for="p_ngay_batdau">Từ ngày</label>
+    <input type="text" class="form-control" id="p_ngay_batdau" name="p_ngay_batdau">
+  </div>
+  </div>
+  <div class="col-sm-6">
+  <div class="form-group">
+    <label for="p_ngay_ketthuc">Từ ngày</label>
+    <input type="text" class="form-control" id="p_ngay_ketthuc" name="p_ngay_ketthuc">
+  </div>
+  </div>
+  <div class="col-sm-12">
+  <div class="form-group">
+    <label for="p_kho_id">Kho</label>
+    <select class="form-control" style="width: 100%;" name="p_kho_id" id="p_kho_id">
+        <option value=""></option>
+        @foreach($kho as $select => $option)
+            <option value="{{$select}}">{{$option}}</option>
+        @endforeach
+    </select>
     </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-sm-12">
+  <button type="submit" class="btn btn-primary">Lập báo cáo</button>
+  </div>
+  </div>
+</form>
 
-    <div class="col-sm-3">
-        <canvas id="myChart2" width="400px" height="400px"></canvas>
-    </div>
-
-    <div class="col-sm-3">
-        <canvas id="myChart3" width="400px" height="400px"></canvas>
-    </div>
-</div>
-
-<div>
-    <div class="col-sm-12">
-        <table class="table table-responsive table-hover no-padding">
-            <caption>BẢNG TÔNG HỢP CHI TIẾT THUỐC - HÓA CHẤT KHO MIỀN THÁNG 03/2018</caption>
-            <thead>
-                <tr class="bold" >
-                    <td>STT</td>
-                    <td>Tên thuốc</td>
-                    <td>Mã <br>Nguồn</td>
-                    <td>ĐVT</td>
-                    <td>Đơn giá</td>
-                    <td></td>
-                    <td>HSD</td>
-                    <td>Tồn<br>đầu kỳ</td>
-                    <td>Thành tiền<br></td>
-                    <td>Nhập</td>
-                    <td>Thành tiền</td>
-                    <td>Tổng xuất</td>
-                    <td>Thành tiền</td>
-                    <td>Tồn<br>cuối kỳ</td>
-                    <td>Thành tiền</td>
-                    <td>Ghi chú</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td class="bold" >Thuốc MDR</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>CỘNG</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>0</td>
-                    <td>1.000.000</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>999.999</td>
-                    <td>0</td>
-                    <td>888.888</td>
-                    <td></td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td></td>
-                    <td class="bold" >Tổng cộng</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="bold" >1.111.111</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="bold" >1.111.111</td>
-                    <td></td>
-                    <td class="bold" >1.111.111</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="no-border" ></td>
-                    <td class="no-border" >Tiền bằng chữ: </td>
-                    <td colspan="14" class="bold align-left no-border"><?php echo decimalToTextVietnamese(1111111); ?></td>
-                </tr>
-            </tfoot>
-        </table>        
-    </div>
-</div>
+<link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css") }}">
+<link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/AdminLTE/plugins/select2/select2.min.css") }}">
+<script src="{{ admin_asset ("/vendor/laravel-admin/moment/min/moment-with-locales.min.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/laravel-admin/AdminLTE/plugins/select2/select2.full.min.js") }}"></script>
+<?php
+  $options['format'] = 'YYYY-MM-DD HH:mm:ss';
+  $options['locale'] = config('app.locale');
+  $options['sideBySide'] = true;
+  $options['keepOpen'] = true;
+  //dd(json_encode($options));
+?>
+<script>
+  var option = {!! json_encode($options) !!};
+  $('#p_ngay_batdau').datetimepicker(option);
+  $('#p_ngay_ketthuc').datetimepicker(option);
+  $('#p_kho_id').select2({'allowClear': 'true'});
+</script>

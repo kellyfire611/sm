@@ -34,7 +34,7 @@ class InfoBox extends Widget implements Renderable
             'info' => $info,
         ];
 
-        $this->class("small-box bg-$color");
+        $this->class("info-box bg-$color hover-expand-effect");
     }
 
     /**

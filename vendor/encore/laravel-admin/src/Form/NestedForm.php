@@ -385,4 +385,9 @@ class NestedForm
 
         return $this;
     }
+
+    public function script($script)
+    {
+        Admin::script($script);
+    }
 }

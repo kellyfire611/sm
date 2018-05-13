@@ -25,8 +25,8 @@ class StoreChuongtrinhController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Chương trình');
+            $content->description('Danh sách');
 
             $content->body($this->grid());
         });
@@ -42,8 +42,8 @@ class StoreChuongtrinhController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Chương trình');
+            $content->description('Hiệu chỉnh');
 
             $content->body($this->form()->edit($id));
         });
@@ -58,8 +58,8 @@ class StoreChuongtrinhController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Chương trình');
+            $content->description('Thêm mới');
 
             $content->body($this->form());
         });

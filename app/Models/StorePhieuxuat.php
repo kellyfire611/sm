@@ -17,6 +17,11 @@ class StorePhieuxuat extends Model
         return $this->where('deleted_at', null);
     }
 
+    public function scopePhieuXuat($nhapxuat_id)
+    {
+        return $this->where('nhapxuat_id', $nhapxuat_id);
+    }
+
     public static function options($id)
     {
         return static::where('id', $id)->get()->map(function ($obj) {

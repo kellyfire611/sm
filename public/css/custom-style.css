@@ -1,3 +1,15 @@
+body {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Helvetica Neue',sans-serif;
+}
+
+.align-right {
+    text-align: right;
+}
+
 .display-none {
     display: none;
 }
@@ -48,9 +60,9 @@
 /* ./. Dạng Table */
 
 /* Dạng Table div */
-.has-many-tablediv {
+/* .has-many-tablediv {
     background: #007735a3;
-}
+} */
 
 .has-many-tablediv-forms {
     margin: 0;
@@ -62,9 +74,9 @@
     padding: 0;
 }
 
-.has-many-tablediv > .has-many-tablediv-forms > .fields-group:nth-child(even) {
+/* .has-many-tablediv > .has-many-tablediv-forms > .fields-group:nth-child(even) {
     background: #e08181;
-}
+} */
 /* ./. Dạng Table div */
 
 /* --- ./. Hiệu chỉnh form chi tiết --- */
@@ -77,4 +89,22 @@
 .form-group-viewmode-table > div {
     padding: 0;
     margin: 0;
+}
+
+.page_break { page-break-before: always; }
+.page_break_inside_avoid { page-break-inside: avoid; }
+.word_wrap {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.clickable {
+    color: red;
+    font-weight: bold;
+}
+
+.select2-container *:focus {
+    border-color: #3c8dbc;
+    background: #faffbd;
 }

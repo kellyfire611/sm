@@ -497,6 +497,7 @@ class Grid
         }
 
         $data = $this->processFilter();
+        // dd($data);
 
         $this->prependRowSelectorColumn();
         $this->appendActionsColumn();
@@ -510,6 +511,7 @@ class Grid
         });
 
         $this->buildRows($data);
+        // dd($this->rows);
 
         $this->builded = true;
     }
